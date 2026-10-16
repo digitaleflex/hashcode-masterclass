@@ -437,7 +437,7 @@ Pourquoi `npm test` peut-il échouer dans un projet fraîchement initialisé ?
 ## Suite de la série
 
 - Précédent : [RES-09 — Asynchronisme, promesses et async/await](./RES-09-async-promises-async-await.md)
-- Suivant : **RES-11 — DOM, événements et interfaces web** (à créer)
+- Suivant : **RES-11 — DOM, événements et interfaces web**
 
 ---
 
