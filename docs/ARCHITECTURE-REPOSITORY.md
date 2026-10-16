@@ -148,5 +148,6 @@ Commits recommandés : Conventional Commits, par exemple docs:, feat:, fix:, tes
 - [Index pédagogique](INDEX-PEDAGOGIQUE.md)
 - [Audit pédagogique et technique](AUDIT-PEDAGOGIQUE-TECHNIQUE.md)
 - [Roadmap du dépôt](ROADMAP-REPOSITORY.md)
+- [Critères de fin de réalisation](DEFINITION-OF-DONE.md)
 - [Configuration locale](LOCAL-SETUP.md)
 - [Cours avancés](../courses/advanced/README.md)
