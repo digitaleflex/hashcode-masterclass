@@ -2,6 +2,15 @@
 
 > HashCode Academy · Cheat Sheet
 
+
+## Comment utiliser cette fiche
+
+Cette fiche est une référence rapide, pas un remplacement du cours. Commence par la notion qui te bloque, copie un exemple dans un petit fichier de test, puis modifie-le pour vérifier que tu comprends ses effets. Ne mémorise pas uniquement la syntaxe : comprends les conditions dans lesquelles elle est correcte.
+
+**Fiches de cours associées :** [RES 09 async promises async await](../resumes/RES-09-async-promises-async-await.md) · [RES 16 async api http etat](../resumes/RES-16-async-api-http-etat.md)
+
+**Application pratique :** Distingue les opérations indépendantes des opérations dépendantes. Précise comment gérer l'échec partiel, l'annulation et les limites de concurrence.
+
 ## Séquentiel ou concurrent ?
 ~~~js
 const a = await fetch("/api/a");
