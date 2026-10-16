@@ -7,6 +7,17 @@
 
 ---
 
+
+## Repères d'apprentissage
+
+**Prérequis et maîtrise attendue :** Prérequis : RES-01 et RES-02. À la fin, tu dois pouvoir choisir entre const et let, identifier les types courants et expliquer les conversions implicites les plus importantes.
+
+**Mise en pratique :** Application : prédis le résultat d'expressions utilisant nombres, chaînes, booléens, null et undefined avant de les exécuter.
+
+**Mémo associé :** [Ouvrir la cheat sheet correspondante](../cheatsheets/CS-01-javascript-syntaxe-essentielle.md)
+
+**Méthode conseillée :** lis une section, ferme la fiche, reformule la règle sans la recopier, exécute l'exemple, puis change une valeur pour voir si tu peux prédire le nouveau résultat. Si tu ne peux pas expliquer pourquoi le résultat change, reviens à la notion avant de passer à la suite.
+
 ## 1. Qu’est-ce qu’une variable ?
 
 Une variable est un nom associé à une valeur. En JavaScript moderne, on utilise principalement `const` et `let`.
