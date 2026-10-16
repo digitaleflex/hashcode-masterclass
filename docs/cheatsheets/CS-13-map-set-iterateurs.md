@@ -2,6 +2,15 @@
 
 > HashCode Academy · Cheat Sheet
 
+
+## Comment utiliser cette fiche
+
+Cette fiche est une référence rapide, pas un remplacement du cours. Commence par la notion qui te bloque, copie un exemple dans un petit fichier de test, puis modifie-le pour vérifier que tu comprends ses effets. Ne mémorise pas uniquement la syntaxe : comprends les conditions dans lesquelles elle est correcte.
+
+**Fiches de cours associées :** [RES 06 tableaux et methodes fonctionnelles](../resumes/RES-06-tableaux-et-methodes-fonctionnelles.md) · [RES 07 objets destructuration spread](../resumes/RES-07-objets-destructuration-spread.md)
+
+**Application pratique :** Choisis une collection selon le besoin : index ordonné, clé-valeur ou unicité. Teste aussi l'itération sur une collection vide.
+
 ## Map
 ~~~js
 const scores = new Map();
