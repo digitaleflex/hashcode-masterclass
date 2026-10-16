@@ -4,6 +4,17 @@
 > Série de fiches de révision JavaScript / TypeScript  
 > Objectif : comprendre les opérations asynchrones et gérer leurs résultats sans bloquer inutilement le programme.
 
+
+## Repères d'apprentissage
+
+**Prérequis et maîtrise attendue :** Prérequis : fonctions, erreurs et notions de base des valeurs de retour. À la fin, tu dois pouvoir expliquer une promesse, gérer un rejet et décider entre séquentiel et concurrent.
+
+**Mise en pratique :** Application : compare deux appels indépendants exécutés l'un après l'autre puis avec Promise.all ; traite séparément l'échec et l'annulation.
+
+**Mémo associé :** [Ouvrir la cheat sheet correspondante](../cheatsheets/CS-05-async-promises-fetch.md)
+
+**Méthode conseillée :** lis une section, ferme la fiche, reformule la règle sans la recopier, exécute l'exemple, puis change une valeur pour voir si tu peux prédire le nouveau résultat. Si tu ne peux pas expliquer pourquoi le résultat change, reviens à la notion avant de passer à la suite.
+
 ## 1. Pourquoi l'asynchronisme ?
 
 Certaines opérations prennent du temps : appels réseau, accès à des fichiers, temporisateurs ou échanges avec une base de données. L'asynchronisme permet au programme de continuer à traiter d'autres tâches pendant que ces opérations attendent leur résultat.
