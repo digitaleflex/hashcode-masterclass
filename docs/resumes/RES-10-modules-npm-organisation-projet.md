@@ -4,6 +4,17 @@
 > Série de fiches de révision JavaScript / TypeScript  
 > Objectif : découper un programme en modules, gérer ses dépendances et structurer un projet maintenable.
 
+
+## Repères d'apprentissage
+
+**Prérequis et maîtrise attendue :** Prérequis : terminal, fichiers JavaScript et fonctions. À la fin, tu dois pouvoir exporter/importer une fonction, lire package.json et expliquer le rôle du lockfile.
+
+**Mise en pratique :** Application : sépare une fonction utilitaire dans un module, importe-la dans un autre fichier et vérifie que l'environnement ESM est correctement configuré.
+
+**Mémo associé :** [Ouvrir la cheat sheet correspondante](../cheatsheets/CS-14-modules-esm-import-export.md)
+
+**Méthode conseillée :** lis une section, ferme la fiche, reformule la règle sans la recopier, exécute l'exemple, puis change une valeur pour voir si tu peux prédire le nouveau résultat. Si tu ne peux pas expliquer pourquoi le résultat change, reviens à la notion avant de passer à la suite.
+
 ## 1. Pourquoi organiser le code en modules ?
 
 Un petit script peut tenir dans un seul fichier. Quand un projet grandit, regrouper toutes les fonctionnalités dans un seul fichier rend le code plus difficile à lire, tester et faire évoluer.
