@@ -1,73 +1,144 @@
 # RES-19 — Architecture, organisation et livraison d'un projet
 
-> HashCode Academy · HashCode Masterclass · Série RES
+**Collection :** HashCode Academy — Fiches de résumé  
+**Niveau :** Intermédiaire  
+**Durée indicative :** 40 à 60 minutes  
+**Prérequis :** modules, TypeScript, tests, sécurité et Git  
+**Objectif :** organiser une petite application de façon lisible, testable et livrable.
 
-## Objectifs
-Organiser un projet maintenable, séparer les responsabilités et mettre en place une livraison reproductible.
+## Objectifs d'apprentissage
+
+- séparer les responsabilités du code ;
+- définir des frontières entre interface, logique métier et accès aux données ;
+- organiser les modules et leurs dépendances ;
+- utiliser Git pour collaborer ;
+- préparer un pipeline de vérification et une livraison reproductible.
 
 ## 1. Exemple d'organisation
-~~~text
+
+Pour une petite application de tâches, une structure possible est :
+
+```text
 src/
-  domain/       # modèles et règles métier
-  services/     # cas d'utilisation
-  repositories/ # accès aux données
-  api/          # routes et contrats HTTP
-  ui/           # interface
-  shared/       # utilitaires réellement partagés
+  domain/
+    task.ts
+    task-service.ts
+  data/
+    task-repository.ts
+  ui/
+    task-form.ts
+    task-list.ts
+  main.ts
 tests/
-~~~
+  task-service.test.ts
+```
 
-Ce schéma est indicatif. Choisissez l'organisation selon la taille du projet. Le but est de garder les règles métier indépendantes du DOM, de la base de données et du framework lorsque cela apporte une vraie valeur.
+Cette structure est un exemple, pas une règle universelle. Pour un projet très petit, trop de dossiers peuvent compliquer la navigation. Organise le code autour des responsabilités réelles et fais évoluer la structure lorsque les besoins deviennent visibles.
 
-## 2. Flux de dépendances
-~~~text
-Interface ou route
-        ↓
-Validation d'entrée
-        ↓
-Service métier
-        ↓
-Interface de dépôt
-        ↓
-Base de données
-~~~
+## 2. Séparer les responsabilités
 
-Évitez de disperser les règles métier entre composants, contrôleurs et requêtes SQL. Introduisez une abstraction lorsqu'elle améliore la séparation ou les tests, pas par principe.
+- **Domaine :** règles métier et modèles.
+- **Accès aux données :** chargement et sauvegarde.
+- **Interface :** affichage, événements et retour utilisateur.
+- **Point d'entrée :** assemble les dépendances et démarre l'application.
 
-## 3. Contrats et erreurs
-Définissez les entrées et sorties des fonctions et services. Distinguez les erreurs métier (tâche introuvable, transition interdite) des erreurs techniques (base indisponible). Traduisez-les au niveau de l'API sans exposer les détails internes.
+La logique métier devrait pouvoir être testée sans devoir démarrer le navigateur ou appeler un vrai service distant.
 
-## 4. Git et collaboration
-- Faites des commits petits et descriptifs.
-- Utilisez des branches de travail et des pull requests.
-- Faites relire les changements sensibles.
-- Ne commitez pas de secrets, fichiers de build ou dépendances installées.
-- Documentez les décisions d'architecture importantes et leurs compromis.
+## 3. Flux de dépendances
 
-## 5. Intégration continue
-Une pipeline de base peut exécuter :
-1. installation reproductible à partir du lockfile ;
-2. formatage et lint ;
+Le code d'interface peut appeler un service métier. Le service peut dépendre d'un contrat de dépôt de données. Évite que les règles métier soient dispersées dans les composants visuels ou que chaque module importe tout le reste.
+
+```ts
+type Task = { id: string; title: string; completed: boolean };
+
+interface TaskRepository {
+  list(): Promise<Task[]>;
+  save(task: Task): Promise<void>;
+}
+
+class TaskService {
+  constructor(private readonly repository: TaskRepository) {}
+
+  async listOpenTasks(): Promise<Task[]> {
+    const tasks = await this.repository.list();
+    return tasks.filter(task => !task.completed);
+  }
+}
+```
+
+L'interface `TaskRepository` représente un contrat. Une implémentation peut utiliser une API, une base de données ou un faux dépôt de test.
+
+## 4. Contrats, erreurs et configuration
+
+- Définis les données d'entrée et de sortie des modules.
+- Décide où les erreurs sont converties en messages utilisateur.
+- Centralise les valeurs de configuration.
+- N'enregistre pas les secrets dans Git.
+- Documente les prérequis et les commandes réellement utilisées.
+
+Un contrat de fonction doit être suffisamment clair pour que son appelant sache ce qu'il peut fournir et ce qu'il recevra en retour.
+
+## 5. Git et collaboration
+
+Workflow de base :
+
+```bash
+git status
+git switch -c feat/task-validation
+git add src tests
+git commit -m "feat: validate task titles"
+git push -u origin feat/task-validation
+```
+
+Avant `git add`, examine ce qui sera inclus. N'ajoute pas automatiquement les fichiers d'environnement, les clés, les exports de données ou les fichiers générés. Les commandes et le nom de branche sont des exemples.
+
+Une bonne pull request décrit le problème, la solution, les tests effectués et les risques connus. Les changements doivent rester assez petits pour être relus.
+
+## 6. Intégration continue et livraison
+
+Une pipeline peut exécuter, dans cet ordre :
+1. installation reproductible des dépendances ;
+2. lint ou contrôle de style ;
 3. vérification des types ;
 4. tests ;
 5. build ;
-6. vérifications de sécurité adaptées.
+6. vérifications supplémentaires adaptées au projet.
 
-La pipeline doit échouer si une étape obligatoire échoue. Les secrets de déploiement doivent avoir des permissions minimales.
+Le déploiement ne devrait pas être considéré comme réussi simplement parce que le build passe. Vérifie la configuration de production, les migrations éventuelles, les logs et le fonctionnement des parcours critiques.
 
-## 6. Configuration et livraison
-Séparez la configuration du code : développement, test et production peuvent utiliser des URL différentes. Validez les variables obligatoires au démarrage. Fournissez un exemple de configuration sans secrets, une procédure d'installation et les commandes de test.
+## 7. Erreurs fréquentes
 
-Une livraison reproductible précise la version, les changements, les migrations éventuelles, le retour arrière et les vérifications post-déploiement.
+- Mélanger interface et règles métier dans un même gros fichier.
+- Créer trop de couches avant d'en avoir besoin.
+- Importer un module dans un sens qui crée un cycle difficile à comprendre.
+- Committer des secrets.
+- Déployer sans tests ou sans procédure de retour arrière.
+- Utiliser des commandes de CI qui ne correspondent pas à celles du poste local.
+- Oublier de documenter les variables de configuration requises.
 
-## Erreurs fréquentes
-- Complexifier l'architecture sans besoin réel.
-- Mélanger logique métier, rendu et accès aux données.
-- Stocker des secrets en dur.
-- Déployer sans tests ni procédure de retour arrière.
-- Traiter tous les échecs comme une seule erreur générique.
+## 8. Mini-exercice
 
-## Mini-exercice
-Proposez l'organisation d'un gestionnaire de tâches avec création, liste et achèvement. Identifiez les responsabilités du domaine, du service, du dépôt et de l'interface. Énumérez les étapes de CI.
+Réorganise un petit gestionnaire de tâches en séparant modèle, service métier, accès aux données et interface. Écris un test du service métier avec un dépôt simulé, puis documente les commandes d'installation, de test et de build.
 
-**Suite :** RES-20 — Projet de synthèse, révision générale et évaluation.
+### Critères de réussite
+- Chaque module a une responsabilité compréhensible.
+- La logique métier peut être testée sans interface.
+- Les dépendances sont injectées ou clairement délimitées.
+- Les commandes du README correspondent au projet.
+- Aucun secret n'est nécessaire pour exécuter les tests unitaires.
+
+## Auto-évaluation
+
+1. Pourquoi séparer domaine et interface ?
+2. Quel avantage apporte un contrat de dépôt ?
+3. Quelles vérifications doivent passer avant la livraison ?
+4. Quels fichiers ne doivent pas être commités ?
+
+## Fiches associées
+- Précédent : [RES-18 — Sécurité applicative](RES-18-securite-validation-entrees.md)
+- Suite : [RES-20 — Projet de synthèse](RES-20-projet-synthese-evaluation.md)
+- Mémo : [CS-08 — npm, Git et workflow](../cheatsheets/CS-08-npm-git-projet.md)
+- Mémo : [CS-10 — Checklist qualité et livraison](../cheatsheets/CS-10-checklist-qualite-livraison.md)
+
+---
+**HashCode Academy · LEARN · BUILD · BELONG**
