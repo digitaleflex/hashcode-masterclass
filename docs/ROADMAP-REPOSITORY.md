@@ -34,10 +34,10 @@ Ordre recommandé : JavaScript avancé comme module pilote, puis réutilisation 
 - [ ] Tester manuellement les sept présentations HTML sur desktop/mobile, au clavier et avec réduction des animations.
 
 ## P2 — Projets pratiques
-- [ ] Définir un contrat commun de projet et une grille de notation.
+- [x] Définir un contrat commun de projet et une grille de notation.
 - [ ] Créer un projet progressif par domaine avant d'élargir le catalogue.
-- [ ] Fournir énoncé, critères d'acceptation, starter, tests, solution et barème.
-- [ ] Concevoir un projet de synthèse couvrant tests, sécurité, documentation et livraison.
+- [ ] Fournir le starter, les tests complets et la solution de référence vérifiée pour TaskFlow.
+- [x] Rédiger le cahier des charges du projet de synthèse TaskFlow couvrant tests, sécurité, documentation et livraison.
 - [ ] Définir soumission et revue par les pairs avant de promettre une plateforme de notation.
 
 ## P2 — Gouvernance et publication
