@@ -12,7 +12,7 @@ test("navigator exposes search, filters, progress and clear action", () => {
   }
   assert.match(html, /<html lang="fr">/);
   assert.match(html, /name="viewport"/);
-  assert.match(html, /prefers-reduced-motion/);
+  assert.match(css, /prefers-reduced-motion/);
 });
 
 test("navigator catalogue contains all 12 stable exercise identifiers", () => {
