@@ -58,6 +58,7 @@ Les fiches sont des supports de révision autonomes, enrichis de cas d’usage e
 - [Exercices guidés — lot pilote de 12 exercices](exercises/EXERCICES.md)
 - [Catalogue des exercices](exercises/curriculum.json) et [schéma contractuel](exercises/schema.json)
 - [Guide du parcours pratique](exercises/README.md)
+- [Navigateur interactif des exercices](exercises/index.html) — recherche, filtres, indices et progression locale
 - [Modèle de contribution](exercises/templates/README.md)
 - [Premier exercice autonome](exercises/EX-JS-001-panier/README.md) — consigne, starter, corrigé et tests séparés
 - [Exercices TypeScript stricts](exercises/typescript/README.md)
