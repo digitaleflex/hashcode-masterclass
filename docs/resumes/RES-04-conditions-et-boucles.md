@@ -4,6 +4,17 @@
 > Série de fiches de révision JavaScript / TypeScript  
 > Objectif : prendre une décision dans un programme et répéter une action de manière contrôlée.
 
+
+## Repères d'apprentissage
+
+**Prérequis et maîtrise attendue :** Prérequis : déclarations, types et opérateurs de comparaison. À la fin, tu dois pouvoir choisir entre if, switch, for, for...of et while sans créer de boucle infinie.
+
+**Mise en pratique :** Application : écris une règle de décision, teste les valeurs juste avant, sur et juste après chaque seuil, puis vérifie les résultats.
+
+**Mémo associé :** [Ouvrir la cheat sheet correspondante](../cheatsheets/CS-01-javascript-syntaxe-essentielle.md)
+
+**Méthode conseillée :** lis une section, ferme la fiche, reformule la règle sans la recopier, exécute l'exemple, puis change une valeur pour voir si tu peux prédire le nouveau résultat. Si tu ne peux pas expliquer pourquoi le résultat change, reviens à la notion avant de passer à la suite.
+
 ## 1. Pourquoi utiliser le contrôle de flux ?
 
 Un programme ne se contente pas d'exécuter chaque ligne sans distinction. Il peut :
