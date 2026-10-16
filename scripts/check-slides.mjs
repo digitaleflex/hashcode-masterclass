@@ -22,7 +22,7 @@ if (diagramCount < 6) failures.push(`Expected at least 6 teaching diagrams, foun
 if (codeCount < 25) failures.push(`Expected at least 25 code examples, found ${codeCount}.`);
 if (missing.length) failures.push("Missing required content: " + missing.join(", "));
 if (!html.includes("ArrowRight") || !html.includes("touchstart")) failures.push("Keyboard/touch navigation markers are missing.");
-if (/(?:src|href)=["']https?:\\/\\//i.test(html)) failures.push("Unexpected remote asset found; presentation should be self-contained.");
+if (/(?:src|href)=["']https?:\/\//i.test(html)) failures.push("Unexpected remote asset found; presentation should be self-contained.");
 
 if (failures.length) {
   console.error(failures.join("\\n"));
