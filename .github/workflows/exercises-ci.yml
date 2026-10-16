@@ -1,0 +1,39 @@
+name: Exercises CI
+
+on:
+  push:
+    paths:
+      - "exercises/**"
+      - "tests/**"
+      - "scripts/validate-exercises.mjs"
+      - "package.json"
+      - "package-lock.json"
+      - ".github/workflows/exercises-ci.yml"
+  pull_request:
+    paths:
+      - "exercises/**"
+      - "tests/**"
+      - "scripts/validate-exercises.mjs"
+      - "package.json"
+      - "package-lock.json"
+      - ".github/workflows/exercises-ci.yml"
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Configure Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Check slide deck
+        run: npm run check
+      - name: Validate exercise catalogue
+        run: npm run check:exercises
+      - name: Run exercise tests
+        run: npm test
