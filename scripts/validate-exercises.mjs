@@ -13,6 +13,10 @@ if (!Array.isArray(catalogue.levels) || !["INIT", "CORE", "PRO"].every((level) =
   failures.push("Catalogue must define INIT, CORE and PRO levels.");
 }
 if (ids.length !== catalogue.exerciseCount) failures.push("Exercise count does not match the guide.");
+if (!Array.isArray(catalogue.exercises) || catalogue.exercises.length !== catalogue.exerciseCount) failures.push("Catalogue exercise list does not match exerciseCount.");
+const catalogueIds = (catalogue.exercises ?? []).map((exercise) => exercise.id);
+if (catalogueIds.some((id) => !ids.includes(id))) failures.push("Catalogue contains an exercise ID missing from the guide.");
+if (ids.some((id) => !catalogueIds.includes(id))) failures.push("Guide contains an exercise ID missing from the catalogue.");
 if (new Set(ids).size !== ids.length) failures.push("Duplicate exercise IDs found in EXERCICES.md.");
 
 const resumeFiles = new Set(readdirSync(resolve(root, "docs/resumes")));
