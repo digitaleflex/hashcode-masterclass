@@ -378,7 +378,7 @@ Pourquoi appelle-t-on souvent `event.preventDefault()` dans un gestionnaire `sub
 ## Suite de la série
 
 - Précédent : [RES-10 — Modules JavaScript, npm et organisation du projet](./RES-10-modules-npm-organisation-projet.md)
-- Suivant : **RES-12 — TypeScript : types, interfaces et fonctions** (à créer)
+- Suivant : **RES-12 — TypeScript : types, interfaces et fonctions**
 
 ---
 
