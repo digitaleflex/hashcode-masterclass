@@ -1,0 +1,54 @@
+{
+  "title": "Architecture, DevOps et production",
+  "passMark": 70,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single",
+      "prompt": "Quel est l'objectif principal de la CI ?",
+      "options": [
+        "Automatiser les contrôles répétables à chaque changement",
+        "Remplacer la revue humaine",
+        "Garantir zéro bug"
+      ],
+      "answer": 0,
+      "explanation": "La CI détecte tôt des régressions mais ne garantit pas l'absence de défauts."
+    },
+    {
+      "id": "q2",
+      "type": "single",
+      "prompt": "Pourquoi associer un artefact à un commit ?",
+      "options": [
+        "Traçabilité du code livré",
+        "Supprimer les tests",
+        "Éviter les logs"
+      ],
+      "answer": 0,
+      "explanation": "La traçabilité aide à diagnostiquer et reproduire une version."
+    },
+    {
+      "id": "q3",
+      "type": "single",
+      "prompt": "Un rollback du code annule-t-il une migration destructive ?",
+      "options": [
+        "Oui toujours",
+        "Non, données et migrations exigent un plan distinct",
+        "Seulement dans Docker"
+      ],
+      "answer": 1,
+      "explanation": "Code et état des données sont deux dimensions de restauration."
+    },
+    {
+      "id": "q4",
+      "type": "single",
+      "prompt": "Quel contenu aide après un incident ?",
+      "options": [
+        "Chronologie factuelle et actions mesurables",
+        "Recherche d'un coupable",
+        "Capture sans contexte"
+      ],
+      "answer": 0,
+      "explanation": "Un rapport utile soutient l'apprentissage et la prévention."
+    }
+  ]
+}

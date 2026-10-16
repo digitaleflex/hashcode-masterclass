@@ -1,0 +1,45 @@
+name: Proposer une ressource pédagogique
+description: Proposer un cours, un laboratoire, un exercice ou une amélioration de parcours.
+title: "[PEDAGOGIE] "
+body:
+  - type: dropdown
+    id: resource_type
+    attributes:
+      label: Type de ressource
+      options:
+        - Fiche RES
+        - Cheat sheet CS
+        - Exercice
+        - Laboratoire guidé
+        - Cours avancé
+        - Projet de synthèse
+        - Quiz ou évaluation
+    validations:
+      required: true
+  - type: input
+    id: audience
+    attributes:
+      label: Public et niveau
+      placeholder: Débutant, intermédiaire ou avancé
+    validations:
+      required: true
+  - type: textarea
+    id: learning_outcomes
+    attributes:
+      label: Objectifs observables
+      description: Que pourra faire l'apprenant à la fin ?
+    validations:
+      required: true
+  - type: textarea
+    id: prerequisites
+    attributes:
+      label: Prérequis et ressources liées
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Critères d'acceptation
+      description: Exemples, exercices, tests, corrections et critères de maîtrise attendus.
+    validations:
+      required: true

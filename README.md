@@ -90,20 +90,20 @@ Les 83 écrans ne doivent pas être traités comme 83 mini-cours indépendants. 
 
 ## Structure
 
-```text
-.
-├── index.html
-├── package.json
-├── README.md
-├── .gitignore
-├── docs/
-│   ├── PLAN-DIAPORAMA.md
-│   └── LOCAL-SETUP.md
-├── exercises/
-│   └── EXERCICES.md
-└── scripts/
-    └── check-slides.mjs
-```
+L'arborescence actuelle comprend le support initial, les 40 fiches de référence, le catalogue d'exercices, les sept présentations avancées, les scripts de contrôle et la documentation de gouvernance.
+
+- `index.html` : masterclass initiale.
+- `docs/resumes/` et `docs/cheatsheets/` : fiches RES et CS.
+- `docs/INDEX-PEDAGOGIQUE.md` : index pédagogique global.
+- `exercises/` : catalogue, exercices guidés et interface de progression.
+- `courses/advanced/` : présentations avancées, catalogue JSON, schéma et gabarit de cours.
+- `scripts/` et `tests/` : contrôles structurels et tests automatisés.
+- `.github/workflows/` : intégration continue.
+- `docs/ARCHITECTURE-REPOSITORY.md` : architecture cible et règles de maintenance.
+- `docs/ROADMAP-REPOSITORY.md` : étapes restantes.
+- `CONTRIBUTING.md` et `SECURITY.md` : contribution et sécurité.
+
+Consulter l'[architecture complète](docs/ARCHITECTURE-REPOSITORY.md) pour la structure cible et les responsabilités détaillées.
 
 ## Avant la séance
 
@@ -125,3 +125,41 @@ Les 83 écrans ne doivent pas être traités comme 83 mini-cours indépendants. 
 ## Licence
 
 À définir avant redistribution publique.
+
+## Cours avancés
+
+Le parcours avancé propose sept présentations HTML autonomes : JavaScript avancé, TypeScript avancé, tests et qualité, Web APIs/performance, backend Node.js, sécurité applicative, architecture/DevOps.
+
+- [Catalogue des cours avancés](courses/advanced/README.md)
+- [Catalogue machine-readable](courses/advanced/curriculum.json)
+- [Architecture du dépôt](docs/ARCHITECTURE-REPOSITORY.md)
+- [Roadmap qualité et pédagogie](docs/ROADMAP-REPOSITORY.md)
+- [Critères de fin de réalisation](docs/DEFINITION-OF-DONE.md)
+- [Guide de contribution](CONTRIBUTING.md)
+- [Politique de sécurité](SECURITY.md)
+
+**Important :** ces sept fichiers sont actuellement des présentations, pas encore des cours complets. Les laboratoires guidés, exemples exécutables, exercices, solutions, quiz et rubriques d'évaluation restent à produire. Le statut détaillé est maintenu dans le catalogue.
+
+## Contrôles qualité
+
+Avec Node.js 20 ou plus récent :
+
+```bash
+npm install
+npm run check
+npm run check:exercises
+npm run check:repo
+npm test
+```
+
+Le contrôle du dépôt vérifie les liens locaux Markdown/HTML et le contrat de base du catalogue avancé. La CI ne remplace pas la revue technique des exemples ni les tests visuels sur navigateur.
+
+
+## Projets pratiques
+
+Les cours avancés sont prolongés par un cadre de projets avec contrat, gabarit, barème et projet de synthèse en préparation.
+
+- [Catalogue des projets](projects/README.md)
+- [Contrat commun](projects/PROJECT-CONTRACT.md)
+- [Projet de synthèse TaskFlow sécurisé](projects/capstone-taskflow/README.md)
+- [Catalogue JSON](projects/curriculum.json)

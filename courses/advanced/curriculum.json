@@ -1,0 +1,165 @@
+{
+  "schemaVersion": 1,
+  "language": "fr",
+  "brand": "HashCode Academy",
+  "series": "HashCode Masterclass — parcours avancé",
+  "modules": [
+    {
+      "id": "advanced-js",
+      "number": 1,
+      "title": "JavaScript avancé",
+      "presentation": "01-javascript-avance.html",
+      "status": "course",
+      "level": "intermediate",
+      "prerequisites": [
+        "Fondamentaux JavaScript",
+        "Fonctions et closures",
+        "Promesses et modules"
+      ],
+      "resources": {
+        "course": "01-javascript-avance/course.md",
+        "examples": "01-javascript-avance/examples/README.md",
+        "labs": "01-javascript-avance/labs/lab.md",
+        "exercises": "01-javascript-avance/exercises/exercises.md",
+        "solutions": "01-javascript-avance/solutions/solutions.md",
+        "quiz": "01-javascript-avance/quiz.json",
+        "rubric": "01-javascript-avance/rubric.md"
+      }
+    },
+    {
+      "id": "advanced-typescript",
+      "number": 2,
+      "title": "TypeScript avancé",
+      "presentation": "02-typescript-avance.html",
+      "status": "course",
+      "level": "intermediate",
+      "prerequisites": [
+        "TypeScript fondamental",
+        "Unions et narrowing"
+      ],
+      "resources": {
+        "course": "02-typescript-avance/course.md",
+        "examples": "02-typescript-avance/examples/README.md",
+        "labs": "02-typescript-avance/labs/lab.md",
+        "exercises": "02-typescript-avance/exercises/exercises.md",
+        "solutions": "02-typescript-avance/solutions/solutions.md",
+        "quiz": "02-typescript-avance/quiz.json",
+        "rubric": "02-typescript-avance/rubric.md"
+      }
+    },
+    {
+      "id": "testing-quality",
+      "number": 3,
+      "title": "Tests avancés et qualité logicielle",
+      "presentation": "03-tests-qualite.html",
+      "status": "course",
+      "level": "intermediate",
+      "prerequisites": [
+        "Fonctions",
+        "Modules",
+        "Tests de base"
+      ],
+      "resources": {
+        "course": "03-tests-qualite/course.md",
+        "examples": "03-tests-qualite/examples/README.md",
+        "labs": "03-tests-qualite/labs/lab.md",
+        "exercises": "03-tests-qualite/exercises/exercises.md",
+        "solutions": "03-tests-qualite/solutions/solutions.md",
+        "quiz": "03-tests-qualite/quiz.json",
+        "rubric": "03-tests-qualite/rubric.md"
+      }
+    },
+    {
+      "id": "web-apis-performance",
+      "number": 4,
+      "title": "Web APIs et performance",
+      "presentation": "04-web-apis-performance.html",
+      "status": "course",
+      "level": "intermediate",
+      "prerequisites": [
+        "DOM",
+        "Événements",
+        "Promesses",
+        "HTTP"
+      ],
+      "resources": {
+        "course": "04-web-apis-performance/course.md",
+        "examples": "04-web-apis-performance/examples/README.md",
+        "labs": "04-web-apis-performance/labs/lab.md",
+        "exercises": "04-web-apis-performance/exercises/exercises.md",
+        "solutions": "04-web-apis-performance/solutions/solutions.md",
+        "quiz": "04-web-apis-performance/quiz.json",
+        "rubric": "04-web-apis-performance/rubric.md"
+      }
+    },
+    {
+      "id": "node-backend-api",
+      "number": 5,
+      "title": "Backend Node.js et API",
+      "presentation": "05-node-backend-api.html",
+      "status": "course",
+      "level": "intermediate",
+      "prerequisites": [
+        "Node.js",
+        "Modules ESM",
+        "HTTP",
+        "Validation"
+      ],
+      "resources": {
+        "course": "05-node-backend-api/course.md",
+        "examples": "05-node-backend-api/examples/README.md",
+        "labs": "05-node-backend-api/labs/lab.md",
+        "exercises": "05-node-backend-api/exercises/exercises.md",
+        "solutions": "05-node-backend-api/solutions/solutions.md",
+        "quiz": "05-node-backend-api/quiz.json",
+        "rubric": "05-node-backend-api/rubric.md"
+      }
+    },
+    {
+      "id": "application-security",
+      "number": 6,
+      "title": "Sécurité applicative",
+      "presentation": "06-securite-applicative.html",
+      "status": "course",
+      "level": "intermediate",
+      "prerequisites": [
+        "HTTP",
+        "DOM",
+        "Validation",
+        "Authentification et autorisation"
+      ],
+      "resources": {
+        "course": "06-securite-applicative/course.md",
+        "examples": "06-securite-applicative/examples/README.md",
+        "labs": "06-securite-applicative/labs/lab.md",
+        "exercises": "06-securite-applicative/exercises/exercises.md",
+        "solutions": "06-securite-applicative/solutions/solutions.md",
+        "quiz": "06-securite-applicative/quiz.json",
+        "rubric": "06-securite-applicative/rubric.md"
+      }
+    },
+    {
+      "id": "architecture-devops",
+      "number": 7,
+      "title": "Architecture, DevOps et production",
+      "presentation": "07-architecture-devops.html",
+      "status": "course",
+      "level": "intermediate",
+      "prerequisites": [
+        "Git",
+        "Tests",
+        "Node.js",
+        "HTTP"
+      ],
+      "resources": {
+        "course": "07-architecture-devops/course.md",
+        "examples": "07-architecture-devops/examples/README.md",
+        "labs": "07-architecture-devops/labs/lab.md",
+        "exercises": "07-architecture-devops/exercises/exercises.md",
+        "solutions": "07-architecture-devops/solutions/solutions.md",
+        "quiz": "07-architecture-devops/quiz.json",
+        "rubric": "07-architecture-devops/rubric.md"
+      }
+    }
+  ]
+}

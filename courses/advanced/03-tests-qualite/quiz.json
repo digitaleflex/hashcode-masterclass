@@ -1,0 +1,66 @@
+{
+  "title": "Tests avancés et qualité logicielle",
+  "passMark": 70,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single",
+      "prompt": "Quel est l'objectif principal du module « Tests avancés et qualité logicielle » ?",
+      "options": [
+        "Appliquer le sujet avec un comportement vérifiable et des limites explicites",
+        "Éviter les tests",
+        "Ajouter des dépendances sans contrat"
+      ],
+      "answer": 0,
+      "explanation": "Une ressource de qualité relie concept, pratique et vérification."
+    },
+    {
+      "id": "q2",
+      "type": "single",
+      "prompt": "Que doit-on faire avec une entrée externe ?",
+      "options": [
+        "Lui faire confiance si elle vient de l'interface",
+        "La valider selon un contrat explicite",
+        "La masquer dans l'interface"
+      ],
+      "answer": 1,
+      "explanation": "Les données externes sont non fiables et doivent être validées à la frontière."
+    },
+    {
+      "id": "q3",
+      "type": "single",
+      "prompt": "La couverture de tests prouve-t-elle l'absence de défauts ?",
+      "options": [
+        "Oui",
+        "Non, elle ne mesure pas à elle seule la qualité des assertions",
+        "Seulement si le projet est petit"
+      ],
+      "answer": 1,
+      "explanation": "Les tests doivent vérifier des comportements pertinents ; la couverture seule ne suffit pas."
+    },
+    {
+      "id": "q4",
+      "type": "single",
+      "prompt": "Que faut-il faire avant de déclarer un contrôle réussi ?",
+      "options": [
+        "Le supposer si le code semble correct",
+        "L'exécuter et consigner le résultat réel",
+        "Supprimer les tests qui échouent"
+      ],
+      "answer": 1,
+      "explanation": "Une déclaration de qualité doit s'appuyer sur une vérification reproductible."
+    },
+    {
+      "id": "q5",
+      "type": "single",
+      "prompt": "Quel est le meilleur traitement d'une limite connue ?",
+      "options": [
+        "La documenter et la tester lorsqu'elle est pertinente",
+        "La cacher",
+        "Ignorer les cas invalides"
+      ],
+      "answer": 0,
+      "explanation": "Les limites explicites rendent le résultat maintenable et sûr."
+    }
+  ]
+}

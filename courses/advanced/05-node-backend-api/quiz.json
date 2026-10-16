@@ -1,0 +1,54 @@
+{
+  "title": "Backend Node.js et API",
+  "passMark": 70,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single",
+      "prompt": "Quelle différence entre authentification et autorisation ?",
+      "options": [
+        "Aucune",
+        "Identité versus actions permises",
+        "HTTP versus HTTPS"
+      ],
+      "answer": 1,
+      "explanation": "L'authentification établit l'identité ; l'autorisation contrôle les permissions."
+    },
+    {
+      "id": "q2",
+      "type": "single",
+      "prompt": "Comment réduire le risque d'injection SQL ?",
+      "options": [
+        "Concaténer les chaînes soigneusement",
+        "Requêtes paramétrées et validation du domaine",
+        "Cacher le formulaire"
+      ],
+      "answer": 1,
+      "explanation": "Les paramètres séparent données et texte SQL."
+    },
+    {
+      "id": "q3",
+      "type": "single",
+      "prompt": "Quel statut convient généralement à une création réussie ?",
+      "options": [
+        "201",
+        "404",
+        "500"
+      ],
+      "answer": 0,
+      "explanation": "201 Created signale la création."
+    },
+    {
+      "id": "q4",
+      "type": "single",
+      "prompt": "Que doit contenir une erreur 500 publique ?",
+      "options": [
+        "Stack trace complète",
+        "Message générique, éventuellement identifiant de requête",
+        "Secrets de configuration"
+      ],
+      "answer": 1,
+      "explanation": "Les détails internes restent dans des logs contrôlés."
+    }
+  ]
+}

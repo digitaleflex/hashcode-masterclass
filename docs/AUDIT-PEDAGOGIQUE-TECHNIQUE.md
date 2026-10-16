@@ -145,3 +145,35 @@ Les cheat sheets doivent rester compactes. Elles devraient privilégier les synt
 
 **Index du parcours :** [INDEX-PEDAGOGIQUE.md](INDEX-PEDAGOGIQUE.md)  
 **HashCode Academy · LEARN · BUILD · BELONG**
+
+
+## 9. Architecture, cours avancés et projets pratiques
+
+L'architecture cible est documentée dans [ARCHITECTURE-REPOSITORY.md](ARCHITECTURE-REPOSITORY.md), la roadmap dans [ROADMAP-REPOSITORY.md](ROADMAP-REPOSITORY.md) et les critères de livraison dans [DEFINITION-OF-DONE.md](DEFINITION-OF-DONE.md).
+
+### État des cours avancés
+Les sept modules ont désormais :
+- une présentation HTML ;
+- un guide de cours et un laboratoire guidé ;
+- des exercices gradués et des corrigés séparés ;
+- un quiz JSON et une grille d'évaluation ;
+- des exemples ou démonstrations, avec plusieurs fichiers exécutables ;
+- un enregistrement de catalogue avec chemins contrôlables.
+
+Le statut est `course`, pas `complete`. Les validations manuelles sur navigateur restent ouvertes ; certains exemples méritent une extension des tests et une revue pédagogique approfondie.
+
+### Contrôles CI vérifiés
+- [x] Contrôle des liens locaux Markdown/HTML.
+- [x] Validation des chemins de ressources et de la structure des quiz.
+- [x] Compilation stricte du module TypeScript de référence.
+- [x] Tests Node.js, tests d'exemples, tests HTTP locaux et tests statiques de démonstrations.
+- [x] Repository quality run 209 : succès sur le commit `62cc2e64cb40203e7f40fddbdde7c2c37dcd3ef0`.
+- [x] Exercises CI run 126 : succès sur le même commit.
+- [ ] Revue visuelle desktop/mobile et navigation clavier des sept présentations.
+- [ ] Audit approfondi de l'exactitude et des exemples des 40 fiches RES/CS.
+
+### État des projets
+Le contrat de projet, le gabarit, le barème et le catalogue JSON existent. Le projet TaskFlow dispose d'un énoncé, d'un starter de travail et d'une solution de référence pour le domaine des tâches avec tests unitaires. Le projet reste en statut `draft` : interface complète, API intégrée, persistance, pipeline et validation de bout en bout ne sont pas encore livrées.
+
+### Décisions de gouvernance restantes
+La licence de redistribution et les règles de protection de `main` doivent être confirmées par le mainteneur dans les paramètres GitHub. Elles ne doivent pas être supposées par l'audit.

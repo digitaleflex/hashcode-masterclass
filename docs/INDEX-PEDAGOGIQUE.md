@@ -76,3 +76,30 @@ Cet index rassemble les 40 fiches de référence du parcours. Il est conçu pour
 Les fiches évoluent avec le parcours. Avant une nouvelle session, vérifier les liens, les exemples exécutables, les versions des outils et l'alignement avec le contenu réellement enseigné. Les fiches avancées ne doivent pas être présentées comme des prérequis pour les premiers exercices.
 
 Voir aussi : [Rapport d'audit pédagogique et technique](AUDIT-PEDAGOGIQUE-TECHNIQUE.md).
+
+
+## Cours avancés — parcours complémentaire
+
+Ces modules viennent après les fondamentaux RES-01 à RES-20. Ils sont des supports de présentation à ce stade ; ne pas les considérer comme des cours complets tant que les laboratoires et évaluations ne sont pas ajoutés.
+
+| Module | Sujet | Présentation | Cours et pratique |
+|---|---|---|---|
+| 01 | JavaScript avancé | [Ouvrir](../courses/advanced/01-javascript-avance.html) | [Cours](../courses/advanced/01-javascript-avance/course.md) · [Lab](../courses/advanced/01-javascript-avance/labs/lab.md) · [Quiz](../courses/advanced/01-javascript-avance/quiz.json) |
+| 02 | TypeScript avancé | [Ouvrir](../courses/advanced/02-typescript-avance.html) | [Cours](../courses/advanced/02-typescript-avance/course.md) · [Lab](../courses/advanced/02-typescript-avance/labs/lab.md) · [Quiz](../courses/advanced/02-typescript-avance/quiz.json) |
+| 03 | Tests avancés et qualité | [Ouvrir](../courses/advanced/03-tests-qualite.html) | [Cours](../courses/advanced/03-tests-qualite/course.md) · [Lab](../courses/advanced/03-tests-qualite/labs/lab.md) · [Quiz](../courses/advanced/03-tests-qualite/quiz.json) |
+| 04 | Web APIs et performance | [Ouvrir](../courses/advanced/04-web-apis-performance.html) | [Cours](../courses/advanced/04-web-apis-performance/course.md) · [Lab](../courses/advanced/04-web-apis-performance/labs/lab.md) · [Quiz](../courses/advanced/04-web-apis-performance/quiz.json) |
+| 05 | Backend Node.js et API | [Ouvrir](../courses/advanced/05-node-backend-api.html) | [Cours](../courses/advanced/05-node-backend-api/course.md) · [Lab](../courses/advanced/05-node-backend-api/labs/lab.md) · [Quiz](../courses/advanced/05-node-backend-api/quiz.json) |
+| 06 | Sécurité applicative | [Ouvrir](../courses/advanced/06-securite-applicative.html) | [Cours](../courses/advanced/06-securite-applicative/course.md) · [Lab](../courses/advanced/06-securite-applicative/labs/lab.md) · [Quiz](../courses/advanced/06-securite-applicative/quiz.json) |
+| 07 | Architecture, DevOps et production | [Ouvrir](../courses/advanced/07-architecture-devops.html) | [Cours](../courses/advanced/07-architecture-devops/course.md) · [Lab](../courses/advanced/07-architecture-devops/labs/lab.md) · [Quiz](../courses/advanced/07-architecture-devops/quiz.json) |
+
+- [Catalogue avancé et statut des ressources](../courses/advanced/curriculum.json)
+- [Architecture du dépôt](ARCHITECTURE-REPOSITORY.md)
+- [Roadmap du dépôt](ROADMAP-REPOSITORY.md)
+
+
+## Projets pratiques et synthèse
+
+- [Catalogue des projets](../projects/README.md)
+- [Contrat commun de projet](../projects/PROJECT-CONTRACT.md)
+- [Projet de synthèse : TaskFlow sécurisé](../projects/capstone-taskflow/README.md) — statut draft, starter et solution de référence encore à livrer.
+- [Catalogue JSON des projets](../projects/curriculum.json)
