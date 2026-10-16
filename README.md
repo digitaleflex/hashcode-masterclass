@@ -43,6 +43,13 @@ Puis ouvrir `http://localhost:4173`.
 - `N` : afficher / masquer les notes du formateur
 - `Échap` : fermer les notes
 
+## Interactions et aides visuelles
+
+- Coloration syntaxique locale des blocs JavaScript et TypeScript, sans bibliothèque distante.
+- Numérotation des lignes et bouton de copie sur les extraits de code.
+- Diagrammes intégrés pour le cycle de développement, `map`, `filter`, `reduce`, le parcours TypeScript et les responsabilités du Task Manager.
+- Animations CSS respectant la préférence système de réduction des mouvements.
+
 ## Parcours pédagogique
 
 | Séquence | Contenu |
