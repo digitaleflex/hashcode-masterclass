@@ -40,3 +40,8 @@ Le type `TaskStatus` autorise seulement trois chaînes précises. Une valeur com
 
 ## Vérification rapide
 Quels statuts sont valides dans l’exemple ? **todo, in-progress et done**. La chaîne `"blocked"` est-elle valide ? **Non, pas sans modifier le type union**.
+
+## Cas d’usage pratique — limiter les statuts d’une tâche
+Dans un Task Manager, seuls `"todo"`, `"in-progress"` et `"done"` sont autorisés. Le type union empêche le code correctement vérifié d’utiliser accidentellement `"finished"` ou `"blocked"`.
+
+**Mini-défi :** ajoute un statut `"blocked"` au type et adapte une fonction qui indique si une tâche est terminée. Explique pourquoi le type ne garantit pas, à lui seul, que la transition métier est autorisée.
