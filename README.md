@@ -12,7 +12,7 @@ La présentation suit l'identité HashCode Academy :
 - Marque mère : **HashCode Academy**
 - Série d'ateliers : **HashCode Masterclass**
 
-Les composants de l'interface privilégient les aplats noirs, les bordures discrètes, la typographie contrastée et les accents lime. Aucun dégradé décoratif ni ressource distante n'est requis.
+Les composants de l'interface privilégient les aplats noirs, les bordures discrètes, la typographie contrastée et les accents lime. La couverture comporte les marques JavaScript (jaune) et TypeScript (bleu), avec une ambiance technique animée en CSS. Les animations respectent la préférence système de réduction des mouvements. Aucun asset distant n'est requis.
 
 ## Présentation
 
