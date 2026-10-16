@@ -2,6 +2,15 @@
 
 > HashCode Academy · Cheat Sheet
 
+
+## Comment utiliser cette fiche
+
+Cette fiche est une référence rapide, pas un remplacement du cours. Commence par la notion qui te bloque, copie un exemple dans un petit fichier de test, puis modifie-le pour vérifier que tu comprends ses effets. Ne mémorise pas uniquement la syntaxe : comprends les conditions dans lesquelles elle est correcte.
+
+**Fiches de cours associées :** [RES 15 typescript dom formulaires evenements](../resumes/RES-15-typescript-dom-formulaires-evenements.md) · [RES 19 architecture organisation livraison](../resumes/RES-19-architecture-organisation-livraison.md)
+
+**Application pratique :** Vérifie le parcours clavier, les messages d'erreur, la hiérarchie des titres et le comportement sur une connexion lente.
+
 ## Accessibilité
 - Utiliser des éléments HTML sémantiques.
 - Associer un label à chaque champ.
