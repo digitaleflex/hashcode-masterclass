@@ -7,6 +7,17 @@
 
 ---
 
+
+## Repères d'apprentissage
+
+**Prérequis et maîtrise attendue :** Prérequis : aucun. À la fin, tu dois pouvoir expliquer avec tes propres mots le rôle du langage, du runtime, du gestionnaire de paquets et de l'outil de build.
+
+**Mise en pratique :** Application : classe les outils d'un projet réel par rôle et justifie pourquoi ils ne sont pas interchangeables.
+
+**Mémo associé :** [Ouvrir la cheat sheet correspondante](../cheatsheets/CS-01-javascript-syntaxe-essentielle.md)
+
+**Méthode conseillée :** lis une section, ferme la fiche, reformule la règle sans la recopier, exécute l'exemple, puis change une valeur pour voir si tu peux prédire le nouveau résultat. Si tu ne peux pas expliquer pourquoi le résultat change, reviens à la notion avant de passer à la suite.
+
 ## 1. La carte mentale
 
 Un projet JavaScript mobilise plusieurs éléments qui ont des rôles différents :
