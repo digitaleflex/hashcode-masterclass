@@ -303,7 +303,7 @@ for (let i = 2; i <= 10; i += 2) {
 ## Suite de la série
 
 - Précédent : [RES-03 — Variables et types JavaScript](./RES-03-variables-et-types-javascript.md)
-- Suivant : **RES-05 — Fonctions JavaScript** (à créer)
+- Suivant : **RES-05 — Fonctions JavaScript**
 
 ---
 
