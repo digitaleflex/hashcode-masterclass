@@ -7,7 +7,7 @@
     "start": "npx http-server . -p 4173 -c-1",
     "check": "node scripts/check-slides.mjs",
     "check:exercises": "node scripts/validate-exercises.mjs",
-    "test": "node --test tests/*.test.mjs",
+    "test": "node --test tests/*.test.mjs courses/advanced/*/examples/*.test.mjs",
     "check:repo": "node scripts/check-repository.mjs"
   },
   "devDependencies": {
