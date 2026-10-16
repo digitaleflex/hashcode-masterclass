@@ -2,6 +2,15 @@
 
 > HashCode Academy · Cheat Sheet
 
+
+## Comment utiliser cette fiche
+
+Cette fiche est une référence rapide, pas un remplacement du cours. Commence par la notion qui te bloque, copie un exemple dans un petit fichier de test, puis modifie-le pour vérifier que tu comprends ses effets. Ne mémorise pas uniquement la syntaxe : comprends les conditions dans lesquelles elle est correcte.
+
+**Fiches de cours associées :** [RES 02 environnement de developpement](../resumes/RES-02-environnement-de-developpement.md) · [RES 10 modules npm organisation projet](../resumes/RES-10-modules-npm-organisation-projet.md)
+
+**Application pratique :** Avant toute commande, vérifie le dossier courant, le script visé et les fichiers qui seront ajoutés au commit.
+
 ## npm
 ~~~bash
 npm init -y
