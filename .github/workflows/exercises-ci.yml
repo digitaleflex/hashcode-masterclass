@@ -16,6 +16,8 @@ on:
       - "exercises/**"
       - "tests/**"
       - "scripts/validate-exercises.mjs"
+      - "scripts/check-markdown-links.mjs"
+      - "exercises/typescript/**"
       - "package.json"
       - "package-lock.json"
       - ".github/workflows/exercises-ci.yml"
