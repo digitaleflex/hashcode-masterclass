@@ -48,3 +48,8 @@ Cette vérification teste spécifiquement l’absence de `undefined`. Selon le b
 Pourquoi utiliser un identifiant `id` ? **Pour distinguer et retrouver une tâche sans dépendre de sa position dans le tableau**.
 
 **Erreur fréquente :** supposer que toute propriété existe simplement parce qu’elle apparaît dans un exemple.
+
+## Cas d’usage pratique — gérer une liste de tâches
+Une tâche possède un identifiant, un titre et un état. Un tableau d’objets permet de représenter plusieurs tâches ; `filter` peut afficher uniquement celles qui ne sont pas terminées.
+
+**Mini-défi :** ajoute une tâche sans description. Fais ensuite afficher la description seulement si elle existe. Explique pourquoi il ne faut pas supposer que toutes les propriétés sont présentes dans des données reçues de l’extérieur.
