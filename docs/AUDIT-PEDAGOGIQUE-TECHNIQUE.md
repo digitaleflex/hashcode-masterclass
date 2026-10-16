@@ -156,8 +156,8 @@ L'architecture cible est documentée dans [ARCHITECTURE-REPOSITORY.md](ARCHITECT
 - [x] Indexer les sept présentations dans l'index pédagogique.
 - [x] Définir un contrat de catalogue et un gabarit de cours avancé.
 - [x] Ajouter un contrôle automatisé de liens locaux Markdown/HTML et de cohérence du catalogue.
-- [ ] Exécuter le contrôle localement sur une installation propre.
-- [ ] Consulter un run GitHub Actions réel sur la branche de travail.
+- [x] Exécuter les contrôles sur une installation CI propre avec Node.js 22.
+- [x] Consulter un run GitHub Actions réel : Repository quality run 47 et Exercises CI run 61, tous deux réussis sur la branche de travail.
 - [ ] Tester les sept présentations en navigateur et au clavier.
 - [ ] Compléter les laboratoires et évaluations des sept modules.
 - [ ] Terminer la vérification des liens et exemples des 40 fiches RES/CS.
