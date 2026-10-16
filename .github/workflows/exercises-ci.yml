@@ -6,6 +6,8 @@ on:
       - "exercises/**"
       - "tests/**"
       - "scripts/validate-exercises.mjs"
+      - "scripts/check-markdown-links.mjs"
+      - "exercises/typescript/**"
       - "package.json"
       - "package-lock.json"
       - ".github/workflows/exercises-ci.yml"
@@ -35,5 +37,9 @@ jobs:
         run: npm run check
       - name: Validate exercise catalogue
         run: npm run check:exercises
+      - name: Check local Markdown links
+        run: npm run check:links
+      - name: Check TypeScript exercises
+        run: npm run check:types
       - name: Run exercise tests
         run: npm test
