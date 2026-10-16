@@ -4,5 +4,6 @@
   "language": "fr",
   "levels": ["INIT", "CORE", "PRO"],
   "exerciseGuide": "EXERCICES.md",
-  "exerciseCount": 12
+  "exerciseCount": 12,
+  "categories": ["comprehension", "kata", "debugging", "typescript", "testing", "security", "project"]
 }
