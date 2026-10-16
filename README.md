@@ -56,6 +56,7 @@ Les fiches sont des supports de révision autonomes, enrichis de cas d’usage e
 
 - [Index des 12 fiches RES-01 à RES-12](fiches/README.md)
 - [Exercices guidés avec résultats attendus](exercises/EXERCICES.md)
+- [Guide d’export PDF imprimable](fiches/EXPORT-PDF.md)
 - [Plan pédagogique du diaporama](docs/PLAN-DIAPORAMA.md)
 
 **Parcours conseillé :** lire la fiche correspondant à la notion, prédire le résultat d’un exemple, exécuter le code, modifier une donnée, puis expliquer ce qui change. Les fiches sont en Markdown et peuvent être imprimées depuis GitHub ou converties en PDF avec un outil Markdown.
