@@ -134,6 +134,7 @@ Le parcours avancé propose sept présentations HTML autonomes : JavaScript avan
 - [Catalogue machine-readable](courses/advanced/curriculum.json)
 - [Architecture du dépôt](docs/ARCHITECTURE-REPOSITORY.md)
 - [Roadmap qualité et pédagogie](docs/ROADMAP-REPOSITORY.md)
+- [Critères de fin de réalisation](docs/DEFINITION-OF-DONE.md)
 - [Guide de contribution](CONTRIBUTING.md)
 - [Politique de sécurité](SECURITY.md)
 
