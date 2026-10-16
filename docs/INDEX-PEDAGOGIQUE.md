@@ -95,3 +95,11 @@ Ces modules viennent après les fondamentaux RES-01 à RES-20. Ils sont des supp
 - [Catalogue avancé et statut des ressources](../courses/advanced/curriculum.json)
 - [Architecture du dépôt](ARCHITECTURE-REPOSITORY.md)
 - [Roadmap du dépôt](ROADMAP-REPOSITORY.md)
+
+
+## Projets pratiques et synthèse
+
+- [Catalogue des projets](../projects/README.md)
+- [Contrat commun de projet](../projects/PROJECT-CONTRACT.md)
+- [Projet de synthèse : TaskFlow sécurisé](../projects/capstone-taskflow/README.md) — statut draft, starter et solution de référence encore à livrer.
+- [Catalogue JSON des projets](../projects/curriculum.json)
