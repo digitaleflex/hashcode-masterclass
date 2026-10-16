@@ -2,6 +2,15 @@
 
 > HashCode Academy · Cheat Sheet
 
+
+## Comment utiliser cette fiche
+
+Cette fiche est une référence rapide, pas un remplacement du cours. Commence par la notion qui te bloque, copie un exemple dans un petit fichier de test, puis modifie-le pour vérifier que tu comprends ses effets. Ne mémorise pas uniquement la syntaxe : comprends les conditions dans lesquelles elle est correcte.
+
+**Fiches de cours associées :** [RES 08 gestion erreurs debogage](../resumes/RES-08-gestion-erreurs-debogage.md) · [RES 17 tests qualite debugging](../resumes/RES-17-tests-qualite-debugging.md)
+
+**Application pratique :** Reproduis le bug, formule une hypothèse, écris un test de reproduction et vérifie la correction.
+
 ## Catégories
 - Syntaxe : le code ne peut pas être analysé.
 - Exécution : une opération échoue à l'exécution.
