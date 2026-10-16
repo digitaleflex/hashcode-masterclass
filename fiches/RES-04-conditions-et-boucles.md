@@ -23,7 +23,7 @@ Les branches sont évaluées dans l’ordre. Dès qu’une condition est vraie, 
 ## Comparaisons
 - `===` : égalité stricte, sans conversion implicite des types.
 - `!==` : différence stricte.
-- `>`, `<`, `>=`, `<=) : comparaisons d’ordre.
+- `>`, `<`, `>=`, `<=` : comparaisons d’ordre.
 - `&&` : ET logique ; `||` : OU logique ; `!` : négation.
 
 ## Boucles
@@ -44,3 +44,8 @@ La condition `i < 3` évite d’itérer une quatrième fois. Vérifie toujours q
 - Pourquoi préférer souvent `===` à `==` ? **Pour éviter les conversions implicites surprenantes**.
 - Combien de fois le premier exemple s’exécute-t-il ? **Trois fois**.
 - Quel risque existe si la condition d’un `while` ne devient jamais fausse ? **Une boucle infinie**.
+
+## Cas d’usage pratique — déterminer l’accès à une formation
+Un participant a un score de 72/100. Une règle simple peut afficher « Réussi » à partir de 50 et « Très bien » à partir de 80. Une boucle peut ensuite parcourir les participants pour afficher leur résultat.
+
+**Mini-défi :** teste les scores 49, 50, 79 et 80. Les frontières sont-elles traitées comme prévu ? Ce sont souvent les valeurs limites qui révèlent une erreur.
