@@ -112,9 +112,36 @@ async function checkAdvancedCatalog() {
   if (catalog.modules.length !== 7) errors.push(`Le catalogue avancé attend 7 modules, reçu : ${catalog.modules.length}`);
 }
 
+async function checkProjectCatalog() {
+  const catalogPath = path.join(root, "projects/curriculum.json");
+  let catalog;
+  try { catalog = JSON.parse(await readFile(catalogPath, "utf8")); }
+  catch (error) {
+    errors.push(`Catalogue de projets JSON invalide ou absent : ${error.message}`);
+    return;
+  }
+  if (catalog.schemaVersion !== 1 || catalog.language !== "fr" || !Array.isArray(catalog.projects)) {
+    errors.push("Le catalogue de projets ne respecte pas le contrat racine.");
+    return;
+  }
+  const ids = new Set();
+  for (const project of catalog.projects) {
+    if (!project.id || ids.has(project.id)) errors.push(`ID de projet absent ou dupliqué : ${project.id}`);
+    ids.add(project.id);
+    if (!["planned", "draft", "ready", "reviewed"].includes(project.status)) errors.push(`Statut de projet invalide : ${project.id}`);
+    if (typeof project.spec !== "string" || !await existsFile(path.join(root, "projects", project.spec))) {
+      errors.push(`Spécification de projet absente : ${project.id}`);
+    }
+    if (project.status === "ready" && (!project.starter || !project.solution)) {
+      errors.push(`Projet ready sans starter et solution : ${project.id}`);
+    }
+  }
+}
+
 const files = await walk(root);
 await checkLinks(files);
 await checkAdvancedCatalog();
+await checkProjectCatalog();
 
 if (errors.length) {
   console.error(`Échec du contrôle du dépôt : ${errors.length} problème(s)\n`);
