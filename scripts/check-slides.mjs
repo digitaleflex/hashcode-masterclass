@@ -4,7 +4,7 @@ const html = readFileSync(new URL("../index.html", import.meta.url), "utf8");
 const slideCount = (html.match(/class="slide(?: active)?"/g) ?? []).length;
 const required = [
   "JavaScript", "TypeScript", "Node.js", "npm",
-  "Task Manager", "Notes du formateur", "quiz-options",
+  "Task Manager", "Notes du formateur", "quiz-option",
 ];
 
 const missing = required.filter((term) => !html.includes(term));
