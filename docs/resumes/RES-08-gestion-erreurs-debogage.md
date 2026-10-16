@@ -4,6 +4,17 @@
 > Série de fiches de révision JavaScript / TypeScript  
 > Objectif : détecter, comprendre et corriger les erreurs sans masquer les problèmes.
 
+
+## Repères d'apprentissage
+
+**Prérequis et maîtrise attendue :** Prérequis : fonctions, conditions et exécution de scripts. À la fin, tu dois pouvoir distinguer erreur de syntaxe, erreur d'exécution et erreur logique, puis choisir entre validation et gestion d'exception.
+
+**Mise en pratique :** Application : reproduis un bug, note le résultat attendu et le résultat observé, formule une hypothèse, puis ajoute un test qui prévient sa réapparition.
+
+**Mémo associé :** [Ouvrir la cheat sheet correspondante](../cheatsheets/CS-07-erreurs-debugging.md)
+
+**Méthode conseillée :** lis une section, ferme la fiche, reformule la règle sans la recopier, exécute l'exemple, puis change une valeur pour voir si tu peux prédire le nouveau résultat. Si tu ne peux pas expliquer pourquoi le résultat change, reviens à la notion avant de passer à la suite.
+
 ## 1. Les trois grandes catégories d'erreurs
 
 ### Erreurs de syntaxe
