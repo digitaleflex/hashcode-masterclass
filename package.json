@@ -1,0 +1,13 @@
+{
+  "name": "hashcode-masterclass",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Présentation web autonome de la masterclass HashCode JavaScript et TypeScript.",
+  "scripts": {
+    "start": "npx http-server . -p 4173 -c-1",
+    "check": "node scripts/check-slides.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
