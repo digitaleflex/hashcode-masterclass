@@ -2,18 +2,10 @@
 
 | Critère | Points | Attendu |
 |---|---:|---|
-| Compréhension et modèle mental | 15 | Explication juste des concepts et de leurs limites |
-| Implémentation | 25 | Code lisible, contrat respecté, responsabilités claires |
-| Validation et cas limites | 20 | Entrées invalides et frontières traitées |
-| Tests et reproductibilité | 20 | Assertions utiles, commandes documentées, résultat reproductible |
-| Sécurité / accessibilité / robustesse | 10 | Risques du domaine identifiés et mesures adaptées |
-| Documentation et décisions | 10 | Prérequis, compromis et limites consignés |
+| Modèle mental | 20 | Explique portée, closures et ordre des tâches |
+| Implémentation | 25 | État encapsulé, générateur et contrats corrects |
+| Cas limites | 20 | Entrées invalides, listes vides et erreurs testées |
+| Tests reproductibles | 20 | Assertions utiles, pas d'attente fragile |
+| Lisibilité et robustesse | 15 | Noms clairs, erreurs traitées, concurrence bornée |
 
-**Seuil de réussite : 70/100.**  
-**Défaut critique :** contourner une validation, ignorer un échec de test ou sortir du périmètre autorisé du laboratoire.
-
-### Niveaux
-- **0–49 :** incomplet ou non reproductible.
-- **50–69 :** fonctionnement partiel, cas limites insuffisants.
-- **70–84 :** objectifs atteints, défauts mineurs seulement.
-- **85–100 :** résultat robuste, tests pertinents et décisions bien justifiées.
+**Seuil : 70/100.** Les promesses rejetées ignorées ou l'état modifiable sans contrôle constituent des défauts critiques.
