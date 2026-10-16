@@ -16,3 +16,12 @@ Ouvrir un fichier HTML dans un navigateur moderne. Aucun serveur ni accès Inter
 
 ## État pédagogique
 Cette première version est un support de présentation. Pour constituer un cours complet prêt à enseigner, chaque module devra être enrichi de démonstrations exécutables, laboratoires guidés, exercices corrigés, quiz et grille d'évaluation.
+
+## Catalogue et développement
+
+- [Catalogue des modules et statut des ressources](curriculum.json)
+- [Gabarit de cours complet](templates/course.md)
+- [Architecture du dépôt](../../docs/ARCHITECTURE-REPOSITORY.md)
+- [Roadmap de complétion](../../docs/ROADMAP-REPOSITORY.md)
+
+Un module reste au statut « présentation » jusqu'à ce que les ressources d'enseignement, de pratique et d'évaluation soient réellement livrées. Les champs null du catalogue sont des ressources manquantes, pas des liens à ouvrir.
