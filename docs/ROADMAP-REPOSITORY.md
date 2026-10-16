@@ -24,14 +24,14 @@ Cette roadmap distingue les ressources présentes des chantiers à réaliser. Un
 Ordre recommandé : JavaScript avancé comme module pilote, puis réutilisation du gabarit.
 
 - [x] Module 01 — cours, exemple exécutable closures/générateur, laboratoire, exercices, corrigé, quiz et grille livrés ; validation CI en cours.
-- [x] Module 02 — cours, exemple TypeScript, laboratoire, exercices, corrigé, quiz et grille livrés. [ ] Compilation stricte à exécuter.
+- [x] Module 02 — cours, exemple TypeScript, laboratoire, exercices, corrigé, quiz et grille livrés ; compilation stricte intégrée à la CI.
 - [x] Module 03 — cours, exemple sum avec tests Node.js, laboratoire, exercices, corrigé, quiz et grille livrés.
 - [ ] Module 04 — mini-application fetch/AbortController, accessibilité et performance.
-- [x] Module 05 — cours, serveur HTTP de laboratoire sur localhost, laboratoire, exercices, corrigé, quiz et grille livrés. [ ] Tests HTTP d'intégration à compléter.
-- [x] Module 06 — cours, démo DOM sûre locale, laboratoire, exercices, corrigé, quiz et grille livrés. [ ] Test navigateur de non-régression à compléter.
-- [x] Module 07 — cours, health check exécutable avec tests, laboratoire, exercices, corrigé, quiz et grille livrés. [ ] Pipeline/conteneur de démonstration à compléter.
+- [x] Module 05 — cours, serveur HTTP de laboratoire, tests HTTP d'intégration locaux, laboratoire, exercices, corrigé, quiz et grille livrés.
+- [x] Module 06 — cours, démo DOM sûre locale, test statique de non-régression, laboratoire, exercices, corrigé, quiz et grille livrés.
+- [x] Module 07 — cours, health check avec tests, serveur de démo, Dockerfile, exemple CI, laboratoire, exercices, corrigé, quiz et grille livrés.
 - [x] Ajouter quiz, corrigés séparés, rubriques et références à chaque module.
-- [ ] Tester les pages HTML desktop/mobile, au clavier et avec réduction des animations.
+- [ ] Tester manuellement les sept présentations HTML sur desktop/mobile, au clavier et avec réduction des animations.
 
 ## P2 — Projets pratiques
 - [ ] Définir un contrat commun de projet et une grille de notation.
