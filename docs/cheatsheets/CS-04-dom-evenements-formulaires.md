@@ -2,6 +2,15 @@
 
 > HashCode Academy · Cheat Sheet
 
+
+## Comment utiliser cette fiche
+
+Cette fiche est une référence rapide, pas un remplacement du cours. Commence par la notion qui te bloque, copie un exemple dans un petit fichier de test, puis modifie-le pour vérifier que tu comprends ses effets. Ne mémorise pas uniquement la syntaxe : comprends les conditions dans lesquelles elle est correcte.
+
+**Fiches de cours associées :** [RES 11 dom evenements interfaces web](../resumes/RES-11-dom-evenements-interfaces-web.md) · [RES 15 typescript dom formulaires evenements](../resumes/RES-15-typescript-dom-formulaires-evenements.md)
+
+**Application pratique :** Teste un sélecteur absent, une saisie vide et un texte utilisateur contenant des caractères spéciaux.
+
 ## Sélection
 ~~~js
 const button = document.querySelector("#save");
