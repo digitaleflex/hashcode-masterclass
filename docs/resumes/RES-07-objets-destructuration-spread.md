@@ -4,6 +4,17 @@
 > Série de fiches de révision JavaScript / TypeScript  
 > Objectif : représenter des données structurées, accéder à leurs propriétés et créer des copies ou transformations explicites.
 
+
+## Repères d'apprentissage
+
+**Prérequis et maîtrise attendue :** Prérequis : objets, tableaux et fonctions. À la fin, tu dois pouvoir lire et mettre à jour des objets, déstructurer des valeurs et expliquer les limites d'une copie superficielle.
+
+**Mise en pratique :** Application : copie un objet contenant un objet imbriqué, modifie la copie puis observe quelles références restent partagées.
+
+**Mémo associé :** [Ouvrir la cheat sheet correspondante](../cheatsheets/CS-02-tableaux-objets-methodes.md)
+
+**Méthode conseillée :** lis une section, ferme la fiche, reformule la règle sans la recopier, exécute l'exemple, puis change une valeur pour voir si tu peux prédire le nouveau résultat. Si tu ne peux pas expliquer pourquoi le résultat change, reviens à la notion avant de passer à la suite.
+
 ## 1. Comprendre les objets
 
 Un objet JavaScript regroupe des données sous forme de paires **clé–valeur**. Il peut aussi contenir des fonctions, appelées méthodes lorsqu'elles sont définies comme propriétés d'un objet.
