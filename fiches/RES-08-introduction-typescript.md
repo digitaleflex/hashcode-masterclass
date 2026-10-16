@@ -31,3 +31,8 @@ Les types TypeScript sont principalement vérifiés à la compilation et ne vali
 
 ## Vérification rapide
 Une interface TypeScript valide-t-elle automatiquement une réponse HTTP réelle ? **Non**. Il faut une validation runtime adaptée.
+
+## Cas d’usage pratique — détecter une erreur avant la mise en ligne
+Une fonction attend un score numérique, mais un autre développeur lui passe accidentellement `"42"`. Une vérification TypeScript bien configurée peut détecter cette incohérence avant l’exécution. En revanche, si la chaîne provient d’une API ou d’un formulaire, il faut aussi la convertir ou la valider au runtime.
+
+**Mini-défi :** distingue une erreur dans le code source d’une donnée invalide reçue par HTTP. Quel mécanisme vérifie chacune ?
