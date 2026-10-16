@@ -9,6 +9,91 @@
 @keyframes enter{from{opacity:.5;transform:translateY(3px)}to{opacity:1;transform:none}}
 @media(max-width:760px){.topmeta,.brand-sub{display:none}.topbar{padding:0 14px}.stage{padding:7px}.slide{padding:24px 19px;border-radius:9px}.hero-layout{grid-template-columns:1fr}.hero-art{display:none}.compare-grid{grid-template-columns:1fr}.cards{grid-template-columns:1fr 1fr}.info-card{padding:13px}.info-card p{font-size:12px}.lead{margin-bottom:15px}.footer{height:58px;padding:0 10px;gap:7px}.section-chip{display:none}.ctrl{padding:8px}.slide:after{right:12px;bottom:10px}.bullet-list li{font-size:14px}.code{font-size:12px;padding:13px}.hero-foot{margin-top:30px}}
 @media(max-width:460px){.cards{grid-template-columns:1fr}.controls .notes-label{display:none}.count{min-width:55px}.ctrl{padding:8px 9px}}
+
+/* ==========================================================================
+   Upgrades immersifs P0 — offline, palette noir #000 / lime #C5F441 / blanc #FFF
+   P0-1 rituel d'ouverture + wipe de chapitre
+   P0-2 code vivant (.output flouté + Révéler [R] + Exécuter sandboxé)
+   P0-3 mode projecteur (touche P)
+   P0-4 score de session / série / rejouer
+   ========================================================================== */
+
+/* --- P0-1 : compte à rebours 3·2·1·CODE (animation CSS seule) --- */
+.slide .ritual{position:absolute;inset:0;z-index:30;display:none;background:#000;pointer-events:none}
+.slide.ritual-on .ritual{display:grid}
+.ritual>*{grid-area:1/1;place-self:center;opacity:0}
+.ritual:before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,#C5F4411f 0,transparent 62%)}
+.ritual-step{font:900 clamp(110px,22vw,236px)/1 var(--sans);color:var(--lime);letter-spacing:-.06em}
+.ritual-word{font:900 clamp(44px,8vw,92px)/1 var(--sans);color:#FFFFFF;letter-spacing:.24em}
+.slide.ritual-on .ritual-step:nth-child(1){animation:ritualPop .52s cubic-bezier(.2,.8,.2,1) both}
+.slide.ritual-on .ritual-step:nth-child(2){animation:ritualPop .52s .52s cubic-bezier(.2,.8,.2,1) both}
+.slide.ritual-on .ritual-step:nth-child(3){animation:ritualPop .52s 1.04s cubic-bezier(.2,.8,.2,1) both}
+.slide.ritual-on .ritual-word{animation:ritualPop .56s 1.56s cubic-bezier(.2,.8,.2,1) both}
+@keyframes ritualPop{0%{opacity:0;transform:scale(.82)}20%{opacity:1;transform:scale(1)}76%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(1.08)}}
+
+/* stagger h1 → lead → tags → orb (slide 01, après le rituel) */
+.slide[data-number="01"].intro-go h1{animation:fade-up .55s both}
+.slide[data-number="01"].intro-go .lead{animation:fade-up .55s .18s both}
+.slide[data-number="01"].intro-go .tag-row .tag{animation:fadeIn .4s both}
+.slide[data-number="01"].intro-go .tag-row .tag:nth-child(2){animation-delay:.12s}
+.slide[data-number="01"].intro-go .tag-row .tag:nth-child(3){animation-delay:.24s}
+.slide[data-number="01"].intro-go .hero-art{animation:fade-up .7s .54s both}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+/* wipe lime 500ms sur les écrans de chapitre (24 / 46 / 63) */
+.section-wipe{position:absolute;inset:0;z-index:26;display:none;background:var(--lime);transform:translate3d(-101%,0,0);pointer-events:none}
+.slide.wipe-on .section-wipe{display:block;animation:sectionWipe .5s cubic-bezier(.76,0,.24,1) both}
+@keyframes sectionWipe{0%{transform:translate3d(-101%,0,0)}50%{transform:translate3d(0,0,0)}100%{transform:translate3d(101%,0,0)}}
+
+/* --- P0-2 : code vivant --- */
+.output{padding-right:112px}
+.output:not(.revealed) pre{filter:blur(6px);user-select:none;pointer-events:none}
+.output.output-run{border-left-color:var(--lime)}
+.output-reveal{position:absolute;top:10px;right:10px;border:1px solid #353b32;background:#050505;color:var(--lime);border-radius:2px;padding:5px 8px;font:10px var(--mono);letter-spacing:.06em;text-transform:uppercase;cursor:pointer}
+.output-reveal:hover{border-color:var(--lime)}
+.code-toolbar .run-btn{border-color:#C5F441}
+.code-toolbar-actions{display:flex;align-items:center;gap:8px}
+
+/* --- P0-3 : mode projecteur (écran uniquement, jamais imprimé) --- */
+@media screen{
+  body.projector{--muted:#FFFFFF}
+  body.projector .bullet-list li{font-size:20px;line-height:1.5;color:#FFFFFF}
+  body.projector .lead{font-size:22px;color:#FFFFFF}
+  body.projector .code{font-size:18px;line-height:1.7}
+  body.projector .code code .line:before{color:#9C9C9C}
+  body.projector .output pre{font-size:16px;color:#FFFFFF}
+  body.projector .quiz-feedback{font-size:15px;color:#FFFFFF}
+  body.projector .info-card p,body.projector .compare-card .bullet-list li{font-size:16px;line-height:1.5;color:#FFFFFF}
+  body.projector .concept-caption{font-size:15px;color:#FFFFFF}
+  body.projector .concept-node{font-size:18px;padding:14px 16px;min-width:120px}
+  body.projector .concept-step span{font-size:15px;padding:9px 11px}
+  body.projector .callout p,body.projector .concept-step span{color:#FFFFFF}
+  body.projector .topmeta,body.projector .count,body.projector .brand-sub,body.projector .section-chip,body.projector .hero-coordinate,body.projector .output span,body.projector .callout span,body.projector .session-total span{color:#FFFFFF}
+  body.projector .brand-sub,body.projector .output span,body.projector .callout span,body.projector .session-total span{color:var(--lime)}
+  body.projector .info-card,body.projector .compare-card,body.projector .callout,body.projector .quiz-option,body.projector .concept-visual,body.projector .concept-node,body.projector .code,body.projector .tag,body.projector .ctrl,body.projector .session-total{border-width:2px;border-color:var(--lime)}
+  body.projector .topbar,body.projector .footer{border-color:#3C4A2F}
+  body.projector #projectorBtn.active{background:var(--lime);border-color:var(--lime);color:#000000}
+}
+
+/* --- P0-4 : score de session --- */
+.topbar>*{min-width:0}
+.topmeta{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.topbar .scoreboard{flex:none}
+.scoreboard{display:flex;align-items:center;gap:7px;border:1px solid #333333;border-radius:2px;padding:4px 9px;font:11px var(--mono);letter-spacing:.09em;color:var(--muted);white-space:nowrap}
+.scoreboard b{color:var(--lime);font-size:12px;font-variant-numeric:tabular-nums}
+.scoreboard.flash{animation:scoreFlash .3s ease-out}
+@keyframes scoreFlash{0%{background:#000000;border-color:#333333}35%{background:var(--lime);border-color:var(--lime)}100%{background:#000000;border-color:#333333}}
+.scoreboard.flash,.scoreboard.flash b{color:#000000}
+.slide .quiz-options.shake{animation:quizShake .2s ease-in-out}
+@keyframes quizShake{0%,100%{transform:translateX(0)}20%{transform:translateX(-7px)}45%{transform:translateX(7px)}70%{transform:translateX(-4px)}}
+.quiz-replay{margin-top:10px}
+.quiz-replay[hidden]{display:none}
+.session-total{margin-top:14px;border-left:3px solid var(--lime);background:#050505;padding:12px 16px;border-radius:0 3px 3px 0;max-width:900px}
+.session-total span{font:700 10px var(--mono);letter-spacing:.12em;color:var(--lime)}
+.session-total p{margin:8px 0 0;color:#FFFFFF;font:14px/1.5 var(--mono)}
+
+/* le rituel et le wipe ne doivent jamais polluer le papier */
+@media print{.ritual,.section-wipe{display:none!important}.code-toolbar,.output-reveal,.quiz-replay{display:none!important}.output pre{filter:none!important}.output{padding-right:16px!important}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
 @media print{html,body{height:auto;overflow:visible;background:#fff}.app{height:auto;background:#fff}.topbar,.footer,.notes{display:none!important}.stage{display:block;padding:0}.slide,.slide.active{display:flex!important;page-break-after:always;width:100%;height:100vh;max-height:none;aspect-ratio:auto;border:0;border-radius:0;box-shadow:none;background:#0d100e;color:#f4f6f0;overflow:hidden;-webkit-print-color-adjust:exact;print-color-adjust:exact}.slide:after{color:#888}}
 
@@ -68,8 +153,9 @@ html,body,.app{background:#000000!important;color:#FFFFFF}
 .hero-coordinate{position:absolute;left:15px;bottom:12px;color:#646b60;font:9px var(--mono);letter-spacing:.16em}
 .slide{isolation:isolate}
 .slide.active{animation:slideReveal .42s cubic-bezier(.2,.75,.25,1) both}
-.slide.active>*{animation:contentRise .5s both}
-.slide.active>*:nth-child(2){animation-delay:.04s}.slide.active>*:nth-child(3){animation-delay:.08s}.slide.active>*:nth-child(4){animation-delay:.12s}
+/* Fix salle: le wrapper zoom ne rejoue pas de montée (la chorégraphie hc-rise des descendants suffit,
+   évite le double déplacement et tout translate parasite sur mobile). */
+.slide.active>.zoom-inner{animation:none}
 @keyframes scanLine{0%{top:-5%;opacity:0}12%{opacity:.7}88%{opacity:.7}100%{top:105%;opacity:0}}
 @keyframes scanSweep{0%,100%{transform:translateY(-45%) rotate(-28deg);opacity:.2}50%{transform:translateY(210%) rotate(-28deg);opacity:.85}}
 @keyframes logoFloat{0%,100%{translate:0 0}50%{translate:0 -7px}}
@@ -144,177 +230,419 @@ html,body,.app{background:#000000!important;color:#FFFFFF}
 .concept-step span{border:1px solid #2c3528;padding:7px 9px;font:11px var(--mono);color:#dfe5dc}
 .concept-step span.active{border-color:#C5F441;color:#C5F441;background:#0a1004}
 @media(max-width:760px){.code{padding:16px 10px 16px 42px}.code code{font-size:11px}.code code .line:before{right:calc(100% + 10px);width:18px}.concept-visual{padding:10px}.concept-node{min-width:65px;padding:8px;font-size:10px}}
+/* P1 — scène immersive plein viewport (offline, palette #000 / #C5F441 / #FFF).
+   body.immersive (défaut ON) : slide edge-to-edge, radius nul, sans débordement horizontal.
+   Retour boîte centrée : body sans .immersive (bouton Immersif [W] dans le pied de page).
+   P0 préservés : ritual, wipe, output blur + sandbox, projector, scoreboard, print, responsive. */
+@media screen{
+  body.immersive .stage{display:block;min-width:0;padding:0;overflow:hidden;place-items:stretch}
+  body.immersive .slide{width:100%;height:100%;max-width:100%;aspect-ratio:auto;border:0;border-radius:0;overflow-y:auto;overflow-x:hidden;padding:clamp(32px,5vh,72px) clamp(28px,6vw,110px) clamp(54px,7vh,88px)}
+  body.immersive .slide>*{min-width:0}
+  body.immersive h1,body.immersive h2{max-width:1100px}
+  body.immersive .lead,body.immersive .bullet-list,body.immersive .callout,body.immersive .quiz,body.immersive .session-total{max-width:1050px}
+  body.immersive .hero-layout{gap:clamp(32px,4vw,64px)}
+  body.immersive .code,body.immersive .output,body.immersive .concept-visual{max-width:100%}
+  body.immersive .output{overflow:hidden}
+  #immersiveBtn.active{border-color:var(--lime);color:var(--lime)}
+  /* Boîte centrée d'origine (secours via [W]) */
+  body:not(.immersive) .stage{display:grid;place-items:center;padding:16px 5vw}
+  body:not(.immersive) .slide{width:min(1240px,100%);height:min(697px,100%);aspect-ratio:16/9;overflow:auto;border:1px solid #242424;border-radius:2px;padding:clamp(24px,4vw,58px)}
+}
+@media screen and (min-width:1000px){
+  body.immersive h1{font-size:clamp(59px,6.8vw,114px)}
+  body.immersive .section-screen h1{font-size:clamp(66px,8.1vw,127px)}
+  body.immersive h2{font-size:clamp(42px,4.8vw,73px)}
+  body.immersive .lead{font-size:clamp(22px,2.4vw,31px)}
+  body.immersive .bullet-list{gap:14px}
+  body.immersive .bullet-list li{font-size:clamp(21px,2.2vw,27px);line-height:1.5}
+  body.immersive .code{font-size:clamp(17.5px,1.75vw,23px);padding:26px 26px 26px 66px}
+  body.immersive .code-toolbar{font-size:11px}
+  body.immersive .output{padding:16px 118px 16px 20px}
+  body.immersive .output pre{font-size:19px}
+  body.immersive .quiz-question{font-size:clamp(25px,2.85vw,36px)}
+  body.immersive .quiz-option{font-size:20px;padding:15px 18px}
+  body.immersive .quiz-feedback{font-size:19px}
+  body.immersive .cards{gap:18px}
+  body.immersive .compare-grid{gap:20px}
+  body.immersive .info-card,body.immersive .compare-card{padding:24px}
+  body.immersive .info-card h3,body.immersive .compare-card h3{font-size:20px}
+  body.immersive .info-card p{font-size:20px}
+  body.immersive .compare-card .bullet-list li{font-size:20px}
+  body.immersive .callout{padding:18px 22px}
+  body.immersive .callout p{font-size:21px}
+  body.immersive .concept-visual{padding:22px}
+  body.immersive .concept-caption{font-size:17.5px}
+  body.immersive .eyebrow{font-size:13px}
+  body.immersive .tag{font-size:12px;padding:9px 13px}
+  body.immersive .hero-art{max-width:520px}
+  body.immersive .section-rule{width:140px}
+}
+/* Projecteur : grossit PAR-DESSUS l'immersif (ordre + spécificité) */
+@media screen{
+  body.projector.immersive h1{font-size:clamp(66px,7.7vw,132px)}
+  body.projector.immersive h2{font-size:clamp(48px,5.5vw,86px)}
+  body.projector.immersive .lead{font-size:34px}
+  body.projector.immersive .bullet-list li{font-size:31px}
+  body.projector.immersive .code{font-size:26px}
+  body.projector.immersive .output pre{font-size:23px}
+  body.projector.immersive .quiz-question{font-size:41px}
+  body.projector.immersive .quiz-option{font-size:24px}
+  body.projector.immersive .quiz-feedback{font-size:22px}
+  body.projector.immersive .concept-node{font-size:23px;min-width:135px}
+  body.projector.immersive .info-card h3,body.projector.immersive .compare-card h3{font-size:22px}
+  body.projector.immersive .info-card p{font-size:22px}
+  body.projector.immersive .compare-card .bullet-list li{font-size:22px}
+  body.projector.immersive .callout p{font-size:23px}
+  body.projector.immersive .concept-caption{font-size:20px}
+}
+/* P2 — zoom directionnel de la scene (slide active uniquement, offline, palette #000 / #C5F441 / #FFF).
+   Loupe centree (scale) + pan libre clampe (translate), boutons + / - / reset + fleches + drag.
+   Desactive en print, instantane en reduced-motion. */
+@media screen{
+  .zoom-inner{flex:1;min-height:0;min-width:0;display:flex;flex-direction:column;transform-origin:center center;transition:transform .18s ease-out;will-change:transform}
+  .zoom-inner>*{min-width:0}
+  .slide.zoomed .zoom-inner{cursor:grab;touch-action:none}
+  .slide.zoomed .zoom-inner.dragging{cursor:grabbing;transition:none;user-select:none}
+  #zoombar{position:fixed;right:14px;bottom:78px;z-index:40;display:flex;flex-direction:column;gap:8px;background:#050505;border:1px solid #333333;border-radius:3px;padding:8px;max-width:calc(100vw - 28px)}
+  #zoombar .zoom-cap{font:700 9px var(--mono);letter-spacing:.12em;color:#B8B8B8;text-transform:uppercase;text-align:center}
+  #zoombar .zoom-row{display:flex;align-items:center;gap:6px}
+  #zoombar .zoom-level{font:11px var(--mono);color:#FFFFFF;min-width:48px;text-align:center;font-variant-numeric:tabular-nums}
+  .zoom-btn{border:1px solid #333333;background:#000000;color:#C5F441;border-radius:2px;min-width:34px;min-height:34px;padding:6px 8px;font:12px var(--mono);display:grid;place-items:center}
+  .zoom-btn:hover{border-color:#C5F441}
+  .zoom-btn:disabled{opacity:.35;cursor:not-allowed}
+  .zoom-pan{display:grid;grid-template-columns:repeat(3,34px);grid-template-rows:repeat(3,34px);gap:4px;justify-content:center}
+  .zoom-pan .zoom-dot{width:8px;height:8px;background:#C5F441;border-radius:2px;place-self:center}
+}
+@media(max-width:760px){
+  #zoombar{right:8px;bottom:70px;padding:6px}
+  .zoom-pan{grid-template-columns:repeat(3,30px);grid-template-rows:repeat(3,30px)}
+  .zoom-btn{min-width:30px;min-height:30px}
+}
+@media print{#zoombar{display:none!important}.zoom-inner{transform:none!important;transition:none!important}}
+@media(prefers-reduced-motion:reduce){.zoom-inner{transition:none!important}}
+/* Mobile : mêmes repères qu'avant, sans carte */
+@media(max-width:760px){
+  body.immersive .stage{padding:0}
+  body.immersive .slide{padding:24px 19px 54px;border:0;border-radius:0}
+  body.immersive .hero-layout{gap:14px}
+  body.immersive .hero-art{max-width:300px}
+}
+
+/* ==========================================================================
+   Motion global sobre — chorégraphie + reveals + blocs vivants + progress.
+   100% CSS offline, palette #000 / #C5F441 / #FFF, radius 2-3px.
+   Tout ne joue que sur transform / opacity (60fps), will-change ciblé.
+   ========================================================================== */
+@keyframes hc-rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@keyframes hc-fade{from{opacity:0}to{opacity:1}}
+@keyframes hc-in-fwd{from{opacity:0;transform:translateX(26px)}to{opacity:1;transform:none}}
+@keyframes hc-in-back{from{opacity:0;transform:translateX(-26px)}to{opacity:1;transform:none}}
+@keyframes hc-out-fwd{to{opacity:0;transform:translateX(-22px)}}
+@keyframes hc-out-back{to{opacity:0;transform:translateX(22px)}}
+@keyframes hc-arrow{0%,100%{opacity:.4;transform:translateX(0)}50%{opacity:1;transform:translateX(4px)}}
+@keyframes hc-node{from{opacity:.2;transform:translateY(6px)}to{opacity:1;transform:none}}
+@keyframes hc-flip{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@keyframes hc-ping{0%,100%{opacity:1;transform:translate(-50%,-50%) scale(1)}50%{opacity:.5;transform:translate(-50%,-50%) scale(1.55)}}
+
+/* --- 4. Transitions directionnelles (le wipe lime des chapitres reste prioritaire) --- */
+.slide.active{animation:hc-in-fwd .28s ease-out both;will-change:transform,opacity}
+.slide.active.nav-back{animation-name:hc-in-back}
+.slide.active.nav-fwd{animation-name:hc-in-fwd}
+.slide.slide-out-fwd{animation:hc-out-fwd .12s ease-in both}
+.slide.slide-out-back{animation:hc-out-back .12s ease-in both}
+
+/* --- 1. Entrée chorégraphiée : eyebrow → titre → lead → blocs (60-90ms) --- */
+.slide.active .eyebrow,.slide.active .section-mark{animation:hc-rise .3s ease-out both;animation-delay:0ms}
+.slide.active h1,.slide.active h2{animation:hc-rise .32s ease-out both;animation-delay:70ms}
+.slide.active .lead,.slide.active .section-screen .lead{animation:hc-rise .32s ease-out both;animation-delay:140ms}
+.slide.active .tag-row,.slide.active .hero-foot{animation:hc-rise .3s ease-out both;animation-delay:210ms}
+.slide.active .cards,.slide.active .compare-grid,.slide.active .code-toolbar,
+.slide.active pre.code,.slide.active .output,.slide.active .callout,
+.slide.active .quiz,.slide.active .concept-visual,.slide.active .section-rule,
+.slide.active .hero-art{animation:hc-rise .32s ease-out both;animation-delay:210ms}
+/* cascades : puces, cartes, tags, quiz */
+.slide.active .bullet-list>li{animation:hc-rise .3s ease-out both}
+.slide.active .bullet-list>li:nth-child(1){animation-delay:210ms}
+.slide.active .bullet-list>li:nth-child(2){animation-delay:280ms}
+.slide.active .bullet-list>li:nth-child(3){animation-delay:350ms}
+.slide.active .bullet-list>li:nth-child(4){animation-delay:420ms}
+.slide.active .bullet-list>li:nth-child(5){animation-delay:490ms}
+.slide.active .bullet-list>li:nth-child(6){animation-delay:560ms}
+.slide.active .bullet-list>li:nth-child(n+7){animation-delay:630ms}
+.slide.active .cards>.info-card,.slide.active .compare-grid>.compare-card{animation:hc-rise .3s ease-out both}
+.slide.active .cards>.info-card:nth-child(1),.slide.active .compare-grid>.compare-card:nth-child(1){animation-delay:210ms}
+.slide.active .cards>.info-card:nth-child(2),.slide.active .compare-grid>.compare-card:nth-child(2){animation-delay:280ms}
+.slide.active .cards>.info-card:nth-child(3){animation-delay:350ms}
+.slide.active .cards>.info-card:nth-child(4){animation-delay:420ms}
+.slide.active .cards>.info-card:nth-child(5){animation-delay:490ms}
+.slide.active .cards>.info-card:nth-child(n+6){animation-delay:560ms}
+.slide.active .tag-row>.tag{animation:hc-rise .28s ease-out both}
+.slide.active .tag-row>.tag:nth-child(1){animation-delay:210ms}
+.slide.active .tag-row>.tag:nth-child(2){animation-delay:280ms}
+.slide.active .tag-row>.tag:nth-child(3){animation-delay:350ms}
+.slide.active .quiz-options>.quiz-option{animation:hc-rise .3s ease-out both}
+.slide.active .quiz-options>.quiz-option:nth-child(1){animation-delay:240ms}
+.slide.active .quiz-options>.quiz-option:nth-child(2){animation-delay:310ms}
+.slide.active .quiz-options>.quiz-option:nth-child(3){animation-delay:380ms}
+
+/* --- 2. Révélation progressive des puces denses (li pas encore révélés à 25%) --- */
+.slide.step-reveal .bullet-list>li{animation:none;transition:opacity .25s ease-out}
+.slide.step-reveal .bullet-list>li.is-dim{opacity:.25}
+.slide.step-reveal .bullet-list>li.is-on{opacity:1;animation:hc-rise .28s ease-out both}
+.reveal-count{position:absolute;left:24px;bottom:18px;z-index:5;display:inline-flex;align-items:center;gap:8px;background:#050505;border:1px solid #333333;border-radius:2px;padding:5px 9px;font:700 10px var(--mono);letter-spacing:.1em;color:#C5F441;text-transform:uppercase;white-space:nowrap}
+.reveal-count b{color:#FFFFFF;font-variant-numeric:tabular-nums}
+
+/* --- 3a. .code : header simulé (pastilles + nom de fichier), bouton Copier conservé --- */
+.code-toolbar{display:flex;align-items:center;gap:10px;margin:14px 0 0;padding:8px 10px;background:#0A0A0A;border:1px solid #292929;border-bottom:0;border-radius:3px 3px 0 0;color:#8b9588;font:10px var(--mono);letter-spacing:.1em;text-transform:uppercase}
+.code-dots{display:inline-flex;align-items:center;gap:6px;flex:none}
+.code-dots i{width:9px;height:9px;border-radius:50%;background:#4a4a4a}
+.code-dots i:nth-child(1){background:#C5F441}
+.code-dots i:nth-child(2){background:#FFFFFF}
+.code-dots i:nth-child(3){background:#4a4a4a}
+.code-name{color:#D0D0D0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.code-toolbar .code-toolbar-actions{margin-left:auto}
+.code-toolbar>button{margin-left:auto}
+pre.code{margin-top:0;border-radius:0 0 3px 3px}
+
+/* --- 3b. .concept-visual : flux animé (flèches + nœuds en séquence) --- */
+.concept-arrow{display:inline-block;animation:hc-arrow 1.5s ease-in-out infinite}
+.slide.active .concept-flow>.concept-node{animation:hc-node .38s ease-out both}
+.slide.active .concept-flow>.concept-node:nth-of-type(1){animation-delay:240ms}
+.slide.active .concept-flow>.concept-node:nth-of-type(2){animation-delay:320ms}
+.slide.active .concept-flow>.concept-node:nth-of-type(3){animation-delay:400ms}
+.slide.active .concept-flow>.concept-node:nth-of-type(4){animation-delay:480ms}
+.slide.active .concept-flow>.concept-node:nth-of-type(n+5){animation-delay:560ms}
+.slide.active .concept-step>span{animation:hc-node .34s ease-out both}
+.slide.active .concept-step>span:nth-child(1){animation-delay:240ms}
+.slide.active .concept-step>span:nth-child(2){animation-delay:310ms}
+.slide.active .concept-step>span:nth-child(3){animation-delay:380ms}
+.slide.active .concept-step>span:nth-child(4){animation-delay:450ms}
+.slide.active .concept-step>span:nth-child(n+5){animation-delay:520ms}
+
+/* --- 3c. .compare-grid : survol qui soulève (spec : -3px + bordure lime) --- */
+.compare-card:hover{transform:translateY(-3px);border-color:#C5F441}
+
+/* --- 3d. .quiz-option : hover / active marqués (shake + flash conservés) --- */
+.quiz-option:hover{border-color:#C5F441;background:#0C1206;transform:translateY(-1px)}
+.quiz-option:active{transform:translateY(0)}
+.quiz-option:focus-visible{outline:2px solid #C5F441;outline-offset:2px}
+
+/* --- 5. Progress vivant : jalons chapitres + compteur flip --- */
+.progress{position:relative}
+.milestone{position:absolute;top:50%;width:7px;height:7px;border-radius:2px;background:#000000;border:1px solid #5a5a5a;transform:translate(-50%,-50%);z-index:2;padding:0;cursor:pointer}
+.milestone.is-done{background:#C5F441;border-color:#C5F441}
+.milestone.is-now{background:#C5F441;border-color:#C5F441}
+.milestone.is-now:after{content:"";position:absolute;left:50%;top:50%;width:13px;height:13px;border:1px solid #C5F441;border-radius:2px;animation:hc-ping 1.6s ease-out infinite}
+.count.flip{animation:hc-flip .25s ease-out}
+
+/* --- 6a. Mobile <760px : fade seul, jamais de translate --- */
+@media(max-width:760px){
+  .slide.active{animation:hc-fade .25s ease-out both}
+  .slide.slide-out-fwd,.slide.slide-out-back{animation:hc-fade .12s ease-in both;animation-direction:reverse}
+  .slide.active .eyebrow,.slide.active .section-mark,.slide.active h1,.slide.active h2,
+  .slide.active .lead,.slide.active .tag-row,.slide.active .hero-foot,.slide.active .cards,
+  .slide.active .compare-grid,.slide.active .code-toolbar,.slide.active pre.code,
+  .slide.active .output,.slide.active .callout,.slide.active .quiz,.slide.active .concept-visual,
+  .slide.active .section-rule,.slide.active .hero-art,.slide.active .bullet-list>li,
+  .slide.active .cards>.info-card,.slide.active .compare-grid>.compare-card,
+  .slide.active .tag-row>.tag,.slide.active .quiz-options>.quiz-option,
+  .slide.active .concept-flow>.concept-node,.slide.active .concept-step>span,
+  .slide.step-reveal .bullet-list>li.is-on{animation-name:hc-fade}
+  .concept-arrow{animation:hc-fade 1.5s ease-in-out infinite}
+}
+
+/* --- 6b. Print : tout neutralisé, reveals dépliés, jalons masqués --- */
+@media print{
+  *,*:before,*:after{animation:none!important;transition:none!important}
+  .slide.step-reveal .bullet-list>li{opacity:1!important}
+  .reveal-count,.milestone{display:none!important}
+}
+
+/* --- 6c. Reduced motion : reset instantané partout --- */
+@media(prefers-reduced-motion:reduce){
+  *,*:before,*:after{animation:none!important;transition:none!important}
+  .slide *,.slide.active *{opacity:1!important;transform:none!important}
+  .slide.step-reveal .bullet-list>li.is-dim{opacity:1!important}
+  .milestone.is-now:after{display:none}
+  .concept-arrow{animation:none}
+}/* Fix salle: radius unifié 2-3px (pastilles 50% conservées). */
+.ctrl{border-radius:3px}.notes{border-radius:3px}.progress{border-radius:3px}
 </style>
 </head>
-<body>
+<body class="immersive">
 <div class="app">
-<header class="topbar"><div class="brand"><span class="brand-mark" aria-label="HashCode Academy"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M5 15 24 5 43 15 24 25Z" fill="currentColor"/><path d="M11 18v13l13 7 13-7V18l-5 3v7l-8 4-8-4v-7Z" fill="currentColor"/><path d="M42 16v12" stroke="currentColor" stroke-width="2.5"/><circle cx="42" cy="30" r="2" fill="currentColor"/></svg></span><span>HASHCODE <span class="brand-sub">ACADEMY</span></span></div><div class="topmeta">MASTERCLASS · JAVASCRIPT / TYPESCRIPT</div><div class="topmeta">LEARN · BUILD · BELONG</div></header>
-<main class="stage" id="stage"><section class="slide active" data-number="01" data-section="OUVERTURE" data-notes="Accueillir le groupe. Présenter la promesse : repartir avec une carte mentale claire et les bases d&#39;un petit projet TypeScript."><div class="hero-layout"><div><div class="eyebrow">HASHCODE ACADEMY <span>/</span> MASTERCLASS</div><h1>JavaScript <span class='lime'>&amp; TypeScript</span></h1><p class="lead">Comprendre l’écosystème. Lire le code. Construire un premier outil.</p><div class="tag-row"><span class="tag">HASHCODE MASTERCLASS</span><span class="tag">CODE EN DIRECT</span><span class="tag">ATELIER GUIDÉ</span></div><div class="hero-foot">LEARN · BUILD · BELONG</div></div><div class="hero-art" aria-label="Logos JavaScript et TypeScript">
+<header class="topbar"><div class="brand"><span class="brand-mark" aria-label="HashCode Academy"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M5 15 24 5 43 15 24 25Z" fill="currentColor"/><path d="M11 18v13l13 7 13-7V18l-5 3v7l-8 4-8-4v-7Z" fill="currentColor"/><path d="M42 16v12" stroke="currentColor" stroke-width="2.5"/><circle cx="42" cy="30" r="2" fill="currentColor"/></svg></span><span>HASHCODE <span class="brand-sub">ACADEMY</span></span></div><div class="topmeta">MASTERCLASS · JAVASCRIPT / TYPESCRIPT</div><div class="scoreboard" id="scoreboard" aria-live="polite" aria-atomic="true"><span>SCORE</span><b id="scoreValue">000</b><span>·</span><span>SÉRIE</span><b id="streakValue">0</b></div><div class="topmeta">LEARN · BUILD · BELONG</div></header>
+<main class="stage" id="stage"><section class="slide active" data-number="01" role="group" aria-label="Diapositive 01 — JavaScript &amp; TypeScript" data-section="OUVERTURE" data-notes="Accueillir le groupe. Présenter la promesse : repartir avec une carte mentale claire et les bases d&#39;un petit projet TypeScript."><div class="hero-layout"><div><div class="eyebrow">HASHCODE ACADEMY <span>/</span> MASTERCLASS</div><h1>JavaScript <span class='lime'>&amp; TypeScript</span></h1><p class="lead">Comprendre l’écosystème. Lire le code. Construire un premier outil.</p><div class="tag-row"><span class="tag">HASHCODE MASTERCLASS</span><span class="tag">CODE EN DIRECT</span><span class="tag">ATELIER GUIDÉ</span></div><div class="hero-foot">LEARN · BUILD · BELONG</div></div><div class="hero-art" aria-label="Logos JavaScript et TypeScript">
 <div class="hero-grid" aria-hidden="true"></div><div class="hero-scan" aria-hidden="true"></div>
 <div class="hero-core"><div class="tech-logo js-logo" role="img" aria-label="JavaScript"><span class="logo-name">JS</span><small>JAVASCRIPT</small></div><div class="tech-link" aria-hidden="true"><span></span><i></i><span></span></div><div class="tech-logo ts-logo" role="img" aria-label="TypeScript"><span class="logo-name">TS</span><small>TYPESCRIPT</small></div></div>
 <div class="hero-orbit orbit-one" aria-hidden="true"></div><div class="hero-orbit orbit-two" aria-hidden="true"></div>
-<b class="orbit-tag tag-a"><span class="status-dot"></span> LANGAGE</b><b class="orbit-tag tag-b"><span class="status-dot"></span> TYPES STATIQUES</b><b class="orbit-tag tag-c">.JS <span class="lime">→</span> .TS</b><b class="orbit-tag tag-d">BUILD / SHIP</b><div class="hero-coordinate">HC / 001</div></div></div></section>
-<section class="slide" data-number="02" data-section="OUVERTURE" data-notes="Annoncer le rythme de la séance et encourager les participants à prédire les sorties avant la démonstration."><div class="eyebrow">OUVERTURE <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Le code s’apprend <span class='lime'>en faisant.</span></h2><p class="lead">Observer → prédire → exécuter → expliquer → améliorer.</p><ul class="bullet-list"><li>On ne cherche pas à tout mémoriser.</li><li>On apprend à raisonner sur le comportement du programme.</li><li>Chaque concept sera relié à un exemple concret.</li></ul></section>
-<section class="slide" data-number="03" data-section="OUVERTURE" data-notes="Définir les attentes et préciser que l&#39;objectif est une base solide pour continuer à pratiquer."><div class="eyebrow">OUVERTURE <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Le contrat de cette masterclass</h2><p class="lead">Deux heures pour comprendre les fondamentaux, pas pour devenir expert de tout l’écosystème.</p><div class="cards"><article class="info-card"><div class="card-index">01</div><h3>COMPRENDRE</h3><p>Situer JavaScript, TypeScript, Node.js et npm.</p></article><article class="info-card"><div class="card-index">02</div><h3>PRATIQUER</h3><p>Lire, écrire et corriger de petits programmes.</p></article><article class="info-card"><div class="card-index">03</div><h3>CONSTRUIRE</h3><p>Assembler les concepts dans un gestionnaire de tâches.</p></article></div></section>
-<section class="slide" data-number="04" data-section="OUVERTURE" data-notes="Lire les objectifs comme des résultats observables. Les reprendre pendant le bilan."><div class="eyebrow">OUVERTURE <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Les résultats attendus</h2><p class="lead">À la fin, vous devriez pouvoir…</p><ul class="bullet-list"><li>Expliquer où JavaScript s’exécute et à quoi sert Node.js.</li><li>Manipuler variables, fonctions, tableaux et objets.</li><li>Lire des annotations TypeScript et une interface.</li><li>Expliquer ce que le typage détecte — et ce qu’il ne détecte pas.</li><li>Exécuter et améliorer un mini-projet guidé.</li></ul></section>
-<section class="slide" data-number="05" data-section="OUVERTURE" data-notes="Demander des réponses dans le chat ou à main levée. Ne pas juger le niveau ; adapter les exemples."><div class="eyebrow">OUVERTURE <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Diagnostic express</h2><p class="lead">Choisissez mentalement votre point de départ.</p><ul class="bullet-list"><li>A — Je découvre la programmation.</li><li>B — Je connais variables, conditions ou fonctions.</li><li>C — J’ai déjà réalisé un petit projet.</li></ul><div class="callout"><span>À VOUS</span><p>Question au groupe : qu’est-ce qui vous paraît le plus confus entre JavaScript, TypeScript et les frameworks ?</p></div></section>
-<section class="slide" data-number="06" data-section="OUVERTURE" data-notes="Présenter le timing. Les transitions doivent rester fluides : si le temps manque, réduire les discussions annexes plutôt que l&#39;atelier."><div class="eyebrow">OUVERTURE <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Notre itinéraire en 120 minutes</h2><p class="lead">Des concepts courts, une démonstration, puis de la pratique.</p><div class="cards"><article class="info-card"><div class="card-index">01</div><h3>00–15</h3><p>Repères et écosystème</p></article><article class="info-card"><div class="card-index">02</div><h3>15–40</h3><p>Exécution et outils</p></article><article class="info-card"><div class="card-index">03</div><h3>40–65</h3><p>Fondamentaux JavaScript</p></article><article class="info-card"><div class="card-index">04</div><h3>65–82</h3><p>Pourquoi TypeScript</p></article><article class="info-card"><div class="card-index">05</div><h3>82–108</h3><p>Atelier Task Manager</p></article><article class="info-card"><div class="card-index">06</div><h3>108–120</h3><p>Quiz, bilan et suite</p></article></div></section>
-<section class="slide" data-number="07" data-section="CARTE DE L’ÉCOSYSTÈME" data-notes="Faire distinguer les catégories. Le piège fréquent est de mettre tous les noms d&#39;outils dans la même case."><div class="eyebrow">CARTE DE L’ÉCOSYSTÈME <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Un langage n’est pas un framework</h2><p class="lead">Les outils JavaScript répondent à des problèmes différents.</p><ul class="bullet-list"><li>JavaScript : langage de programmation.</li><li>TypeScript : JavaScript avec un système de types statiques.</li><li>Node.js : environnement d’exécution JavaScript hors navigateur.</li><li>npm : gestion des paquets et des scripts de projet.</li><li>React : bibliothèque d’interface ; Next.js : framework basé sur React.</li></ul></section>
-<section class="slide" data-number="08" data-section="CARTE DE L’ÉCOSYSTÈME" data-notes="Expliquer que cette chaîne est une simplification utile. Tous les projets n&#39;utilisent pas chaque outil."><div class="eyebrow">CARTE DE L’ÉCOSYSTÈME <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>La carte mentale en une ligne</h2><p class="lead">Du code source jusqu’à l’application utilisée.</p><div class="cards"><article class="info-card"><div class="card-index">01</div><h3>LANGAGE</h3><p>JavaScript / TypeScript</p></article><article class="info-card"><div class="card-index">02</div><h3>EXÉCUTION</h3><p>Navigateur / Node.js</p></article><article class="info-card"><div class="card-index">03</div><h3>OUTILS</h3><p>npm / compilateur / Vite</p></article><article class="info-card"><div class="card-index">04</div><h3>PRODUIT</h3><p>Site web / API / application</p></article></div><div class="concept-visual" aria-label="Chaîne d'exécution du code"><div class="concept-visual-head"><span>De l'idée au résultat</span><span>01 — 04</span></div><div class="concept-flow"><div class="concept-node"><strong>Écrire</strong>code source</div><span class="concept-arrow">→</span><div class="concept-node"><strong>Exécuter</strong>runtime</div><span class="concept-arrow">→</span><div class="concept-node"><strong>Observer</strong>résultat</div><span class="concept-arrow">→</span><div class="concept-node"><strong>Corriger</strong>itération</div></div><p class="concept-caption">Le développeur alterne entre hypothèse, exécution et vérification. Une erreur est une information exploitable, pas un verdict.</p></div></section>
-<section class="slide" data-number="09" data-section="CARTE DE L’ÉCOSYSTÈME" data-notes="Préciser que TypeScript ne remplace pas JavaScript : il s&#39;appuie sur lui et le résultat exécuté reste du JavaScript."><div class="eyebrow">CARTE DE L’ÉCOSYSTÈME <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>JavaScript et TypeScript</h2><p class="lead">Ils ne sont pas deux langages concurrents au même niveau.</p><div class="compare-grid"><article class="compare-card"><div class="card-index">A</div><h3>JavaScript</h3><ul class="bullet-list"><li>Le code exécuté par les moteurs JavaScript.</li><li>Types déterminés à l’exécution.</li><li>Souple et directement utilisable dans le navigateur.</li></ul></article><article class="compare-card"><div class="card-index">B</div><h3>TypeScript</h3><ul class="bullet-list"><li>Ajoute des annotations et des contrôles de types.</li><li>Le code est transformé/émis pour l’environnement cible.</li><li>Aide à repérer certaines erreurs avant l’exécution.</li></ul></article></div></section>
-<section class="slide" data-number="10" data-section="CARTE DE L’ÉCOSYSTÈME" data-notes="Distinguer le langage des API du navigateur. document et window ne sont pas disponibles de la même façon dans Node.js."><div class="eyebrow">CARTE DE L’ÉCOSYSTÈME <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Que fait le navigateur ?</h2><p class="lead">Il fournit un environnement pour exécuter JavaScript côté client.</p><ul class="bullet-list"><li>Affiche le HTML et applique le CSS.</li><li>Expose des API comme DOM, événements et fetch.</li><li>Exécute le JavaScript avec son moteur.</li><li>Applique des règles de sécurité, notamment la politique de même origine.</li></ul></section>
-<section class="slide" data-number="11" data-section="CARTE DE L’ÉCOSYSTÈME" data-notes="Lire le code. Le point d&#39;interrogation après button est l&#39;opérateur de chaînage optionnel : si l&#39;élément n&#39;existe pas, l&#39;appel est évité."><div class="eyebrow">CARTE DE L’ÉCOSYSTÈME <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>JavaScript dans le navigateur</h2><p class="lead">Un événement déclenche une fonction quand l’utilisateur clique.</p><pre class="code"><code>const button = document.querySelector(&quot;button&quot;);
+<b class="orbit-tag tag-a"><span class="status-dot"></span> LANGAGE</b><b class="orbit-tag tag-b"><span class="status-dot"></span> TYPES STATIQUES</b><b class="orbit-tag tag-c">.JS <span class="lime">→</span> .TS</b><b class="orbit-tag tag-d">BUILD / SHIP</b><div class="hero-coordinate">HC / 001</div></div></div><div class="ritual" aria-hidden="true"><span class="ritual-step">3</span><span class="ritual-step">2</span><span class="ritual-step">1</span><span class="ritual-word">CODE</span></div></section>
+<section class="slide" data-number="02" role="group" aria-label="Diapositive 02 — Le code s’apprend en faisant." data-section="OUVERTURE" data-notes="Annoncer le rythme de la séance et encourager les participants à prédire les sorties avant la démonstration."><div class="eyebrow">OUVERTURE <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Le code s’apprend <span class='lime'>en faisant.</span></h2><p class="lead">Observer → prédire → exécuter → expliquer → améliorer.</p><ul class="bullet-list"><li>On ne cherche pas à tout mémoriser.</li><li>On apprend à raisonner sur le comportement du programme.</li><li>Chaque concept sera relié à un exemple concret.</li></ul></section>
+<section class="slide" data-number="03" role="group" aria-label="Diapositive 03 — Le contrat de cette masterclass" data-section="OUVERTURE" data-notes="Définir les attentes et préciser que l&#39;objectif est une base solide pour continuer à pratiquer."><div class="eyebrow">OUVERTURE <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Le contrat de cette masterclass</h2><p class="lead">Deux heures pour comprendre les fondamentaux, pas pour devenir expert de tout l’écosystème.</p><div class="cards"><article class="info-card"><div class="card-index">01</div><h3>COMPRENDRE</h3><p>Situer JavaScript, TypeScript, Node.js et npm.</p></article><article class="info-card"><div class="card-index">02</div><h3>PRATIQUER</h3><p>Lire, écrire et corriger de petits programmes.</p></article><article class="info-card"><div class="card-index">03</div><h3>CONSTRUIRE</h3><p>Assembler les concepts dans un gestionnaire de tâches.</p></article></div></section>
+<section class="slide" data-number="04" role="group" aria-label="Diapositive 04 — Les résultats attendus" data-section="OUVERTURE" data-notes="Lire les objectifs comme des résultats observables. Les reprendre pendant le bilan."><div class="eyebrow">OUVERTURE <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Les résultats attendus</h2><p class="lead">À la fin, vous devriez pouvoir…</p><ul class="bullet-list"><li>Expliquer où JavaScript s’exécute et à quoi sert Node.js.</li><li>Manipuler variables, fonctions, tableaux et objets.</li><li>Lire des annotations TypeScript et une interface.</li><li>Expliquer ce que le typage détecte — et ce qu’il ne détecte pas.</li><li>Exécuter et améliorer un mini-projet guidé.</li></ul></section>
+<section class="slide" data-number="05" role="group" aria-label="Diapositive 05 — Diagnostic express" data-section="OUVERTURE" data-notes="Demander des réponses dans le chat ou à main levée. Ne pas juger le niveau ; adapter les exemples."><div class="eyebrow">OUVERTURE <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Diagnostic express</h2><p class="lead">Choisissez mentalement votre point de départ.</p><ul class="bullet-list"><li>A — Je découvre la programmation.</li><li>B — Je connais variables, conditions ou fonctions.</li><li>C — J’ai déjà réalisé un petit projet.</li></ul><div class="callout"><span>À VOUS</span><p>Question au groupe : qu’est-ce qui vous paraît le plus confus entre JavaScript, TypeScript et les frameworks ?</p></div></section>
+<section class="slide" data-number="06" role="group" aria-label="Diapositive 06 — Notre itinéraire en 120 minutes" data-section="OUVERTURE" data-notes="Présenter le timing. Les transitions doivent rester fluides : si le temps manque, réduire les discussions annexes plutôt que l&#39;atelier."><div class="eyebrow">OUVERTURE <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Notre itinéraire en 120 minutes</h2><p class="lead">Des concepts courts, une démonstration, puis de la pratique.</p><div class="cards"><article class="info-card"><div class="card-index">01</div><h3>00–15</h3><p>Repères et écosystème</p></article><article class="info-card"><div class="card-index">02</div><h3>15–40</h3><p>Exécution et outils</p></article><article class="info-card"><div class="card-index">03</div><h3>40–65</h3><p>Fondamentaux JavaScript</p></article><article class="info-card"><div class="card-index">04</div><h3>65–82</h3><p>Pourquoi TypeScript</p></article><article class="info-card"><div class="card-index">05</div><h3>82–108</h3><p>Atelier Task Manager</p></article><article class="info-card"><div class="card-index">06</div><h3>108–120</h3><p>Quiz, bilan et suite</p></article></div></section>
+<section class="slide" data-number="07" role="group" aria-label="Diapositive 07 — Un langage n’est pas un framework" data-section="CARTE DE L’ÉCOSYSTÈME" data-notes="Faire distinguer les catégories. Le piège fréquent est de mettre tous les noms d&#39;outils dans la même case."><div class="eyebrow">CARTE DE L’ÉCOSYSTÈME <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Un langage n’est pas un framework</h2><p class="lead">Les outils JavaScript répondent à des problèmes différents.</p><ul class="bullet-list"><li>JavaScript : langage de programmation.</li><li>TypeScript : JavaScript avec un système de types statiques.</li><li>Node.js : environnement d’exécution JavaScript hors navigateur.</li><li>npm : gestion des paquets et des scripts de projet.</li><li>React : bibliothèque d’interface ; Next.js : framework basé sur React.</li></ul></section>
+<section class="slide" data-number="08" role="group" aria-label="Diapositive 08 — La carte mentale en une ligne" data-section="CARTE DE L’ÉCOSYSTÈME" data-notes="Expliquer que cette chaîne est une simplification utile. Tous les projets n&#39;utilisent pas chaque outil."><div class="eyebrow">CARTE DE L’ÉCOSYSTÈME <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>La carte mentale en une ligne</h2><p class="lead">Du code source jusqu’à l’application utilisée.</p><div class="cards"><article class="info-card"><div class="card-index">01</div><h3>LANGAGE</h3><p>JavaScript / TypeScript</p></article><article class="info-card"><div class="card-index">02</div><h3>EXÉCUTION</h3><p>Navigateur / Node.js</p></article><article class="info-card"><div class="card-index">03</div><h3>OUTILS</h3><p>npm / compilateur / Vite</p></article><article class="info-card"><div class="card-index">04</div><h3>PRODUIT</h3><p>Site web / API / application</p></article></div><div class="concept-visual" aria-label="Chaîne d'exécution du code"><div class="concept-visual-head"><span>De l'idée au résultat</span><span>01 — 04</span></div><div class="concept-flow"><div class="concept-node"><strong>Écrire</strong>code source</div><span class="concept-arrow">→</span><div class="concept-node"><strong>Exécuter</strong>runtime</div><span class="concept-arrow">→</span><div class="concept-node"><strong>Observer</strong>résultat</div><span class="concept-arrow">→</span><div class="concept-node"><strong>Corriger</strong>itération</div></div><p class="concept-caption">Le développeur alterne entre hypothèse, exécution et vérification. Une erreur est une information exploitable, pas un verdict.</p></div></section>
+<section class="slide" data-number="09" role="group" aria-label="Diapositive 09 — JavaScript et TypeScript" data-section="CARTE DE L’ÉCOSYSTÈME" data-notes="Préciser que TypeScript ne remplace pas JavaScript : il s&#39;appuie sur lui et le résultat exécuté reste du JavaScript."><div class="eyebrow">CARTE DE L’ÉCOSYSTÈME <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>JavaScript et TypeScript</h2><p class="lead">Ils ne sont pas deux langages concurrents au même niveau.</p><div class="compare-grid"><article class="compare-card"><div class="card-index">A</div><h3>JavaScript</h3><ul class="bullet-list"><li>Le code exécuté par les moteurs JavaScript.</li><li>Types déterminés à l’exécution.</li><li>Souple et directement utilisable dans le navigateur.</li></ul></article><article class="compare-card"><div class="card-index">B</div><h3>TypeScript</h3><ul class="bullet-list"><li>Ajoute des annotations et des contrôles de types.</li><li>Le code est transformé/émis pour l’environnement cible.</li><li>Aide à repérer certaines erreurs avant l’exécution.</li></ul></article></div></section>
+<section class="slide" data-number="10" role="group" aria-label="Diapositive 10 — Que fait le navigateur ?" data-section="CARTE DE L’ÉCOSYSTÈME" data-notes="Distinguer le langage des API du navigateur. document et window ne sont pas disponibles de la même façon dans Node.js."><div class="eyebrow">CARTE DE L’ÉCOSYSTÈME <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Que fait le navigateur ?</h2><p class="lead">Il fournit un environnement pour exécuter JavaScript côté client.</p><ul class="bullet-list"><li>Affiche le HTML et applique le CSS.</li><li>Expose des API comme DOM, événements et fetch.</li><li>Exécute le JavaScript avec son moteur.</li><li>Applique des règles de sécurité, notamment la politique de même origine.</li></ul></section>
+<section class="slide" data-number="11" role="group" aria-label="Diapositive 11 — JavaScript dans le navigateur" data-section="CARTE DE L’ÉCOSYSTÈME" data-notes="Lire le code. Le point d&#39;interrogation après button est l&#39;opérateur de chaînage optionnel : si l&#39;élément n&#39;existe pas, l&#39;appel est évité."><div class="eyebrow">CARTE DE L’ÉCOSYSTÈME <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>JavaScript dans le navigateur</h2><p class="lead">Un événement déclenche une fonction quand l’utilisateur clique.</p><pre class="code"><code>const button = document.querySelector(&quot;button&quot;);
 
 button?.addEventListener(&quot;click&quot;, () =&gt; {
   console.log(&quot;Action déclenchée !&quot;);
 });</code></pre><div class="output"><span>RÉSULTAT ATTENDU</span><pre>Au clic : Action déclenchée !</pre></div></section>
-<section class="slide" data-number="12" data-section="CARTE DE L’ÉCOSYSTÈME" data-notes="Relier l&#39;utilité de Node.js aux outils de développement et aux serveurs. Ne pas laisser croire que tout JavaScript nécessite Node."><div class="eyebrow">CARTE DE L’ÉCOSYSTÈME <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Que fait Node.js ?</h2><p class="lead">Node.js permet d’exécuter JavaScript hors du navigateur.</p><ul class="bullet-list"><li>Lancer des scripts depuis un terminal.</li><li>Créer des API et des services serveur.</li><li>Lire des fichiers et automatiser des tâches.</li><li>Utiliser l’écosystème npm pour installer des outils.</li></ul><div class="callout"><span>À RETENIR</span><p>Node.js est un runtime, pas un framework front-end.</p></div></section>
-<section class="slide" data-number="13" data-section="CARTE DE L’ÉCOSYSTÈME" data-notes="Expliquer qu&#39;un code qui utilise document ne fonctionnera pas tel quel dans un script Node.js."><div class="eyebrow">CARTE DE L’ÉCOSYSTÈME <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Navigateur ou Node.js ?</h2><p class="lead">Le langage est proche ; les capacités de l’environnement changent.</p><div class="compare-grid"><article class="compare-card"><div class="card-index">A</div><h3>Navigateur</h3><ul class="bullet-list"><li>document / DOM</li><li>Événements d’interface</li><li>Stockage et API web</li></ul></article><article class="compare-card"><div class="card-index">B</div><h3>Node.js</h3><ul class="bullet-list"><li>process / système de fichiers</li><li>Serveurs et scripts</li><li>Modules et API Node</li></ul></article></div></section>
-<section class="slide" data-number="14" data-section="CARTE DE L’ÉCOSYSTÈME" data-notes="npm est à la fois le nom du registre et du client en ligne de commande ; pour cette séance, retenez surtout installation et scripts."><div class="eyebrow">CARTE DE L’ÉCOSYSTÈME <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>À quoi sert npm ?</h2><p class="lead">npm aide à partager, installer et exécuter des outils JavaScript.</p><ul class="bullet-list"><li>Installer des dépendances réutilisables.</li><li>Déclarer des scripts dans package.json.</li><li>Conserver les versions résolues avec package-lock.json.</li><li>Exécuter des commandes standardisées dans l’équipe.</li></ul></section>
-<section class="slide" data-number="15" data-section="CARTE DE L’ÉCOSYSTÈME" data-notes="Expliquer pourquoi le dossier node_modules n&#39;est pas commité : il est volumineux et peut être reconstruit avec npm install."><div class="eyebrow">CARTE DE L’ÉCOSYSTÈME <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Lire les fichiers d’un projet</h2><p class="lead">Chaque fichier a un rôle distinct.</p><pre class="code"><code>mon-projet/
+<section class="slide" data-number="12" role="group" aria-label="Diapositive 12 — Que fait Node.js ?" data-section="CARTE DE L’ÉCOSYSTÈME" data-notes="Relier l&#39;utilité de Node.js aux outils de développement et aux serveurs. Ne pas laisser croire que tout JavaScript nécessite Node."><div class="eyebrow">CARTE DE L’ÉCOSYSTÈME <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Que fait Node.js ?</h2><p class="lead">Node.js permet d’exécuter JavaScript hors du navigateur.</p><ul class="bullet-list"><li>Lancer des scripts depuis un terminal.</li><li>Créer des API et des services serveur.</li><li>Lire des fichiers et automatiser des tâches.</li><li>Utiliser l’écosystème npm pour installer des outils.</li></ul><div class="callout"><span>À RETENIR</span><p>Node.js est un runtime, pas un framework front-end.</p></div></section>
+<section class="slide" data-number="13" role="group" aria-label="Diapositive 13 — Navigateur ou Node.js ?" data-section="CARTE DE L’ÉCOSYSTÈME" data-notes="Expliquer qu&#39;un code qui utilise document ne fonctionnera pas tel quel dans un script Node.js."><div class="eyebrow">CARTE DE L’ÉCOSYSTÈME <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Navigateur ou Node.js ?</h2><p class="lead">Le langage est proche ; les capacités de l’environnement changent.</p><div class="compare-grid"><article class="compare-card"><div class="card-index">A</div><h3>Navigateur</h3><ul class="bullet-list"><li>document / DOM</li><li>Événements d’interface</li><li>Stockage et API web</li></ul></article><article class="compare-card"><div class="card-index">B</div><h3>Node.js</h3><ul class="bullet-list"><li>process / système de fichiers</li><li>Serveurs et scripts</li><li>Modules et API Node</li></ul></article></div></section>
+<section class="slide" data-number="14" role="group" aria-label="Diapositive 14 — À quoi sert npm ?" data-section="CARTE DE L’ÉCOSYSTÈME" data-notes="npm est à la fois le nom du registre et du client en ligne de commande ; pour cette séance, retenez surtout installation et scripts."><div class="eyebrow">CARTE DE L’ÉCOSYSTÈME <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>À quoi sert npm ?</h2><p class="lead">npm aide à partager, installer et exécuter des outils JavaScript.</p><ul class="bullet-list"><li>Installer des dépendances réutilisables.</li><li>Déclarer des scripts dans package.json.</li><li>Conserver les versions résolues avec package-lock.json.</li><li>Exécuter des commandes standardisées dans l’équipe.</li></ul></section>
+<section class="slide" data-number="15" role="group" aria-label="Diapositive 15 — Lire les fichiers d’un projet" data-section="CARTE DE L’ÉCOSYSTÈME" data-notes="Expliquer pourquoi le dossier node_modules n&#39;est pas versionné : il est volumineux et peut être reconstruit avec npm install."><div class="eyebrow">CARTE DE L’ÉCOSYSTÈME <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Lire les fichiers d’un projet</h2><p class="lead">Chaque fichier a un rôle distinct.</p><pre class="code"><code>mon-projet/
 ├── package.json       # scripts et dépendances
 ├── package-lock.json  # versions résolues
 ├── src/               # code source
 └── node_modules/      # paquets installés</code></pre><div class="output"><span>RÉSULTAT ATTENDU</span><pre>On versionne généralement package.json et package-lock.json, pas node_modules.</pre></div></section>
-<section class="slide" data-number="16" data-section="CARTE DE L’ÉCOSYSTÈME" data-notes="Ne pas entrer dans le détail des frameworks aujourd&#39;hui. Le but est de savoir les classer et de ne pas les confondre avec le langage."><div class="eyebrow">CARTE DE L’ÉCOSYSTÈME <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Vite, React et Next.js</h2><p class="lead">Ils interviennent à des niveaux différents.</p></section>
-<section class="slide" data-number="17" data-section="CARTE DE L’ÉCOSYSTÈME" data-notes="Faire répondre avant d&#39;afficher la correction. Demander à une personne d&#39;expliquer pourquoi les autres réponses sont incorrectes."><div class="eyebrow">CARTE DE L’ÉCOSYSTÈME <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Vérification 01</h2><p class="lead">Quel énoncé est correct ?</p><div class="quiz" data-answer="1" data-explain="Node.js fournit un runtime JavaScript hors navigateur. React sert à construire des interfaces et CSS décrit la présentation."><div class="quiz-question">Quel outil permet d’exécuter du JavaScript côté serveur ?</div><div class="quiz-options"><button class="quiz-option" data-choice="0"><span>A</span>React</button><button class="quiz-option" data-choice="1"><span>B</span>Node.js</button><button class="quiz-option" data-choice="2"><span>C</span>CSS</button></div><div class="quiz-feedback" aria-live="polite">Choisissez une réponse pour vérifier votre compréhension.</div></div></section>
-<section class="slide" data-number="18" data-section="INSTALLATION &amp; OUTILS" data-notes="Privilégier un environnement déjà prêt pour ne pas perdre l&#39;atelier dans les problèmes d&#39;installation."><div class="eyebrow">INSTALLATION &amp; OUTILS <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>La boîte à outils minimale</h2><p class="lead">Ne commencez pas par installer dix frameworks.</p><ul class="bullet-list"><li>Un éditeur : VS Code ou équivalent.</li><li>Node.js et npm pour exécuter les scripts et gérer les paquets.</li><li>Un terminal pour lancer les commandes.</li><li>Un navigateur pour observer le comportement côté client.</li><li>Git pour versionner le travail — utile dès le début.</li></ul></section>
-<section class="slide" data-number="19" data-section="INSTALLATION &amp; OUTILS" data-notes="Exécuter les commandes en direct si l&#39;environnement est prêt. Sinon, montrer une capture ou un terminal préparé, puis poursuivre sans bloquer le groupe."><div class="eyebrow">INSTALLATION &amp; OUTILS <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Vérifier l’environnement</h2><p class="lead">Avant de coder, vérifier les versions disponibles.</p><pre class="code"><code>node --version
+<section class="slide" data-number="16" role="group" aria-label="Diapositive 16 — Vite, React et Next.js" data-section="CARTE DE L’ÉCOSYSTÈME" data-notes="Ne pas entrer dans le détail des frameworks aujourd&#39;hui. Le but est de savoir les classer et de ne pas les confondre avec le langage."><div class="eyebrow">CARTE DE L’ÉCOSYSTÈME <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Vite, React et Next.js</h2><p class="lead">Ils interviennent à des niveaux différents.</p><ul class="bullet-list"><li>Vite : outil de build et serveur de développement.</li><li>React : bibliothèque pour construire des interfaces.</li><li>Next.js : framework basé sur React.</li></ul></section>
+<section class="slide" data-number="17" role="group" aria-label="Diapositive 17 — Vérification 01" data-section="CARTE DE L’ÉCOSYSTÈME" data-notes="Faire répondre avant d&#39;afficher la correction. Demander à une personne d&#39;expliquer pourquoi les autres réponses sont incorrectes."><div class="eyebrow">CARTE DE L’ÉCOSYSTÈME <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Vérification 01</h2><p class="lead">Quel énoncé est correct ?</p><div class="quiz" data-answer="1" data-explain="Node.js fournit un runtime JavaScript hors navigateur. React sert à construire des interfaces et CSS décrit la présentation."><div class="quiz-question">Quel outil permet d’exécuter du JavaScript côté serveur ?</div><div class="quiz-options"><button class="quiz-option" data-choice="0"><span>A</span>React</button><button class="quiz-option" data-choice="1"><span>B</span>Node.js</button><button class="quiz-option" data-choice="2"><span>C</span>CSS</button></div><div class="quiz-feedback" aria-live="polite">Choisissez une réponse pour vérifier votre compréhension.</div></div></section>
+<section class="slide" data-number="18" role="group" aria-label="Diapositive 18 — La boîte à outils minimale" data-section="INSTALLATION &amp; OUTILS" data-notes="Privilégier un environnement déjà prêt pour ne pas perdre l&#39;atelier dans les problèmes d&#39;installation."><div class="eyebrow">INSTALLATION &amp; OUTILS <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>La boîte à outils minimale</h2><p class="lead">Ne commencez pas par installer dix frameworks.</p><ul class="bullet-list"><li>Un éditeur : VS Code ou équivalent.</li><li>Node.js et npm pour exécuter les scripts et gérer les paquets.</li><li>Un terminal pour lancer les commandes.</li><li>Un navigateur pour observer le comportement côté client.</li><li>Git pour versionner le travail — utile dès le début.</li></ul></section>
+<section class="slide" data-number="19" role="group" aria-label="Diapositive 19 — Vérifier l’environnement" data-section="INSTALLATION &amp; OUTILS" data-notes="Exécuter les commandes en direct si l&#39;environnement est prêt. Sinon, montrer une capture ou un terminal préparé, puis poursuivre sans bloquer le groupe."><div class="eyebrow">INSTALLATION &amp; OUTILS <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Vérifier l’environnement</h2><p class="lead">Avant de coder, vérifier les versions disponibles.</p><pre class="code"><code>node --version
 npm --version</code></pre><div class="output"><span>RÉSULTAT ATTENDU</span><pre>Les commandes doivent afficher des numéros de version.</pre></div></section>
-<section class="slide" data-number="20" data-section="INSTALLATION &amp; OUTILS" data-notes="Expliquer brièvement le rôle de chaque commande. Le suffixe -y accepte les valeurs par défaut pour aller vite."><div class="eyebrow">INSTALLATION &amp; OUTILS <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Créer un dossier de travail</h2><p class="lead">Un projet commence par un répertoire clair.</p><pre class="code"><code>mkdir premiers-pas-js
+<section class="slide" data-number="20" role="group" aria-label="Diapositive 20 — Créer un dossier de travail" data-section="INSTALLATION &amp; OUTILS" data-notes="Expliquer brièvement le rôle de chaque commande. Le suffixe -y accepte les valeurs par défaut pour aller vite."><div class="eyebrow">INSTALLATION &amp; OUTILS <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Créer un dossier de travail</h2><p class="lead">Un projet commence par un répertoire clair.</p><pre class="code"><code>mkdir premiers-pas-js
 cd premiers-pas-js
 npm init -y</code></pre><div class="output"><span>RÉSULTAT ATTENDU</span><pre>npm crée un package.json initial.</pre></div></section>
-<section class="slide" data-number="21" data-section="INSTALLATION &amp; OUTILS" data-notes="Faire le lien entre le fichier source et le processus Node.js qui l&#39;exécute."><div class="eyebrow">INSTALLATION &amp; OUTILS <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Comment exécuter un fichier .js</h2><p class="lead">Le terminal lance le runtime avec le fichier en argument.</p><pre class="code"><code>// hello.js
+<section class="slide" data-number="21" role="group" aria-label="Diapositive 21 — Comment exécuter un fichier .js" data-section="INSTALLATION &amp; OUTILS" data-notes="Faire le lien entre le fichier source et le processus Node.js qui l&#39;exécute."><div class="eyebrow">INSTALLATION &amp; OUTILS <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Comment exécuter un fichier .js</h2><p class="lead">Le terminal lance le runtime avec le fichier en argument.</p><pre class="code"><code>// hello.js
 console.log(&quot;Bonjour HashCode&quot;);
 
 // terminal
 node hello.js</code></pre></section>
-<section class="slide" data-number="22" data-section="INSTALLATION &amp; OUTILS" data-notes="Laisser quelques secondes. Demander une prédiction et lancer le code pour vérifier."><div class="eyebrow">INSTALLATION &amp; OUTILS <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Prédisez avant d’exécuter</h2><p class="lead">Le réflexe d’un bon développeur est de prévoir le résultat.</p><pre class="code"><code>const city = &quot;Cotonou&quot;;
+<section class="slide" data-number="22" role="group" aria-label="Diapositive 22 — Prédisez avant d’exécuter" data-section="INSTALLATION &amp; OUTILS" data-notes="Laisser quelques secondes. Demander une prédiction et lancer le code pour vérifier."><div class="eyebrow">INSTALLATION &amp; OUTILS <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Prédisez avant d’exécuter</h2><p class="lead">Le réflexe d’un bon développeur est de prévoir le résultat.</p><pre class="code"><code>const city = &quot;Cotonou&quot;;
 console.log(&quot;Bonjour &quot; + city);</code></pre><div class="callout"><span>À VOUS</span><p>Écrivez mentalement la sortie exacte avant de lancer le programme.</p></div></section>
-<section class="slide" data-number="23" data-section="INSTALLATION &amp; OUTILS" data-notes="Installer une méthode de débogage plutôt que le réflexe de copier l&#39;erreur sans la comprendre."><div class="eyebrow">INSTALLATION &amp; OUTILS <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Lire une erreur sans paniquer</h2><p class="lead">Un message d’erreur est une information de diagnostic.</p><ul class="bullet-list"><li>Lire le type d’erreur avant de modifier le code.</li><li>Repérer le fichier et la ligne concernés.</li><li>Identifier la dernière ligne pertinente de la trace.</li><li>Reproduire le problème avec le plus petit exemple possible.</li><li>Changer une chose à la fois, puis retester.</li></ul></section>
-<section class="slide" data-number="24" data-section="JAVASCRIPT — LES FONDAMENTAUX" data-notes="Transition : nous avons la carte et l&#39;environnement ; maintenant nous allons lire et écrire le langage."><div class="section-screen"><div class="section-mark">HASHCODE / MASTERCLASS</div><h1>Partie 02</h1><p class="lead">Les briques de base : valeurs, décisions, fonctions et collections.</p><div class="section-rule"></div></div></section>
-<section class="slide" data-number="25" data-section="JAVASCRIPT — LES FONDAMENTAUX" data-notes="Préciser que const n&#39;empêche pas de modifier le contenu d&#39;un objet ou d&#39;un tableau ; il empêche de réassigner la liaison."><div class="eyebrow">JAVASCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Une variable est une liaison</h2><p class="lead">Le nom permet de réutiliser une valeur dans le programme.</p><ul class="bullet-list"><li>const : la liaison ne sera pas réassignée.</li><li>let : la liaison pourra recevoir une autre valeur.</li><li>Éviter var dans les nouveaux exemples d’initiation.</li></ul><pre class="code"><code>const community = &quot;HashCode&quot;;
+<section class="slide" data-number="23" role="group" aria-label="Diapositive 23 — Lire une erreur sans paniquer" data-section="INSTALLATION &amp; OUTILS" data-notes="Installer une méthode de débogage plutôt que le réflexe de copier l&#39;erreur sans la comprendre."><div class="eyebrow">INSTALLATION &amp; OUTILS <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Lire une erreur sans paniquer</h2><p class="lead">Un message d’erreur est une information de diagnostic.</p><ul class="bullet-list"><li>Lire le type d’erreur avant de modifier le code.</li><li>Repérer le fichier et la ligne concernés.</li><li>Identifier la dernière ligne pertinente de la trace.</li><li>Reproduire le problème avec le plus petit exemple possible.</li><li>Changer une chose à la fois, puis retester.</li></ul></section>
+<section class="slide" data-number="24" role="group" aria-label="Diapositive 24 — Partie 01" data-section="JAVASCRIPT — LES FONDAMENTAUX" data-notes="Transition : nous avons la carte et l&#39;environnement ; maintenant nous allons lire et écrire le langage."><span class="section-wipe" aria-hidden="true"></span><div class="section-screen"><div class="section-mark">HASHCODE / MASTERCLASS</div><h1>Partie 01</h1><p class="lead">Les briques de base : valeurs, décisions, fonctions et collections.</p><div class="section-rule"></div></div></section>
+<section class="slide" data-number="25" role="group" aria-label="Diapositive 25 — Une variable est une liaison" data-section="JAVASCRIPT — LES FONDAMENTAUX" data-notes="Préciser que const n&#39;empêche pas de modifier le contenu d&#39;un objet ou d&#39;un tableau ; il empêche de réassigner la liaison."><div class="eyebrow">JAVASCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Une variable est une liaison</h2><p class="lead">Le nom permet de réutiliser une valeur dans le programme.</p><ul class="bullet-list"><li>const : la liaison ne sera pas réassignée.</li><li>let : la liaison pourra recevoir une autre valeur.</li><li>Éviter var dans les nouveaux exemples d’initiation.</li></ul><pre class="code"><code>const community = &quot;HashCode&quot;;
 let participants = 12;</code></pre></section>
-<section class="slide" data-number="26" data-section="JAVASCRIPT — LES FONDAMENTAUX" data-notes="Demander : quel mot-clé pour un prix fixe ? Et pour un compteur qui augmente ?"><div class="eyebrow">JAVASCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>const ou let ?</h2><p class="lead">Choisir selon l’intention du programme.</p><div class="compare-grid"><article class="compare-card"><div class="card-index">A</div><h3>const</h3><ul class="bullet-list"><li>Valeur de liaison stable.</li><li>Choix par défaut recommandé.</li><li>Réduit les réassignations accidentelles.</li></ul></article><article class="compare-card"><div class="card-index">B</div><h3>let</h3><ul class="bullet-list"><li>Valeur réassignée plus tard.</li><li>Utile pour un compteur ou un état local.</li><li>À utiliser seulement si nécessaire.</li></ul></article></div></section>
-<section class="slide" data-number="27" data-section="JAVASCRIPT — LES FONDAMENTAUX" data-notes="Faire expliquer la différence entre la valeur et la possibilité de réassigner la liaison."><div class="eyebrow">JAVASCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Vérification 02</h2><p class="lead">Quelle déclaration correspond à un compteur qui augmente ?</p><div class="quiz" data-answer="1" data-explain="let autorise la réassignation. const provoquerait une erreur si on réassignait count. var n’est pas obligatoire."><div class="quiz-question">Quelle option est la plus adaptée ?</div><div class="quiz-options"><button class="quiz-option" data-choice="0"><span>A</span>const count = 0; puis count = count + 1</button><button class="quiz-option" data-choice="1"><span>B</span>let count = 0; puis count = count + 1</button><button class="quiz-option" data-choice="2"><span>C</span>var count = 0; obligatoire</button></div><div class="quiz-feedback" aria-live="polite">Choisissez une réponse pour vérifier votre compréhension.</div></div></section>
-<section class="slide" data-number="28" data-section="JAVASCRIPT — LES FONDAMENTAUX" data-notes="Ne pas chercher à couvrir tous les détails du système de types. Le but est de reconnaître les valeurs et d&#39;éviter les confusions courantes."><div class="eyebrow">JAVASCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Les types primitifs à reconnaître</h2><p class="lead">Le type influence les opérations possibles sur une valeur.</p></section>
-<section class="slide" data-number="29" data-section="JAVASCRIPT — LES FONDAMENTAUX" data-notes="Expliquer que + peut concaténer les chaînes, tandis que - force ici une conversion numérique. Une chaîne vide est falsy."><div class="eyebrow">JAVASCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Les conversions peuvent surprendre</h2><p class="lead">JavaScript convertit parfois implicitement les valeurs.</p><pre class="code"><code>console.log(&quot;5&quot; + 2);
+<section class="slide" data-number="26" role="group" aria-label="Diapositive 26 — const ou let ?" data-section="JAVASCRIPT — LES FONDAMENTAUX" data-notes="Demander : quel mot-clé pour un prix fixe ? Et pour un compteur qui augmente ?"><div class="eyebrow">JAVASCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>const ou let ?</h2><p class="lead">Choisir selon l’intention du programme.</p><div class="compare-grid"><article class="compare-card"><div class="card-index">A</div><h3>const</h3><ul class="bullet-list"><li>Valeur de liaison stable.</li><li>Choix par défaut recommandé.</li><li>Réduit les réassignations accidentelles.</li></ul></article><article class="compare-card"><div class="card-index">B</div><h3>let</h3><ul class="bullet-list"><li>Valeur réassignée plus tard.</li><li>Utile pour un compteur ou un état local.</li><li>À utiliser seulement si nécessaire.</li></ul></article></div></section>
+<section class="slide" data-number="27" role="group" aria-label="Diapositive 27 — Vérification 02" data-section="JAVASCRIPT — LES FONDAMENTAUX" data-notes="Faire expliquer la différence entre la valeur et la possibilité de réassigner la liaison."><div class="eyebrow">JAVASCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Vérification 02</h2><p class="lead">Quelle déclaration correspond à un compteur qui augmente ?</p><div class="quiz" data-answer="1" data-explain="let autorise la réassignation. const provoquerait une erreur si on réassignait count. var n’est pas obligatoire."><div class="quiz-question">Quelle option est la plus adaptée ?</div><div class="quiz-options"><button class="quiz-option" data-choice="0"><span>A</span>const count = 0; puis count = count + 1</button><button class="quiz-option" data-choice="1"><span>B</span>let count = 0; puis count = count + 1</button><button class="quiz-option" data-choice="2"><span>C</span>var count = 0; obligatoire</button></div><div class="quiz-feedback" aria-live="polite">Choisissez une réponse pour vérifier votre compréhension.</div></div></section>
+<section class="slide" data-number="28" role="group" aria-label="Diapositive 28 — Les types primitifs à reconnaître" data-section="JAVASCRIPT — LES FONDAMENTAUX" data-notes="Ne pas chercher à couvrir tous les détails du système de types. Le but est de reconnaître les valeurs et d&#39;éviter les confusions courantes."><div class="eyebrow">JAVASCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Les types primitifs à reconnaître</h2><p class="lead">Le type influence les opérations possibles sur une valeur.</p><ul class="bullet-list"><li>string : texte — « HashCode ».</li><li>number : entiers et décimaux — 42, 3.14.</li><li>boolean : true ou false.</li><li>null : absence volontaire de valeur.</li><li>undefined : aucune valeur assignée.</li><li>object : objets et tableaux.</li><li>symbol et bigint : cas plus rares, à connaître de nom.</li></ul><pre class="code"><code>typeof "HashCode"; // "string"
+typeof 42;         // "number"
+typeof true;       // "boolean"
+typeof undefined;  // "undefined"
+typeof null;       // "object" (particularité historique)</code></pre></section>
+<section class="slide" data-number="29" role="group" aria-label="Diapositive 29 — Les conversions peuvent surprendre" data-section="JAVASCRIPT — LES FONDAMENTAUX" data-notes="Expliquer que + peut concaténer les chaînes, tandis que - force ici une conversion numérique. Une chaîne vide est falsy."><div class="eyebrow">JAVASCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Les conversions peuvent surprendre</h2><p class="lead">JavaScript convertit parfois implicitement les valeurs.</p><pre class="code"><code>console.log(&quot;5&quot; + 2);
 console.log(&quot;5&quot; - 2);
-console.log(Boolean(&quot;&quot;));</code></pre><div class="output"><span>RÉSULTAT ATTENDU</span><pre>&quot;52&quot;\n3\nfalse</pre></div></section>
-<section class="slide" data-number="30" data-section="JAVASCRIPT — LES FONDAMENTAUX" data-notes="Faire prédire les deux résultats. Mentionner que la comparaison stricte compare valeur et type pour ces primitives."><div class="eyebrow">JAVASCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Comparer avec ===</h2><p class="lead">L’égalité stricte évite la coercition de type de ==.</p><pre class="code"><code>5 == &quot;5&quot;   // true
+console.log(Boolean(&quot;&quot;));</code></pre><div class="output"><span>RÉSULTAT ATTENDU</span><pre>52\n3\nfalse</pre></div></section>
+<section class="slide" data-number="30" role="group" aria-label="Diapositive 30 — Comparer avec ===" data-section="JAVASCRIPT — LES FONDAMENTAUX" data-notes="Faire prédire les deux résultats. Mentionner que la comparaison stricte compare valeur et type pour ces primitives."><div class="eyebrow">JAVASCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Comparer avec ===</h2><p class="lead">L’égalité stricte évite la coercition de type de ==.</p><pre class="code"><code>5 == &quot;5&quot;   // true
 5 === &quot;5&quot;  // false</code></pre><div class="callout"><span>À RETENIR</span><p>En pratique, privilégiez === sauf raison explicite d’utiliser ==.</p></div></section>
-<section class="slide" data-number="31" data-section="JAVASCRIPT — LES FONDAMENTAUX" data-notes="Demander comment modifier le score pour obtenir l&#39;autre branche."><div class="eyebrow">JAVASCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Les conditions prennent une décision</h2><p class="lead">if / else choisit un chemin selon une expression booléenne.</p><pre class="code"><code>const score = 72;
+<section class="slide" data-number="31" role="group" aria-label="Diapositive 31 — Les conditions prennent une décision" data-section="JAVASCRIPT — LES FONDAMENTAUX" data-notes="Demander comment modifier le score pour obtenir l&#39;autre branche."><div class="eyebrow">JAVASCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Les conditions prennent une décision</h2><p class="lead">if / else choisit un chemin selon une expression booléenne.</p><pre class="code"><code>const score = 72;
 
 if (score &gt;= 50) {
   console.log(&quot;Validé&quot;);
 } else {
   console.log(&quot;À retravailler&quot;);
-}</code></pre></section>
-<section class="slide" data-number="32" data-section="JAVASCRIPT — LES FONDAMENTAUX" data-notes="Lire les trois parties de la boucle for : initialisation, condition, mise à jour. Attention à la condition d&#39;arrêt."><div class="eyebrow">JAVASCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Les boucles répètent une action</h2><p class="lead">Utiliser une boucle quand une logique doit s’appliquer plusieurs fois.</p><pre class="code"><code>for (let i = 1; i &lt;= 3; i++) {
+}</code></pre><div class="output"><span>RÉSULTAT ATTENDU</span><pre>Validé</pre></div></section>
+<section class="slide" data-number="32" role="group" aria-label="Diapositive 32 — Les boucles répètent une action" data-section="JAVASCRIPT — LES FONDAMENTAUX" data-notes="Lire les trois parties de la boucle for : initialisation, condition, mise à jour. Attention à la condition d&#39;arrêt."><div class="eyebrow">JAVASCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Les boucles répètent une action</h2><p class="lead">Utiliser une boucle quand une logique doit s’appliquer plusieurs fois.</p><pre class="code"><code>for (let i = 1; i &lt;= 3; i++) {
   console.log(`Étape ${i}`);
-}</code></pre></section>
-<section class="slide" data-number="33" data-section="JAVASCRIPT — LES FONDAMENTAUX" data-notes="Distinguer paramètres, arguments, corps et valeur de retour. Une fonction facilite la réutilisation."><div class="eyebrow">JAVASCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Une fonction nomme une action</h2><p class="lead">Une fonction transforme des entrées en un résultat ou produit un effet.</p><pre class="code"><code>function greet(name) {
+}</code></pre><div class="output"><span>RÉSULTAT ATTENDU</span><pre>Étape 1\nÉtape 2\nÉtape 3</pre></div></section>
+<section class="slide" data-number="33" role="group" aria-label="Diapositive 33 — Une fonction nomme une action" data-section="JAVASCRIPT — LES FONDAMENTAUX" data-notes="Distinguer paramètres, arguments, corps et valeur de retour. Une fonction facilite la réutilisation."><div class="eyebrow">JAVASCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Une fonction nomme une action</h2><p class="lead">Une fonction transforme des entrées en un résultat ou produit un effet.</p><pre class="code"><code>function greet(name) {
   return `Bonjour ${name}`;
 }
 
-console.log(greet(&quot;Eurin&quot;));</code></pre></section>
-<section class="slide" data-number="34" data-section="JAVASCRIPT — LES FONDAMENTAUX" data-notes="Ne pas approfondir this aujourd&#39;hui. Expliquer qu&#39;une fonction fléchée n&#39;est pas simplement une écriture plus courte dans tous les contextes."><div class="eyebrow">JAVASCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>function ou fonction fléchée ?</h2><p class="lead">Les deux formes sont utiles ; choisissez la plus lisible.</p><div class="compare-grid"><article class="compare-card"><div class="card-index">A</div><h3>Fonction déclarée</h3><ul class="bullet-list"><li>function sum(a, b) { return a + b; }</li><li>Peut être appelée avant sa déclaration grâce au hoisting de la déclaration.</li></ul></article><article class="compare-card"><div class="card-index">B</div><h3>Fonction fléchée</h3><ul class="bullet-list"><li>const sum = (a, b) =&gt; a + b;</li><li>Courante pour les callbacks et fonctions courtes.</li><li>Le comportement de this diffère.</li></ul></article></div></section>
-<section class="slide" data-number="35" data-section="JAVASCRIPT — LES FONDAMENTAUX" data-notes="Les indices commencent à zéro. length donne le nombre d&#39;éléments."><div class="eyebrow">JAVASCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Un tableau garde une collection ordonnée</h2><p class="lead">Les tableaux permettent d’itérer et de transformer des listes.</p><pre class="code"><code>const prices = [1000, 2500, 1500];
+console.log(greet(&quot;Eurin&quot;));</code></pre><div class="output"><span>RÉSULTAT ATTENDU</span><pre>Bonjour Eurin</pre></div></section>
+<section class="slide" data-number="34" role="group" aria-label="Diapositive 34 — function ou fonction fléchée ?" data-section="JAVASCRIPT — LES FONDAMENTAUX" data-notes="Ne pas approfondir this aujourd&#39;hui. Expliquer qu&#39;une fonction fléchée n&#39;est pas simplement une écriture plus courte dans tous les contextes."><div class="eyebrow">JAVASCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>function ou fonction fléchée ?</h2><p class="lead">Les deux formes sont utiles ; choisissez la plus lisible.</p><div class="compare-grid"><article class="compare-card"><div class="card-index">A</div><h3>Fonction déclarée</h3><ul class="bullet-list"><li>function sum(a, b) { return a + b; }</li><li>Peut être appelée avant sa déclaration grâce au hoisting de la déclaration.</li></ul></article><article class="compare-card"><div class="card-index">B</div><h3>Fonction fléchée</h3><ul class="bullet-list"><li>const sum = (a, b) =&gt; a + b;</li><li>Courante pour les callbacks et fonctions courtes.</li><li>Le comportement de this diffère.</li></ul></article></div></section>
+<section class="slide" data-number="35" role="group" aria-label="Diapositive 35 — Un tableau garde une collection ordonnée" data-section="JAVASCRIPT — LES FONDAMENTAUX" data-notes="Les indices commencent à zéro. length donne le nombre d&#39;éléments."><div class="eyebrow">JAVASCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Un tableau garde une collection ordonnée</h2><p class="lead">Les tableaux permettent d’itérer et de transformer des listes.</p><pre class="code"><code>const prices = [1000, 2500, 1500];
 
 console.log(prices.length);
 console.log(prices[0]);</code></pre><div class="output"><span>RÉSULTAT ATTENDU</span><pre>3\n1000</pre></div></section>
-<section class="slide" data-number="36" data-section="JAVASCRIPT — LES FONDAMENTAUX" data-notes="Expliquer que map transforme chaque valeur. Le tableau initial n&#39;est pas modifié par cet appel."><div class="eyebrow">JAVASCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>map transforme chaque élément</h2><p class="lead">map renvoie un nouveau tableau de même longueur.</p><pre class="code"><code>const prices = [1000, 2500, 1500];
+<section class="slide" data-number="36" role="group" aria-label="Diapositive 36 — map transforme chaque élément" data-section="JAVASCRIPT — LES FONDAMENTAUX" data-notes="Expliquer que map transforme chaque valeur. Le tableau initial n&#39;est pas modifié par cet appel."><div class="eyebrow">JAVASCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>map transforme chaque élément</h2><p class="lead">map renvoie un nouveau tableau de même longueur.</p><pre class="code"><code>const prices = [1000, 2500, 1500];
 const withTax = prices.map(price =&gt; price * 1.18);</code></pre><div class="concept-visual"><div class="concept-visual-head"><span>Map — transformer chaque élément</span><span>Entrée → Sortie</span></div><div class="concept-flow"><div class="concept-node">[2, 4, 6]</div><span class="concept-arrow">→</span><div class="concept-node"><strong>x × 2</strong>transformation</div><span class="concept-arrow">→</span><div class="concept-node">[4, 8, 12]</div></div><p class="concept-caption">Même nombre d'éléments ; chaque valeur de sortie correspond à une valeur transformée de l'entrée. Le tableau d'origine n'est pas modifié.</p></div></section>
-<section class="slide" data-number="37" data-section="JAVASCRIPT — LES FONDAMENTAUX" data-notes="Faire verbaliser le critère de sélection. La sortie peut être plus courte que le tableau de départ."><div class="eyebrow">JAVASCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>filter sélectionne des éléments</h2><p class="lead">filter garde uniquement les éléments dont le test renvoie true.</p><pre class="code"><code>const scores = [35, 82, 49, 91];
+<section class="slide" data-number="37" role="group" aria-label="Diapositive 37 — filter sélectionne des éléments" data-section="JAVASCRIPT — LES FONDAMENTAUX" data-notes="Faire verbaliser le critère de sélection. La sortie peut être plus courte que le tableau de départ."><div class="eyebrow">JAVASCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>filter sélectionne des éléments</h2><p class="lead">filter garde uniquement les éléments dont le test renvoie true.</p><pre class="code"><code>const scores = [35, 82, 49, 91];
 const passed = scores.filter(score =&gt; score &gt;= 50);</code></pre><div class="concept-visual"><div class="concept-visual-head"><span>Filter — sélectionner</span><span>Entrée → Sortie</span></div><div class="concept-flow"><div class="concept-node">[2, 5, 8, 3]</div><span class="concept-arrow">→</span><div class="concept-node"><strong>x &gt; 4</strong>condition</div><span class="concept-arrow">→</span><div class="concept-node">[5, 8]</div></div><p class="concept-caption">Le prédicat renvoie true ou false pour chaque élément. Seuls les éléments qui satisfont la condition restent dans le nouveau tableau.</p></div></section>
-<section class="slide" data-number="38" data-section="JAVASCRIPT — LES FONDAMENTAUX" data-notes="Décrire sum comme l&#39;accumulateur et 0 comme valeur initiale. Ne pas présenter reduce comme obligatoire : une boucle est parfois plus simple à lire."><div class="eyebrow">JAVASCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>reduce accumule une valeur</h2><p class="lead">reduce combine une collection en une valeur finale.</p><pre class="code"><code>const prices = [1000, 2500, 1500];
+<section class="slide" data-number="38" role="group" aria-label="Diapositive 38 — reduce accumule une valeur" data-section="JAVASCRIPT — LES FONDAMENTAUX" data-notes="Décrire sum comme l&#39;accumulateur et 0 comme valeur initiale. Ne pas présenter reduce comme obligatoire : une boucle est parfois plus simple à lire."><div class="eyebrow">JAVASCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>reduce accumule une valeur</h2><p class="lead">reduce combine une collection en une valeur finale.</p><pre class="code"><code>const prices = [1000, 2500, 1500];
 const total = prices.reduce(
   (sum, price) =&gt; sum + price,
   0
 );</code></pre><div class="concept-visual"><div class="concept-visual-head"><span>Reduce — accumuler</span><span>État de l'accumulateur</span></div><div class="concept-step"><span class="active">Départ : 0</span><span>+ 2 → 2</span><span>+ 4 → 6</span><span>+ 6 → 12</span><span class="active">Total : 12</span></div><p class="concept-caption">À chaque itération, reduce reçoit l'accumulateur courant et l'élément. Il renvoie une valeur finale, ici la somme.</p></div></section>
-<section class="slide" data-number="39" data-section="JAVASCRIPT — LES FONDAMENTAUX" data-notes="Les objets conviennent pour représenter une tâche, un utilisateur ou une commande. Les propriétés ont chacune un nom."><div class="eyebrow">JAVASCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Un objet regroupe des propriétés</h2><p class="lead">Les objets représentent une entité avec des champs nommés.</p><pre class="code"><code>const task = {
+<section class="slide" data-number="39" role="group" aria-label="Diapositive 39 — Un objet regroupe des propriétés" data-section="JAVASCRIPT — LES FONDAMENTAUX" data-notes="Les objets conviennent pour représenter une tâche, un utilisateur ou une commande. Les propriétés ont chacune un nom."><div class="eyebrow">JAVASCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Un objet regroupe des propriétés</h2><p class="lead">Les objets représentent une entité avec des champs nommés.</p><pre class="code"><code>const task = {
   id: 1,
   title: &quot;Apprendre JavaScript&quot;,
   completed: false,
 };
 
 console.log(task.title);</code></pre><div class="output"><span>RÉSULTAT ATTENDU</span><pre>Apprendre JavaScript</pre></div></section>
-<section class="slide" data-number="40" data-section="JAVASCRIPT — LES FONDAMENTAUX" data-notes="Relier cette structure aux réponses d&#39;une API et au projet de l&#39;atelier."><div class="eyebrow">JAVASCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Des objets dans un tableau</h2><p class="lead">C’est une structure fréquente dans les applications.</p><pre class="code"><code>const tasks = [
+<section class="slide" data-number="40" role="group" aria-label="Diapositive 40 — Des objets dans un tableau" data-section="JAVASCRIPT — LES FONDAMENTAUX" data-notes="Relier cette structure aux réponses d&#39;une API et au projet de l&#39;atelier."><div class="eyebrow">JAVASCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Des objets dans un tableau</h2><p class="lead">C’est une structure fréquente dans les applications.</p><pre class="code"><code>const tasks = [
   { id: 1, title: &quot;Lire&quot;, completed: true },
   { id: 2, title: &quot;Pratiquer&quot;, completed: false },
 ];
 
-const todo = tasks.filter(task =&gt; !task.completed);</code></pre></section>
-<section class="slide" data-number="41" data-section="JAVASCRIPT — LES FONDAMENTAUX" data-notes="Laisser les participants coder. Passer par une boucle si reduce n&#39;est pas compris. Correction : reduce((sum, price) =&gt; sum + price, 0), puis prices.length."><div class="eyebrow">JAVASCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Exercice guidé : calculer un panier</h2><p class="lead">Travail individuel — 3 minutes.</p><ul class="bullet-list"><li>Vous recevez [1200, 800, 2500].</li><li>Calculez la somme sans écrire le résultat en dur.</li><li>Affichez le total dans la console.</li><li>Bonus : comptez le nombre d’articles.</li></ul><div class="callout"><span>À VOUS</span><p>Avant de coder, écrivez en une phrase ce que doit faire votre programme.</p></div></section>
-<section class="slide" data-number="42" data-section="JAVASCRIPT — LES FONDAMENTAUX" data-notes="Demander aux participants d&#39;expliquer le 0 et le rôle des deux paramètres de la fonction passée à reduce."><div class="eyebrow">JAVASCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Correction : le panier</h2><p class="lead">Une solution compacte avec reduce.</p><pre class="code"><code>const prices = [1200, 800, 2500];
+const todo = tasks.filter(task =&gt; !task.completed);</code></pre><div class="output"><span>RÉSULTAT ATTENDU</span><pre>[ { id: 2, title: "Pratiquer", completed: false } ]</pre></div></section>
+<section class="slide" data-number="41" role="group" aria-label="Diapositive 41 — Exercice guidé : calculer un panier" data-section="JAVASCRIPT — LES FONDAMENTAUX" data-notes="Laisser les participants coder. Passer par une boucle si reduce n&#39;est pas compris. Correction : reduce((sum, price) =&gt; sum + price, 0), puis prices.length."><div class="eyebrow">JAVASCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Exercice guidé : calculer un panier</h2><p class="lead">Travail individuel — 3 minutes.</p><ul class="bullet-list"><li>Vous recevez [1200, 800, 2500].</li><li>Calculez la somme sans écrire le résultat en dur.</li><li>Affichez le total dans la console.</li><li>Bonus : comptez le nombre d’articles.</li></ul><div class="callout"><span>À VOUS</span><p>Avant de coder, écrivez en une phrase ce que doit faire votre programme.</p></div><div class="callout"><span>CRITÈRES DE RÉUSSITE</span><p>Total affiché = 4500 · Articles = 3 via length (bonus) · la somme est calculée par le code, jamais écrite en dur.</p></div></section>
+<section class="slide" data-number="42" role="group" aria-label="Diapositive 42 — Correction : le panier" data-section="JAVASCRIPT — LES FONDAMENTAUX" data-notes="Demander aux participants d&#39;expliquer le 0 et le rôle des deux paramètres de la fonction passée à reduce."><div class="eyebrow">JAVASCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Correction : le panier</h2><p class="lead">Une solution compacte avec reduce.</p><pre class="code"><code>const prices = [1200, 800, 2500];
 const total = prices.reduce((sum, price) =&gt; sum + price, 0);
 
 console.log(&quot;Total :&quot;, total);
 console.log(&quot;Articles :&quot;, prices.length);</code></pre><div class="output"><span>RÉSULTAT ATTENDU</span><pre>Total : 4500\nArticles : 3</pre></div></section>
-<section class="slide" data-number="43" data-section="JAVASCRIPT — LES FONDAMENTAUX" data-notes="Relier ce point à la validation des données provenant d&#39;un formulaire ou d&#39;une API."><div class="eyebrow">JAVASCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Les valeurs peuvent être absentes</h2><p class="lead">Les données réelles sont parfois incomplètes.</p><ul class="bullet-list"><li>Vérifier qu’une propriété existe avant de l’utiliser.</li><li>Ne pas supposer que toutes les données reçues sont complètes.</li><li>Utiliser des valeurs par défaut quand cela a du sens.</li></ul><pre class="code"><code>const user = { name: &quot;Ada&quot; };
+<section class="slide" data-number="43" role="group" aria-label="Diapositive 43 — Les valeurs peuvent être absentes" data-section="JAVASCRIPT — LES FONDAMENTAUX" data-notes="Relier ce point à la validation des données provenant d&#39;un formulaire ou d&#39;une API."><div class="eyebrow">JAVASCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Les valeurs peuvent être absentes</h2><p class="lead">Les données réelles sont parfois incomplètes.</p><ul class="bullet-list"><li>Vérifier qu’une propriété existe avant de l’utiliser.</li><li>Ne pas supposer que toutes les données reçues sont complètes.</li><li>Utiliser des valeurs par défaut quand cela a du sens.</li></ul><pre class="code"><code>const user = { name: &quot;Ada&quot; };
 console.log(user.email); // undefined</code></pre></section>
-<section class="slide" data-number="44" data-section="JAVASCRIPT — LES FONDAMENTAUX" data-notes="Demander pourquoi la réponse 6 correspondrait plutôt à une réduction/somme."><div class="eyebrow">JAVASCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Vérification 03</h2><p class="lead">Quel tableau est renvoyé ?</p><div class="quiz" data-answer="1" data-explain="map transforme chaque élément et renvoie un tableau. reduce serait une option pour accumuler une seule valeur."><div class="quiz-question">const nums = [1, 2, 3]; nums.map(n =&gt; n * 2)</div><div class="quiz-options"><button class="quiz-option" data-choice="0"><span>A</span>[1, 2, 3]</button><button class="quiz-option" data-choice="1"><span>B</span>[2, 4, 6]</button><button class="quiz-option" data-choice="2"><span>C</span>6</button></div><div class="quiz-feedback" aria-live="polite">Choisissez une réponse pour vérifier votre compréhension.</div></div></section>
-<section class="slide" data-number="45" data-section="JAVASCRIPT — LES FONDAMENTAUX" data-notes="Faire reformuler un concept par un participant. Puis transitionner vers TypeScript : comment rendre la forme des données plus explicite ?"><div class="eyebrow">JAVASCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>JavaScript : les repères essentiels</h2><p class="lead">Si vous retenez cinq choses, retenez celles-ci.</p><ul class="bullet-list"><li>const par défaut ; let si réassignation nécessaire.</li><li>=== pour éviter les conversions implicites de ==.</li><li>Une fonction isole une action ou un calcul.</li><li>map transforme ; filter sélectionne ; reduce accumule.</li><li>Un tableau d’objets est une structure de données très fréquente.</li></ul></section>
-<section class="slide" data-number="46" data-section="TYPESCRIPT — LES FONDAMENTAUX" data-notes="Rappeler que TypeScript ne remplace pas JavaScript : il apporte une vérification statique au développement."><div class="section-screen"><div class="section-mark">HASHCODE / MASTERCLASS</div><h1>Partie 03</h1><p class="lead">Ajouter des contrats au code pour détecter certaines erreurs plus tôt.</p><div class="section-rule"></div></div></section>
-<section class="slide" data-number="47" data-section="TYPESCRIPT — LES FONDAMENTAUX" data-notes="Ne pas dire que JavaScript est faible ou mauvais. Le problème est l&#39;ambiguïté du contrat lorsque le code grandit."><div class="eyebrow">TYPESCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Le problème que TypeScript aide à résoudre</h2><p class="lead">Une erreur peut venir d’une valeur qui n’a pas la forme attendue.</p><pre class="code"><code>function double(value) {
+<section class="slide" data-number="44" role="group" aria-label="Diapositive 44 — Vérification 03" data-section="JAVASCRIPT — LES FONDAMENTAUX" data-notes="Demander pourquoi la réponse 6 correspondrait plutôt à une réduction/somme."><div class="eyebrow">JAVASCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Vérification 03</h2><p class="lead">Quel tableau est renvoyé ?</p><div class="quiz" data-answer="1" data-explain="map transforme chaque élément et renvoie un tableau. reduce serait une option pour accumuler une seule valeur."><div class="quiz-question">const nums = [1, 2, 3]; nums.map(n =&gt; n * 2)</div><div class="quiz-options"><button class="quiz-option" data-choice="0"><span>A</span>[1, 2, 3]</button><button class="quiz-option" data-choice="1"><span>B</span>[2, 4, 6]</button><button class="quiz-option" data-choice="2"><span>C</span>6</button></div><div class="quiz-feedback" aria-live="polite">Choisissez une réponse pour vérifier votre compréhension.</div></div></section>
+<section class="slide" data-number="45" role="group" aria-label="Diapositive 45 — JavaScript : les repères essentiels" data-section="JAVASCRIPT — LES FONDAMENTAUX" data-notes="Faire reformuler un concept par un participant. Puis transitionner vers TypeScript : comment rendre la forme des données plus explicite ?"><div class="eyebrow">JAVASCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>JavaScript : les repères essentiels</h2><p class="lead">Si vous retenez cinq choses, retenez celles-ci.</p><ul class="bullet-list"><li>const par défaut ; let si réassignation nécessaire.</li><li>=== pour éviter les conversions implicites de ==.</li><li>Une fonction isole une action ou un calcul.</li><li>map transforme ; filter sélectionne ; reduce accumule.</li><li>Un tableau d’objets est une structure de données très fréquente.</li></ul></section>
+<section class="slide" data-number="46" role="group" aria-label="Diapositive 46 — Partie 02" data-section="TYPESCRIPT — LES FONDAMENTAUX" data-notes="Rappeler que TypeScript ne remplace pas JavaScript : il apporte une vérification statique au développement."><span class="section-wipe" aria-hidden="true"></span><div class="section-screen"><div class="section-mark">HASHCODE / MASTERCLASS</div><h1>Partie 02</h1><p class="lead">Ajouter des contrats au code pour détecter certaines erreurs plus tôt.</p><div class="section-rule"></div></div></section>
+<section class="slide" data-number="47" role="group" aria-label="Diapositive 47 — Le problème que TypeScript aide à résoudre" data-section="TYPESCRIPT — LES FONDAMENTAUX" data-notes="Ne pas dire que JavaScript est faible ou mauvais. Le problème est l&#39;ambiguïté du contrat lorsque le code grandit."><div class="eyebrow">TYPESCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Le problème que TypeScript aide à résoudre</h2><p class="lead">Une erreur peut venir d’une valeur qui n’a pas la forme attendue.</p><pre class="code"><code>function double(value) {
   return value * 2;
 }
 
-double(&quot;bonjour&quot;);</code></pre><div class="callout"><span>À RETENIR</span><p>La fonction attend-elle un nombre, une chaîne ou les deux ? Le code ne le dit pas.</p></div></section>
-<section class="slide" data-number="48" data-section="TYPESCRIPT — LES FONDAMENTAUX" data-notes="Lire number dans les deux positions : type du paramètre et type de retour."><div class="eyebrow">TYPESCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Rendre le contrat explicite</h2><p class="lead">TypeScript permet d’indiquer les types attendus.</p><div class="compare-grid"><article class="compare-card"><div class="card-index">A</div><h3>JavaScript</h3><ul class="bullet-list"><li>function double(value) {</li><li>  return value * 2;</li><li>}</li><li>Le contrat n’est pas déclaré.</li></ul></article><article class="compare-card"><div class="card-index">B</div><h3>TypeScript</h3><ul class="bullet-list"><li>function double(value: number): number {</li><li>  return value * 2;</li><li>}</li><li>L’éditeur et le compilateur peuvent signaler un argument incompatible.</li></ul></article></div></section>
-<section class="slide" data-number="49" data-section="TYPESCRIPT — LES FONDAMENTAUX" data-notes="C&#39;est une distinction importante : ne pas promettre que TypeScript rend les données externes sûres."><div class="eyebrow">TYPESCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Le typage est vérifié avant l’exécution</h2><p class="lead">Les annotations TypeScript ne sont pas des contrôles automatiques à l’exécution.</p><ul class="bullet-list"><li>Le compilateur analyse les types statiquement.</li><li>Le JavaScript émis ne conserve généralement pas les annotations.</li><li>Une donnée reçue d’une API doit être validée à l’exécution.</li><li>Le typage réduit certaines erreurs ; il ne supprime pas tous les bugs.</li></ul><div class="concept-visual"><div class="concept-visual-head"><span>Le parcours TypeScript</span><span>Avant l'exécution</span></div><div class="concept-flow"><div class="concept-node"><strong>.ts</strong>code typé</div><span class="concept-arrow">→</span><div class="concept-node"><strong>Type-check</strong>diagnostic</div><span class="concept-arrow">→</span><div class="concept-node"><strong>Transpilation</strong>JavaScript</div><span class="concept-arrow">→</span><div class="concept-node"><strong>Runtime</strong>exécution</div></div><p class="concept-caption">TypeScript détecte des incohérences statiques ; il ne garantit pas que les données reçues à l'exécution sont valides et ne remplace pas les tests.</p></div></section>
-<section class="slide" data-number="50" data-section="TYPESCRIPT — LES FONDAMENTAUX" data-notes="Préciser que TypeScript peut souvent inférer les types : il n&#39;est pas nécessaire d&#39;annoter chaque variable."><div class="eyebrow">TYPESCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Les annotations de base</h2><p class="lead">Commencez avec les types les plus courants.</p><pre class="code"><code>const community: string = &quot;HashCode&quot;;
+double(&quot;bonjour&quot;);</code></pre><div class="callout"><span>À RETENIR</span><p>La fonction attend-elle un nombre, une chaîne ou les deux ? Le code ne le dit pas.</p></div><div class="output"><span>RÉSULTAT ATTENDU</span><pre>NaN — aucune erreur levée : le résultat est silencieusement faux.</pre></div></section>
+<section class="slide" data-number="48" role="group" aria-label="Diapositive 48 — Rendre le contrat explicite" data-section="TYPESCRIPT — LES FONDAMENTAUX" data-notes="Lire number dans les deux positions : type du paramètre et type de retour."><div class="eyebrow">TYPESCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Rendre le contrat explicite</h2><p class="lead">TypeScript permet d’indiquer les types attendus.</p><div class="compare-grid"><article class="compare-card"><div class="card-index">A</div><h3>JavaScript</h3><ul class="bullet-list"><li>function double(value) {</li><li>  return value * 2;</li><li>}</li><li>Le contrat n’est pas déclaré.</li></ul></article><article class="compare-card"><div class="card-index">B</div><h3>TypeScript</h3><ul class="bullet-list"><li>function double(value: number): number {</li><li>  return value * 2;</li><li>}</li><li>L’éditeur et le compilateur peuvent signaler un argument incompatible.</li></ul></article></div></section>
+<section class="slide" data-number="49" role="group" aria-label="Diapositive 49 — Le typage est vérifié avant l’exécution" data-section="TYPESCRIPT — LES FONDAMENTAUX" data-notes="C&#39;est une distinction importante : ne pas promettre que TypeScript rend les données externes sûres."><div class="eyebrow">TYPESCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Le typage est vérifié avant l’exécution</h2><p class="lead">Les annotations TypeScript ne sont pas des contrôles automatiques à l’exécution.</p><ul class="bullet-list"><li>Le compilateur analyse les types statiquement.</li><li>Le JavaScript émis ne conserve généralement pas les annotations.</li><li>Une donnée reçue d’une API doit être validée à l’exécution.</li><li>Le typage réduit certaines erreurs ; il ne supprime pas tous les bugs.</li></ul><div class="concept-visual"><div class="concept-visual-head"><span>Le parcours TypeScript</span><span>Avant l'exécution</span></div><div class="concept-flow"><div class="concept-node"><strong>.ts</strong>code typé</div><span class="concept-arrow">→</span><div class="concept-node"><strong>Type-check</strong>diagnostic</div><span class="concept-arrow">→</span><div class="concept-node"><strong>Transpilation</strong>JavaScript</div><span class="concept-arrow">→</span><div class="concept-node"><strong>Runtime</strong>exécution</div></div><p class="concept-caption">TypeScript détecte des incohérences statiques ; il ne garantit pas que les données reçues à l'exécution sont valides et ne remplace pas les tests.</p></div></section>
+<section class="slide" data-number="50" role="group" aria-label="Diapositive 50 — Les annotations de base" data-section="TYPESCRIPT — LES FONDAMENTAUX" data-notes="Préciser que TypeScript peut souvent inférer les types : il n&#39;est pas nécessaire d&#39;annoter chaque variable."><div class="eyebrow">TYPESCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Les annotations de base</h2><p class="lead">Commencez avec les types les plus courants.</p><pre class="code"><code>const community: string = &quot;HashCode&quot;;
 const members: number = 24;
-const active: boolean = true;</code></pre><div class="output"><span>RÉSULTAT ATTENDU</span><pre>Les valeurs doivent correspondre aux types annoncés.</pre></div></section>
-<section class="slide" data-number="51" data-section="TYPESCRIPT — LES FONDAMENTAUX" data-notes="Montrer qu&#39;une annotation répétant exactement ce que le compilateur connaît déjà peut ajouter du bruit."><div class="eyebrow">TYPESCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>L’inférence évite le bruit</h2><p class="lead">Le compilateur peut déduire le type depuis la valeur.</p><pre class="code"><code>const city = &quot;Cotonou&quot;; // string
+const active: boolean = true;</code></pre><div class="output"><span>RÉSULTAT ATTENDU</span><pre>Aucune sortie (déclarations valides).</pre></div></section>
+<section class="slide" data-number="51" role="group" aria-label="Diapositive 51 — L’inférence évite le bruit" data-section="TYPESCRIPT — LES FONDAMENTAUX" data-notes="Montrer qu&#39;une annotation répétant exactement ce que le compilateur connaît déjà peut ajouter du bruit."><div class="eyebrow">TYPESCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>L’inférence évite le bruit</h2><p class="lead">Le compilateur peut déduire le type depuis la valeur.</p><pre class="code"><code>const city = &quot;Cotonou&quot;; // string
 const count = 12;      // number
 
 // L&#39;annotation explicite n&#39;est pas toujours utile.</code></pre><div class="callout"><span>À RETENIR</span><p>Règle pratique : annotez surtout les frontières, les paramètres et les structures importantes.</p></div></section>
-<section class="slide" data-number="52" data-section="TYPESCRIPT — LES FONDAMENTAUX" data-notes="Faire identifier les deux paramètres et le type de retour. Laisser le groupe prédire l&#39;erreur si quantity est une chaîne."><div class="eyebrow">TYPESCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Typage des paramètres et du retour</h2><p class="lead">Une fonction expose un contrat lisible.</p><pre class="code"><code>function calculateTotal(
+<section class="slide" data-number="52" role="group" aria-label="Diapositive 52 — Typage des paramètres et du retour" data-section="TYPESCRIPT — LES FONDAMENTAUX" data-notes="Faire identifier les deux paramètres et le type de retour. Laisser le groupe prédire l&#39;erreur si quantity est une chaîne."><div class="eyebrow">TYPESCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Typage des paramètres et du retour</h2><p class="lead">Une fonction expose un contrat lisible.</p><pre class="code"><code>function calculateTotal(
   price: number,
   quantity: number
 ): number {
   return price * quantity;
 }</code></pre></section>
-<section class="slide" data-number="53" data-section="TYPESCRIPT — LES FONDAMENTAUX" data-notes="Demander aux participants de lire la signature comme une phrase."><div class="eyebrow">TYPESCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Vérification 04</h2><p class="lead">Quel appel est incompatible avec la signature ?</p><div class="quiz" data-answer="2" data-explain="Le premier argument doit être une chaîne et le second un nombre. Le troisième appel inverse et change les types."><div class="quiz-question">function repeat(text: string, times: number): string</div><div class="quiz-options"><button class="quiz-option" data-choice="0"><span>A</span>repeat(&quot;Hi&quot;, 3)</button><button class="quiz-option" data-choice="1"><span>B</span>repeat(&quot;Code&quot;, 2)</button><button class="quiz-option" data-choice="2"><span>C</span>repeat(4, &quot;deux&quot;)</button></div><div class="quiz-feedback" aria-live="polite">Choisissez une réponse pour vérifier votre compréhension.</div></div></section>
-<section class="slide" data-number="54" data-section="TYPESCRIPT — LES FONDAMENTAUX" data-notes="Expliquer que Status n&#39;accepte pas une chaîne quelconque. Le compilateur peut détecter une faute comme &quot;finished&quot;."><div class="eyebrow">TYPESCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Les unions décrivent plusieurs cas</h2><p class="lead">Une valeur peut appartenir à un ensemble de types autorisés.</p><pre class="code"><code>type Status = &quot;todo&quot; | &quot;doing&quot; | &quot;done&quot;;
+<section class="slide" data-number="53" role="group" aria-label="Diapositive 53 — Vérification 04" data-section="TYPESCRIPT — LES FONDAMENTAUX" data-notes="Demander aux participants de lire la signature comme une phrase."><div class="eyebrow">TYPESCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Vérification 04</h2><p class="lead">Quel appel est incompatible avec la signature ?</p><div class="quiz" data-answer="2" data-explain="Le premier argument doit être une chaîne et le second un nombre. Le troisième appel inverse et change les types."><div class="quiz-question">function repeat(text: string, times: number): string</div><div class="quiz-options"><button class="quiz-option" data-choice="0"><span>A</span>repeat(&quot;Hi&quot;, 3)</button><button class="quiz-option" data-choice="1"><span>B</span>repeat(&quot;Code&quot;, 2)</button><button class="quiz-option" data-choice="2"><span>C</span>repeat(4, &quot;deux&quot;)</button></div><div class="quiz-feedback" aria-live="polite">Choisissez une réponse pour vérifier votre compréhension.</div></div></section>
+<section class="slide" data-number="54" role="group" aria-label="Diapositive 54 — Les unions décrivent plusieurs cas" data-section="TYPESCRIPT — LES FONDAMENTAUX" data-notes="Expliquer que Status n&#39;accepte pas une chaîne quelconque. Le compilateur peut détecter une faute comme &quot;finished&quot;."><div class="eyebrow">TYPESCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Les unions décrivent plusieurs cas</h2><p class="lead">Une valeur peut appartenir à un ensemble de types autorisés.</p><pre class="code"><code>type Status = &quot;todo&quot; | &quot;doing&quot; | &quot;done&quot;;
 
 const status: Status = &quot;doing&quot;;</code></pre><div class="callout"><span>À RETENIR</span><p>Une union de littéraux limite les valeurs possibles et rend les états explicites.</p></div></section>
-<section class="slide" data-number="55" data-section="TYPESCRIPT — LES FONDAMENTAUX" data-notes="Cette interface va servir de modèle de données au mini-projet. Les interfaces aident l&#39;équipe à se mettre d&#39;accord sur la forme des objets."><div class="eyebrow">TYPESCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Une interface décrit la forme d’un objet</h2><p class="lead">Elle précise les propriétés et leurs types.</p><pre class="code"><code>interface Task {
+<section class="slide" data-number="55" role="group" aria-label="Diapositive 55 — Une interface décrit la forme d’un objet" data-section="TYPESCRIPT — LES FONDAMENTAUX" data-notes="Cette interface va servir de modèle de données au mini-projet. Les interfaces aident l&#39;équipe à se mettre d&#39;accord sur la forme des objets."><div class="eyebrow">TYPESCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Une interface décrit la forme d’un objet</h2><p class="lead">Elle précise les propriétés et leurs types.</p><pre class="code"><code>interface Task {
   id: number;
   title: string;
   completed: boolean;
 }</code></pre></section>
-<section class="slide" data-number="56" data-section="TYPESCRIPT — LES FONDAMENTAUX" data-notes="Montrer une variante avec completed: &quot;non&quot; ou sans title, puis lire l&#39;erreur de compilation."><div class="eyebrow">TYPESCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Créer une valeur conforme</h2><p class="lead">Le compilateur compare l’objet à l’interface.</p><pre class="code"><code>const task: Task = {
+<section class="slide" data-number="56" role="group" aria-label="Diapositive 56 — Créer une valeur conforme" data-section="TYPESCRIPT — LES FONDAMENTAUX" data-notes="Montrer une variante avec completed: &quot;non&quot; ou sans title, puis lire l&#39;erreur de compilation."><div class="eyebrow">TYPESCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Créer une valeur conforme</h2><p class="lead">Le compilateur compare l’objet à l’interface.</p><pre class="code"><code>const task: Task = {
   id: 1,
   title: &quot;Comprendre TypeScript&quot;,
   completed: false,
-};</code></pre><div class="output"><span>RÉSULTAT ATTENDU</span><pre>Une propriété manquante ou de type incompatible déclenche une erreur de vérification.</pre></div></section>
-<section class="slide" data-number="57" data-section="TYPESCRIPT — LES FONDAMENTAUX" data-notes="Insister sur la différence entre optionnel et nullable ; ce sont des notions différentes."><div class="eyebrow">TYPESCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Propriété optionnelle ou obligatoire ?</h2><p class="lead">Le point d’interrogation change le contrat.</p><ul class="bullet-list"><li>name doit être présent.</li><li>bio peut être absent.</li><li>Une propriété optionnelle peut nécessiter une vérification avant usage.</li></ul><pre class="code"><code>interface User {
+};</code></pre><div class="output"><span>RÉSULTAT ATTENDU</span><pre>Objet conforme : aucune erreur de type.
+Variante invalide (ex. completed: "non" ou title manquant) : erreur de vérification.</pre></div></section>
+<section class="slide" data-number="57" role="group" aria-label="Diapositive 57 — Propriété optionnelle ou obligatoire ?" data-section="TYPESCRIPT — LES FONDAMENTAUX" data-notes="Insister sur la différence entre optionnel et nullable ; ce sont des notions différentes."><div class="eyebrow">TYPESCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Propriété optionnelle ou obligatoire ?</h2><p class="lead">Le point d’interrogation change le contrat.</p><ul class="bullet-list"><li>name doit être présent.</li><li>bio peut être absent.</li><li>Une propriété optionnelle peut nécessiter une vérification avant usage.</li></ul><pre class="code"><code>interface User {
   name: string;
   bio?: string;
 }</code></pre></section>
-<section class="slide" data-number="58" data-section="TYPESCRIPT — LES FONDAMENTAUX" data-notes="Montrer la notation T[] et mentionner Array&lt;T&gt; comme forme équivalente, sans approfondir les génériques."><div class="eyebrow">TYPESCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Les tableaux peuvent être typés</h2><p class="lead">Le type décrit les éléments autorisés dans la collection.</p><pre class="code"><code>const scores: number[] = [12, 18, 15];
+<section class="slide" data-number="58" role="group" aria-label="Diapositive 58 — Les tableaux peuvent être typés" data-section="TYPESCRIPT — LES FONDAMENTAUX" data-notes="Montrer la notation T[] et mentionner Array&lt;T&gt; comme forme équivalente, sans approfondir les génériques."><div class="eyebrow">TYPESCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Les tableaux peuvent être typés</h2><p class="lead">Le type décrit les éléments autorisés dans la collection.</p><pre class="code"><code>const scores: number[] = [12, 18, 15];
 const tasks: Task[] = [];</code></pre></section>
-<section class="slide" data-number="59" data-section="TYPESCRIPT — LES FONDAMENTAUX" data-notes="Faire distinguer typecheck et test. Les deux sont complémentaires."><div class="eyebrow">TYPESCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Les types ne remplacent pas les tests</h2><p class="lead">Un code peut respecter ses types et rester incorrect.</p><ul class="bullet-list"><li>Un calcul peut utiliser une mauvaise formule.</li><li>Une règle métier peut être mal comprise.</li><li>Une API peut renvoyer des données inattendues.</li><li>Les tests vérifient le comportement ; les types vérifient des contraintes statiques.</li></ul></section>
-<section class="slide" data-number="60" data-section="TYPESCRIPT — LES FONDAMENTAUX" data-notes="Attendre function formatTitle(title: string): string { return title.trim(); }. Expliquer que trim supprime les espaces aux extrémités."><div class="eyebrow">TYPESCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Exercice : typer une fonction</h2><p class="lead">Deux minutes pour écrire le contrat.</p><ul class="bullet-list"><li>Écrire une fonction formatTitle(title).</li><li>Le paramètre doit être une chaîne.</li><li>La fonction doit renvoyer une chaîne.</li><li>Bonus : accepter une priorité numérique séparée.</li></ul><div class="callout"><span>À VOUS</span><p>Écrivez d’abord la signature, puis le corps.</p></div></section>
-<section class="slide" data-number="61" data-section="TYPESCRIPT — LES FONDAMENTAUX" data-notes="Demander si la fonction gère un titre vide. La signature ne dit rien sur la règle métier ; on peut ajouter une validation."><div class="eyebrow">TYPESCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Correction : contrat explicite</h2><p class="lead">La signature documente l’entrée et la sortie.</p><pre class="code"><code>function formatTitle(title: string): string {
+<section class="slide" data-number="59" role="group" aria-label="Diapositive 59 — Les types ne remplacent pas les tests" data-section="TYPESCRIPT — LES FONDAMENTAUX" data-notes="Faire distinguer typecheck et test. Les deux sont complémentaires."><div class="eyebrow">TYPESCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Les types ne remplacent pas les tests</h2><p class="lead">Un code peut respecter ses types et rester incorrect.</p><ul class="bullet-list"><li>Un calcul peut utiliser une mauvaise formule.</li><li>Une règle métier peut être mal comprise.</li><li>Une API peut renvoyer des données inattendues.</li><li>Les tests vérifient le comportement ; les types vérifient des contraintes statiques.</li></ul></section>
+<section class="slide" data-number="60" role="group" aria-label="Diapositive 60 — Exercice : typer une fonction" data-section="TYPESCRIPT — LES FONDAMENTAUX" data-notes="Attendre function formatTitle(title: string): string { return title.trim(); }. Expliquer que trim supprime les espaces aux extrémités."><div class="eyebrow">TYPESCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Exercice : typer une fonction</h2><p class="lead">Deux minutes pour écrire le contrat.</p><ul class="bullet-list"><li>Écrire une fonction formatTitle(title).</li><li>Le paramètre doit être une chaîne.</li><li>La fonction doit renvoyer une chaîne.</li><li>Bonus : accepter une priorité numérique séparée.</li></ul><div class="callout"><span>À VOUS</span><p>Écrivez d’abord la signature, puis le corps.</p></div><div class="callout"><span>CRITÈRES DE RÉUSSITE</span><p>Signature attendue : function formatTitle(title: string): string · le corps renvoie title.trim() · bonus : accepter un second paramètre numérique (priorité).</p></div></section>
+<section class="slide" data-number="61" role="group" aria-label="Diapositive 61 — Correction : contrat explicite" data-section="TYPESCRIPT — LES FONDAMENTAUX" data-notes="Demander si la fonction gère un titre vide. La signature ne dit rien sur la règle métier ; on peut ajouter une validation."><div class="eyebrow">TYPESCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Correction : contrat explicite</h2><p class="lead">La signature documente l’entrée et la sortie.</p><pre class="code"><code>function formatTitle(title: string): string {
   return title.trim();
 }</code></pre><ul class="bullet-list"><li>title est une chaîne.</li><li>trim renvoie une nouvelle chaîne.</li><li>Le résultat est déclaré string.</li></ul></section>
-<section class="slide" data-number="62" data-section="TYPESCRIPT — LES FONDAMENTAUX" data-notes="Transition vers l&#39;atelier : appliquer les types à une petite application réelle."><div class="eyebrow">TYPESCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>TypeScript : les repères essentiels</h2><p class="lead">Le typage est un outil de conception et de vérification.</p><ul class="bullet-list"><li>Les annotations décrivent les contrats.</li><li>L’inférence évite d’annoter tout inutilement.</li><li>Les interfaces décrivent la forme des objets.</li><li>Les unions limitent les valeurs possibles.</li><li>Les types ne remplacent ni validation d’entrée ni tests.</li></ul></section>
-<section class="slide" data-number="63" data-section="ATELIER — TASK MANAGER" data-notes="Expliquer que le projet reste volontairement en mémoire et en ligne de commande pour se concentrer sur les fondamentaux."><div class="section-screen"><div class="section-mark">HASHCODE / MASTERCLASS</div><h1>Partie 04</h1><p class="lead">Assembler les concepts dans un mini-gestionnaire de tâches.</p><div class="section-rule"></div></div></section>
-<section class="slide" data-number="64" data-section="ATELIER — TASK MANAGER" data-notes="Présenter les critères d&#39;acceptation avant de coder. La réussite se mesure au comportement, pas au nombre de lignes."><div class="eyebrow">ATELIER — TASK MANAGER <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Le problème à résoudre</h2><p class="lead">Une petite équipe veut suivre ses tâches sans perdre le fil.</p><div class="cards"><article class="info-card"><div class="card-index">01</div><h3>AJOUTER</h3><p>Créer une tâche avec un titre valide.</p></article><article class="info-card"><div class="card-index">02</div><h3>AFFICHER</h3><p>Lister les tâches et leur état.</p></article><article class="info-card"><div class="card-index">03</div><h3>TERMINER</h3><p>Marquer une tâche comme terminée.</p></article><article class="info-card"><div class="card-index">04</div><h3>PROTÉGER</h3><p>Refuser un titre vide et les identifiants inconnus.</p></article></div></section>
-<section class="slide" data-number="65" data-section="ATELIER — TASK MANAGER" data-notes="Comparer cette variante au booléen completed. Un état explicite peut être plus extensible, mais ne rajoutons pas d&#39;états non nécessaires pour l&#39;atelier."><div class="eyebrow">ATELIER — TASK MANAGER <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Le modèle de données</h2><p class="lead">Définir la forme d’une tâche avant les fonctions.</p><pre class="code"><code>type TaskStatus = &quot;todo&quot; | &quot;done&quot;;
+<section class="slide" data-number="62" role="group" aria-label="Diapositive 62 — TypeScript : les repères essentiels" data-section="TYPESCRIPT — LES FONDAMENTAUX" data-notes="Transition vers l&#39;atelier : appliquer les types à une petite application réelle."><div class="eyebrow">TYPESCRIPT — LES FONDAMENTAUX <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>TypeScript : les repères essentiels</h2><p class="lead">Le typage est un outil de conception et de vérification.</p><ul class="bullet-list"><li>Les annotations décrivent les contrats.</li><li>L’inférence évite d’annoter tout inutilement.</li><li>Les interfaces décrivent la forme des objets.</li><li>Les unions limitent les valeurs possibles.</li><li>Les types ne remplacent ni validation d’entrée ni tests.</li></ul></section>
+<section class="slide" data-number="63" role="group" aria-label="Diapositive 63 — Partie 03" data-section="ATELIER — TASK MANAGER" data-notes="Expliquer que le projet reste volontairement en mémoire et en ligne de commande pour se concentrer sur les fondamentaux."><span class="section-wipe" aria-hidden="true"></span><div class="section-screen"><div class="section-mark">HASHCODE / MASTERCLASS</div><h1>Partie 03</h1><p class="lead">Assembler les concepts dans un mini-gestionnaire de tâches.</p><div class="section-rule"></div></div></section>
+<section class="slide" data-number="64" role="group" aria-label="Diapositive 64 — Le problème à résoudre" data-section="ATELIER — TASK MANAGER" data-notes="Présenter les critères d&#39;acceptation avant de coder. La réussite se mesure au comportement, pas au nombre de lignes."><div class="eyebrow">ATELIER — TASK MANAGER <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Le problème à résoudre</h2><p class="lead">Une petite équipe veut suivre ses tâches sans perdre le fil.</p><div class="cards"><article class="info-card"><div class="card-index">01</div><h3>AJOUTER</h3><p>Créer une tâche avec un titre valide.</p></article><article class="info-card"><div class="card-index">02</div><h3>AFFICHER</h3><p>Lister les tâches et leur état.</p></article><article class="info-card"><div class="card-index">03</div><h3>TERMINER</h3><p>Marquer une tâche comme terminée.</p></article><article class="info-card"><div class="card-index">04</div><h3>PROTÉGER</h3><p>Refuser un titre vide et les identifiants inconnus.</p></article><article class="info-card"><div class="card-index">05</div><h3>SUPPRIMER</h3><p>Retirer une tâche par son identifiant.</p></article></div></section>
+<section class="slide" data-number="65" role="group" aria-label="Diapositive 65 — Le modèle de données" data-section="ATELIER — TASK MANAGER" data-notes="Comparer cette variante au booléen completed. Un état explicite peut être plus extensible, mais ne rajoutons pas d&#39;états non nécessaires pour l&#39;atelier."><div class="eyebrow">ATELIER — TASK MANAGER <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Le modèle de données</h2><p class="lead">Définir la forme d’une tâche avant les fonctions.</p><div class="callout"><span>PONT</span><p>Avant, une tâche portait completed: boolean (slides 39-40) ; ici, ce booléen devient un état explicite status: "todo" | "done".</p></div><pre class="code"><code>type TaskStatus = &quot;todo&quot; | &quot;done&quot;;
 
 interface Task {
   id: number;
   title: string;
   status: TaskStatus;
 }</code></pre></section>
-<section class="slide" data-number="66" data-section="ATELIER — TASK MANAGER" data-notes="Le défi de suppression peut rester une extension si le temps est limité. Pour le socle, ajouter, afficher et terminer suffisent."><div class="eyebrow">ATELIER — TASK MANAGER <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Séparer les responsabilités</h2><p class="lead">Chaque fonction doit avoir une responsabilité facile à expliquer.</p><div class="cards"><article class="info-card"><div class="card-index">01</div><h3>addTask</h3><p>Valider et ajouter</p></article><article class="info-card"><div class="card-index">02</div><h3>listTasks</h3><p>Afficher la collection</p></article><article class="info-card"><div class="card-index">03</div><h3>completeTask</h3><p>Modifier l’état</p></article><article class="info-card"><div class="card-index">04</div><h3>removeTask</h3><p>Retirer un élément</p></article></div><div class="concept-visual"><div class="concept-visual-head"><span>Séparer les responsabilités</span><span>Task Manager</span></div><div class="concept-flow"><div class="concept-node"><strong>Modèle</strong>Task / données</div><span class="concept-arrow">↔</span><div class="concept-node"><strong>Logique</strong>add / toggle / remove</div><span class="concept-arrow">→</span><div class="concept-node"><strong>Interface</strong>affichage</div></div><p class="concept-caption">Une responsabilité claire facilite les tests, le débogage et les évolutions. Pour cet atelier en console, l'interface peut simplement être la sortie du terminal.</p></div></section>
-<section class="slide" data-number="67" data-section="ATELIER — TASK MANAGER" data-notes="Préciser explicitement la limite de stockage en mémoire. Pas de base de données dans ce mini-projet."><div class="eyebrow">ATELIER — TASK MANAGER <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Le point de départ</h2><p class="lead">Un tableau typé conserve les tâches pendant l’exécution.</p><pre class="code"><code>const tasks: Task[] = [];
+<section class="slide" data-number="66" role="group" aria-label="Diapositive 66 — Séparer les responsabilités" data-section="ATELIER — TASK MANAGER" data-notes="Le défi de suppression peut rester une extension si le temps est limité. Pour le socle, ajouter, afficher et terminer suffisent."><div class="eyebrow">ATELIER — TASK MANAGER <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Séparer les responsabilités</h2><p class="lead">Chaque fonction doit avoir une responsabilité facile à expliquer.</p><div class="cards"><article class="info-card"><div class="card-index">01</div><h3>addTask</h3><p>Valider et ajouter</p></article><article class="info-card"><div class="card-index">02</div><h3>listTasks</h3><p>Afficher la collection</p></article><article class="info-card"><div class="card-index">03</div><h3>completeTask</h3><p>Modifier l’état</p></article><article class="info-card"><div class="card-index">04</div><h3>removeTask</h3><p>Retirer un élément</p></article></div><div class="concept-visual"><div class="concept-visual-head"><span>Séparer les responsabilités</span><span>Task Manager</span></div><div class="concept-flow"><div class="concept-node"><strong>Modèle</strong>Task / données</div><span class="concept-arrow">↔</span><div class="concept-node"><strong>Logique</strong>add / list / complete / remove</div><span class="concept-arrow">→</span><div class="concept-node"><strong>Interface</strong>affichage</div></div><p class="concept-caption">Une responsabilité claire facilite les tests, le débogage et les évolutions. Pour cet atelier en console, l'interface peut simplement être la sortie du terminal.</p></div></section>
+<section class="slide" data-number="67" role="group" aria-label="Diapositive 67 — Le point de départ" data-section="ATELIER — TASK MANAGER" data-notes="Préciser explicitement la limite de stockage en mémoire. Pas de base de données dans ce mini-projet."><div class="eyebrow">ATELIER — TASK MANAGER <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Le point de départ</h2><p class="lead">Un tableau typé conserve les tâches pendant l’exécution.</p><pre class="code"><code>const tasks: Task[] = [];
 let nextId = 1;</code></pre><ul class="bullet-list"><li>tasks est une collection de Task.</li><li>nextId produit un identifiant simple pour la démonstration.</li><li>Les données ne sont pas persistées après la fermeture du programme.</li></ul></section>
-<section class="slide" data-number="68" data-section="ATELIER — TASK MANAGER" data-notes="Lire trim, validation, construction d&#39;objet et push. Préciser qu&#39;un throw interrompt le flux si l&#39;erreur n&#39;est pas capturée."><div class="eyebrow">ATELIER — TASK MANAGER <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Ajouter une tâche</h2><p class="lead">Valider l’entrée avant de modifier l’état.</p><pre class="code"><code>function addTask(title: string): Task {
+<section class="slide" data-number="68" role="group" aria-label="Diapositive 68 — Ajouter une tâche" data-section="ATELIER — TASK MANAGER" data-notes="Lire trim, validation, construction d&#39;objet et push. Préciser qu&#39;un throw interrompt le flux si l&#39;erreur n&#39;est pas capturée."><div class="eyebrow">ATELIER — TASK MANAGER <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Ajouter une tâche</h2><p class="lead">Valider l’entrée avant de modifier l’état.</p><pre class="code"><code>function addTask(title: string): Task {
   const cleanTitle = title.trim();
   if (!cleanTitle) {
     throw new Error(&quot;Le titre est obligatoire&quot;);
@@ -327,7 +655,7 @@ let nextId = 1;</code></pre><ul class="bullet-list"><li>tasks est une collection
   tasks.push(task);
   return task;
 }</code></pre></section>
-<section class="slide" data-number="69" data-section="ATELIER — TASK MANAGER" data-notes="Présenter void : la fonction ne renvoie pas de valeur utile. Elle produit un effet via console.log."><div class="eyebrow">ATELIER — TASK MANAGER <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Afficher les tâches</h2><p class="lead">Séparer la représentation des données de leur affichage.</p><pre class="code"><code>function listTasks(): void {
+<section class="slide" data-number="69" role="group" aria-label="Diapositive 69 — Afficher les tâches" data-section="ATELIER — TASK MANAGER" data-notes="Présenter void : la fonction ne renvoie pas de valeur utile. Elle produit un effet via console.log."><div class="eyebrow">ATELIER — TASK MANAGER <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Afficher les tâches</h2><p class="lead">Séparer la représentation des données de leur affichage.</p><pre class="code"><code>function listTasks(): void {
   if (tasks.length === 0) {
     console.log(&quot;Aucune tâche.&quot;);
     return;
@@ -337,46 +665,49 @@ let nextId = 1;</code></pre><ul class="bullet-list"><li>tasks est une collection
     console.log(`${mark} ${task.id}. ${task.title}`);
   }
 }</code></pre></section>
-<section class="slide" data-number="70" data-section="ATELIER — TASK MANAGER" data-notes="find renvoie l&#39;élément trouvé ou undefined. La fonction renvoie true/false pour signaler si l&#39;opération a réussi."><div class="eyebrow">ATELIER — TASK MANAGER <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Terminer une tâche</h2><p class="lead">Rechercher par identifiant, puis modifier son état.</p><pre class="code"><code>function completeTask(id: number): boolean {
+<section class="slide" data-number="70" role="group" aria-label="Diapositive 70 — Terminer une tâche" data-section="ATELIER — TASK MANAGER" data-notes="find renvoie l&#39;élément trouvé ou undefined. La fonction renvoie true/false pour signaler si l&#39;opération a réussi."><div class="eyebrow">ATELIER — TASK MANAGER <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Terminer une tâche</h2><p class="lead">Rechercher par identifiant, puis modifier son état.</p><pre class="code"><code>function completeTask(id: number): boolean {
   const task = tasks.find(item =&gt; item.id === id);
   if (!task) return false;
   task.status = &quot;done&quot;;
   return true;
 }</code></pre></section>
-<section class="slide" data-number="71" data-section="ATELIER — TASK MANAGER" data-notes="Faire prédire les deux lignes. Attendu : première tâche ✓, deuxième ○."><div class="eyebrow">ATELIER — TASK MANAGER <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Prédisez le résultat</h2><p class="lead">Avant de lancer le programme, suivez l’état étape par étape.</p><pre class="code"><code>addTask(&quot;Lire la documentation&quot;);
+<section class="slide" data-number="71" role="group" aria-label="Diapositive 71 — Prédisez le résultat" data-section="ATELIER — TASK MANAGER" data-notes="Faire prédire les deux lignes. Attendu : première tâche ✓, deuxième ○."><div class="eyebrow">ATELIER — TASK MANAGER <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Prédisez le résultat</h2><p class="lead">Avant de lancer le programme, suivez l’état étape par étape.</p><pre class="code"><code>addTask(&quot;Lire la documentation&quot;);
 addTask(&quot;Pratiquer les types&quot;);
 completeTask(1);
 listTasks();</code></pre><div class="callout"><span>À VOUS</span><p>Quelle tâche sera marquée comme terminée ? Quel symbole affichera la seconde ?</p></div></section>
-<section class="slide" data-number="72" data-section="ATELIER — TASK MANAGER" data-notes="Circuler entre les participants. Ne pas fournir immédiatement la solution : demander d&#39;abord comment ils vont vérifier le comportement."><div class="eyebrow">ATELIER — TASK MANAGER <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>À vous : ajoutez une règle</h2><p class="lead">Travail en binôme ou individuel — 5 minutes.</p><ul class="bullet-list"><li>Refuser un titre vide.</li><li>Afficher un message si l’identifiant est inconnu.</li><li>Ajouter une fonction removeTask(id).</li><li>Vérifier le résultat après chaque changement.</li></ul><div class="callout"><span>À VOUS</span><p>Testez au moins un cas normal et un cas limite.</p></div></section>
-<section class="slide" data-number="73" data-section="ATELIER — TASK MANAGER" data-notes="Expliquer la différence entre find et findIndex. Signaler qu&#39;une application plus large pourrait choisir une approche immuable."><div class="eyebrow">ATELIER — TASK MANAGER <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Défi : supprimer une tâche</h2><p class="lead">Une recherche renvoie un index ou -1.</p><pre class="code"><code>function removeTask(id: number): boolean {
+<section class="slide" data-number="72" role="group" aria-label="Diapositive 72 — À vous : ajoutez une règle" data-section="ATELIER — TASK MANAGER" data-notes="Circuler entre les participants. Ne pas fournir immédiatement la solution : demander d&#39;abord comment ils vont vérifier le comportement."><div class="eyebrow">ATELIER — TASK MANAGER <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>À vous : ajoutez une règle</h2><p class="lead">Travail en binôme ou individuel — 5 minutes.</p><ul class="bullet-list"><li>Empêcher les doublons : refuser un titre déjà présent.</li><li>Afficher un message si l’identifiant est inconnu.</li><li>Ajouter une fonction removeTask(id).</li><li>Vérifier le résultat après chaque changement.</li></ul><div class="callout"><span>À VOUS</span><p>Testez au moins un cas normal et un cas limite.</p></div></section>
+<section class="slide" data-number="73" role="group" aria-label="Diapositive 73 — Défi : supprimer une tâche" data-section="ATELIER — TASK MANAGER" data-notes="Expliquer la différence entre find et findIndex. Signaler qu&#39;une application plus large pourrait choisir une approche immuable."><div class="eyebrow">ATELIER — TASK MANAGER <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Défi : supprimer une tâche</h2><p class="lead">Une recherche renvoie un index ou -1.</p><pre class="code"><code>function removeTask(id: number): boolean {
   const index = tasks.findIndex(task =&gt; task.id === id);
   if (index === -1) return false;
   tasks.splice(index, 1);
   return true;
 }</code></pre><ul class="bullet-list"><li>findIndex retourne -1 si rien ne correspond.</li><li>splice modifie le tableau en place.</li><li>Le booléen permet à l’appelant de réagir.</li></ul></section>
-<section class="slide" data-number="74" data-section="ATELIER — TASK MANAGER" data-notes="Rappeler qu&#39;un typecheck réussi n&#39;est pas la preuve que le programme répond au besoin."><div class="eyebrow">ATELIER — TASK MANAGER <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Vérifier le type et le comportement</h2><p class="lead">Deux contrôles complémentaires.</p></section>
-<section class="slide" data-number="75" data-section="ATELIER — TASK MANAGER" data-notes="Faire expliquer pourquoi le troisième cas est important. Un cas limite révèle souvent des hypothèses cachées."><div class="eyebrow">ATELIER — TASK MANAGER <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Mini-plan de test</h2><p class="lead">Validez le gestionnaire avec trois scénarios.</p><ul class="bullet-list"><li>Ajouter « Préparer la masterclass » : la tâche apparaît.</li><li>Terminer l’identifiant 1 : son état devient done.</li><li>Terminer l’identifiant 999 : le programme signale l’échec sans planter.</li></ul><div class="callout"><span>À VOUS</span><p>Notez le résultat attendu avant d’exécuter chaque scénario.</p></div></section>
-<section class="slide" data-number="76" data-section="ATELIER — TASK MANAGER" data-notes="Demander aux participants quel concept leur a semblé le plus utile et lequel demande davantage de pratique."><div class="eyebrow">ATELIER — TASK MANAGER <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Ce que nous venons de construire</h2><p class="lead">Un mini-projet utile pour relier plusieurs concepts.</p><ul class="bullet-list"><li>Une interface décrit les données.</li><li>Les fonctions séparent les responsabilités.</li><li>Les tableaux stockent et parcourent les tâches.</li><li>La validation protège les entrées.</li><li>Les tests vérifient les comportements.</li></ul></section>
-<section class="slide" data-number="77" data-section="ANCRAGE &amp; SUITE" data-notes="Vérifier que les participants ne confondent pas typecheck, tests et validation à l&#39;exécution."><div class="eyebrow">ANCRAGE &amp; SUITE <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Vérification 05</h2><p class="lead">Quel mécanisme vérifie les annotations TypeScript ?</p><div class="quiz" data-answer="0" data-explain="Le contrôle TypeScript détecte de nombreuses incohérences avant l&#39;exécution. La validation runtime reste nécessaire pour les données externes."><div class="quiz-question">Quand détecte-t-on généralement une incompatibilité de type ?</div><div class="quiz-options"><button class="quiz-option" data-choice="0"><span>A</span>Pendant le contrôle statique / compilation</button><button class="quiz-option" data-choice="1"><span>B</span>Uniquement après que l’utilisateur clique</button><button class="quiz-option" data-choice="2"><span>C</span>Grâce au CSS</button></div><div class="quiz-feedback" aria-live="polite">Choisissez une réponse pour vérifier votre compréhension.</div></div></section>
-<section class="slide" data-number="78" data-section="ANCRAGE &amp; SUITE" data-notes="Demander à un participant de donner un exemple de chaque méthode."><div class="eyebrow">ANCRAGE &amp; SUITE <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Vérification 06</h2><p class="lead">Quelle méthode choisit les éléments qui respectent une condition ?</p><div class="quiz" data-answer="1" data-explain="filter sélectionne les éléments qui passent le test. map transforme chaque élément ; reduce accumule une valeur."><div class="quiz-question">Quel outil de tableau utiliser pour ne garder que les tâches non terminées ?</div><div class="quiz-options"><button class="quiz-option" data-choice="0"><span>A</span>map</button><button class="quiz-option" data-choice="1"><span>B</span>filter</button><button class="quiz-option" data-choice="2"><span>C</span>reduce</button></div><div class="quiz-feedback" aria-live="polite">Choisissez une réponse pour vérifier votre compréhension.</div></div></section>
-<section class="slide" data-number="79" data-section="ANCRAGE &amp; SUITE" data-notes="Faire répéter ces trois questions. Elles structurent le travail de débutant comme celui d&#39;un professionnel."><div class="eyebrow">ANCRAGE &amp; SUITE <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Le réflexe à garder</h2><p class="lead">Avant d’écrire du code, posez trois questions.</p><ul class="bullet-list"><li>Quelles sont les données d’entrée ?</li><li>Quel résultat ou effet est attendu ?</li><li>Comment vais-je vérifier que ça fonctionne ?</li></ul><div class="callout"><span>À VOUS</span><p>La qualité du raisonnement compte davantage que la vitesse de frappe.</p></div></section>
-<section class="slide" data-number="80" data-section="ANCRAGE &amp; SUITE" data-notes="Inviter les participants à choisir une seule extension plutôt que d&#39;essayer de tout faire en même temps."><div class="eyebrow">ANCRAGE &amp; SUITE <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Votre prochain challenge HashCode</h2><p class="lead">Choisissez une extension, terminez-la et expliquez-la.</p><div class="cards"><article class="info-card"><div class="card-index">01</div><h3>NIVEAU 1</h3><p>Ajouter une priorité basse / normale / haute.</p></article><article class="info-card"><div class="card-index">02</div><h3>NIVEAU 2</h3><p>Filtrer par état et afficher le nombre restant.</p></article><article class="info-card"><div class="card-index">03</div><h3>NIVEAU 3</h3><p>Écrire des tests et séparer modèle / affichage.</p></article></div></section>
-<section class="slide" data-number="81" data-section="ANCRAGE &amp; SUITE" data-notes="Proposer aux participants de partager une petite preuve de progression dans la communauté HashCode."><div class="eyebrow">ANCRAGE &amp; SUITE <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Plan de pratique sur 7 jours</h2><p class="lead">Une courte pratique quotidienne vaut mieux qu’une longue session isolée.</p><ul class="bullet-list"><li>Jour 1 : variables, types et opérateurs.</li><li>Jour 2 : conditions et boucles.</li><li>Jour 3 : fonctions et tableaux.</li><li>Jour 4 : objets et méthodes de tableau.</li><li>Jour 5 : types et interfaces TypeScript.</li><li>Jour 6 : finir Task Manager.</li><li>Jour 7 : expliquer son code et noter les questions.</li></ul></section>
-<section class="slide" data-number="82" data-section="ANCRAGE &amp; SUITE" data-notes="Reprendre les objectifs de la diapositive 4 et demander aux participants de s&#39;auto-évaluer."><div class="eyebrow">ANCRAGE &amp; SUITE <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Les cinq idées à emporter</h2><p class="lead">Une base solide se construit avec des distinctions claires.</p><ul class="bullet-list"><li>JavaScript est le langage exécuté ; TypeScript ajoute un contrôle statique.</li><li>Le navigateur et Node.js sont des environnements différents.</li><li>Les fonctions donnent un nom aux actions et calculs.</li><li>map transforme, filter sélectionne, reduce accumule.</li><li>Les types, les tests et la validation se complètent.</li></ul></section>
-<section class="slide" data-number="83" data-section="ANCRAGE &amp; SUITE" data-notes="Remercier les participants. Donner le lien du dépôt et expliquer comment soumettre le mini-challenge après la séance."><div class="eyebrow">ANCRAGE &amp; SUITE <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Comprendre. <span class='lime'>Construire.</span> Partager.</h2><p class="lead">La suite commence avec un petit projet que vous pouvez expliquer.</p></section></main>
-<footer class="footer"><div class="count" id="count">01 / 83</div><div class="progress" aria-hidden="true"><div id="bar"></div></div><div class="section-chip" id="sectionChip">OUVERTURE</div><div class="controls"><button class="ctrl" id="notesBtn" title="Notes du formateur (N)">Notes <span class="notes-label">[N]</span></button><button class="ctrl" id="prev" aria-label="Diapositive précédente">←</button><button class="ctrl primary" id="next" aria-label="Diapositive suivante">Suivant →</button></div></footer>
+<section class="slide" data-number="74" role="group" aria-label="Diapositive 74 — Vérifier le type et le comportement" data-section="ATELIER — TASK MANAGER" data-notes="Rappeler qu&#39;un typecheck réussi n&#39;est pas la preuve que le programme répond au besoin."><div class="eyebrow">ATELIER — TASK MANAGER <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Vérifier le type et le comportement</h2><p class="lead">Deux contrôles complémentaires.</p></section>
+<section class="slide" data-number="75" role="group" aria-label="Diapositive 75 — Mini-plan de test" data-section="ATELIER — TASK MANAGER" data-notes="Faire expliquer pourquoi le troisième cas est important. Un cas limite révèle souvent des hypothèses cachées."><div class="eyebrow">ATELIER — TASK MANAGER <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Mini-plan de test</h2><p class="lead">Validez le gestionnaire avec trois scénarios.</p><ul class="bullet-list"><li>Ajouter « Préparer la masterclass » : la tâche apparaît.</li><li>Terminer l’identifiant 1 : son état devient done.</li><li>Terminer l’identifiant 999 : le programme signale l’échec sans planter.</li></ul><div class="callout"><span>À VOUS</span><p>Notez le résultat attendu avant d’exécuter chaque scénario.</p></div><pre class="code"><code>if (!completeTask(999)) {
+  console.log(&quot;Identifiant inconnu : 999&quot;);
+}</code></pre></section>
+<section class="slide" data-number="76" role="group" aria-label="Diapositive 76 — Ce que nous venons de construire" data-section="ATELIER — TASK MANAGER" data-notes="Demander aux participants quel concept leur a semblé le plus utile et lequel demande davantage de pratique."><div class="eyebrow">ATELIER — TASK MANAGER <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Ce que nous venons de construire</h2><p class="lead">Un mini-projet utile pour relier plusieurs concepts.</p><ul class="bullet-list"><li>Une interface décrit les données.</li><li>Les fonctions séparent les responsabilités.</li><li>Les tableaux stockent et parcourent les tâches.</li><li>La validation protège les entrées.</li><li>Les tests vérifient les comportements.</li></ul></section>
+<section class="slide" data-number="77" role="group" aria-label="Diapositive 77 — Vérification 05" data-section="ANCRAGE &amp; SUITE" data-notes="Vérifier que les participants ne confondent pas typecheck, tests et validation à l&#39;exécution."><div class="eyebrow">ANCRAGE &amp; SUITE <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Vérification 05</h2><p class="lead">Quel mécanisme vérifie les annotations TypeScript ?</p><div class="quiz" data-answer="0" data-explain="Le contrôle TypeScript détecte de nombreuses incohérences avant l&#39;exécution. La validation runtime reste nécessaire pour les données externes."><div class="quiz-question">Quand détecte-t-on généralement une incompatibilité de type ?</div><div class="quiz-options"><button class="quiz-option" data-choice="0"><span>A</span>Pendant le contrôle statique / compilation</button><button class="quiz-option" data-choice="1"><span>B</span>Uniquement après que l’utilisateur clique</button><button class="quiz-option" data-choice="2"><span>C</span>Grâce au CSS</button></div><div class="quiz-feedback" aria-live="polite">Choisissez une réponse pour vérifier votre compréhension.</div></div></section>
+<section class="slide" data-number="78" role="group" aria-label="Diapositive 78 — Vérification 06" data-section="ANCRAGE &amp; SUITE" data-notes="Demander à un participant de donner un exemple de chaque méthode."><div class="eyebrow">ANCRAGE &amp; SUITE <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Vérification 06</h2><p class="lead">Quelle méthode choisit les éléments qui respectent une condition ?</p><div class="quiz" data-answer="1" data-explain="filter sélectionne les éléments qui passent le test. map transforme chaque élément ; reduce accumule une valeur."><div class="quiz-question">Quel outil de tableau utiliser pour ne garder que les tâches non terminées ?</div><div class="quiz-options"><button class="quiz-option" data-choice="0"><span>A</span>map</button><button class="quiz-option" data-choice="1"><span>B</span>filter</button><button class="quiz-option" data-choice="2"><span>C</span>reduce</button></div><div class="quiz-feedback" aria-live="polite">Choisissez une réponse pour vérifier votre compréhension.</div></div></section>
+<section class="slide" data-number="79" role="group" aria-label="Diapositive 79 — Le réflexe à garder" data-section="ANCRAGE &amp; SUITE" data-notes="Faire répéter ces trois questions. Elles structurent le travail de débutant comme celui d&#39;un professionnel."><div class="eyebrow">ANCRAGE &amp; SUITE <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Le réflexe à garder</h2><p class="lead">Avant d’écrire du code, posez trois questions.</p><ul class="bullet-list"><li>Quelles sont les données d’entrée ?</li><li>Quel résultat ou effet est attendu ?</li><li>Comment vais-je vérifier que ça fonctionne ?</li></ul><div class="callout"><span>À VOUS</span><p>La qualité du raisonnement compte davantage que la vitesse de frappe.</p></div></section>
+<section class="slide" data-number="80" role="group" aria-label="Diapositive 80 — Votre prochain challenge HashCode" data-section="ANCRAGE &amp; SUITE" data-notes="Inviter les participants à choisir une seule extension plutôt que d&#39;essayer de tout faire en même temps."><div class="eyebrow">ANCRAGE &amp; SUITE <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Votre prochain challenge HashCode</h2><p class="lead">Choisissez un seul niveau — 15 minutes — puis expliquez votre solution.</p><div class="cards"><article class="info-card"><div class="card-index">01</div><h3>NIVEAU 1</h3><p>Ajouter une priorité basse / normale / haute.</p></article><article class="info-card"><div class="card-index">02</div><h3>NIVEAU 2</h3><p>Filtrer avec filter(status === &quot;done&quot;) et afficher le nombre restant.</p></article><article class="info-card"><div class="card-index">03</div><h3>NIVEAU 3</h3><p>Écrire des tests et séparer modèle / affichage.</p></article></div></section>
+<section class="slide" data-number="81" role="group" aria-label="Diapositive 81 — Plan de pratique sur 7 jours" data-section="ANCRAGE &amp; SUITE" data-notes="Proposer aux participants de partager une petite preuve de progression dans la communauté HashCode."><div class="eyebrow">ANCRAGE &amp; SUITE <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Plan de pratique sur 7 jours</h2><p class="lead">Une courte pratique quotidienne vaut mieux qu’une longue session isolée.</p><ul class="bullet-list"><li>Jour 1 : variables, types et opérateurs.</li><li>Jour 2 : conditions et boucles.</li><li>Jour 3 : fonctions et tableaux.</li><li>Jour 4 : objets et méthodes de tableau.</li><li>Jour 5 : types et interfaces TypeScript.</li><li>Jour 6 : finir Task Manager.</li><li>Jour 7 : expliquer son code et noter les questions.</li></ul></section>
+<section class="slide" data-number="82" role="group" aria-label="Diapositive 82 — Les cinq idées à emporter" data-section="ANCRAGE &amp; SUITE" data-notes="Reprendre les objectifs de la diapositive 4 et demander aux participants de s&#39;auto-évaluer."><div class="eyebrow">ANCRAGE &amp; SUITE <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Les cinq idées à emporter</h2><p class="lead">Une base solide se construit avec des distinctions claires.</p><ul class="bullet-list"><li>JavaScript est le langage exécuté ; TypeScript ajoute un contrôle statique.</li><li>Le navigateur et Node.js sont des environnements différents.</li><li>Les fonctions donnent un nom aux actions et calculs.</li><li>map transforme, filter sélectionne, reduce accumule.</li><li>Les types, les tests et la validation se complètent.</li></ul></section>
+<section class="slide" data-number="83" role="group" aria-label="Diapositive 83 — Comprendre. Construire. Partager." data-section="ANCRAGE &amp; SUITE" data-notes="Remercier les participants. Donner le lien du dépôt et expliquer comment soumettre le mini-challenge après la séance."><div class="eyebrow">ANCRAGE &amp; SUITE <span>/</span> APPRENDRE PAR LA PRATIQUE</div><h2>Comprendre. <span class='lime'>Construire.</span> Partager.</h2><p class="lead">La suite commence avec un petit projet que vous pouvez expliquer.</p><div class="callout"><span>À FAIRE APRÈS LA SÉANCE</span><p>Terminez un niveau du challenge, prenez une photo ou une capture de votre code, puis partagez-la dans la communauté HashCode avec une phrase d'explication. Dépôt du support : github.com/digitaleflex/hashcode-masterclass</p></div></section></main>
+<footer class="footer"><div class="count" id="count">01 / 83</div><div class="progress"><div id="bar" aria-hidden="true"></div></div><div class="section-chip" id="sectionChip">OUVERTURE</div><div class="controls"><button class="ctrl" id="projectorBtn" title="Mode projecteur (P)" aria-pressed="false">Projecteur <span class="notes-label">[P]</span></button><button class="ctrl active" id="immersiveBtn" title="Scène immersive plein écran (W)" aria-pressed="true">Immersif <span class="notes-label">[W]</span></button><button class="ctrl" id="notesBtn" title="Notes du formateur (N)">Notes <span class="notes-label">[N]</span></button><button class="ctrl" id="prev" aria-label="Diapositive précédente">←</button><button class="ctrl primary" id="next" aria-label="Diapositive suivante">Suivant →</button></div></footer>
+<div id="zoombar" role="toolbar" aria-label="Zoom de la diapositive"><div class="zoom-cap">Zoom</div><div class="zoom-row"><button class="zoom-btn" id="zoomOut" aria-label="Réduire le zoom">−</button><span class="zoom-level" id="zoomLevel" aria-live="polite">100%</span><button class="zoom-btn" id="zoomIn" aria-label="Agrandir le zoom">+</button></div><div class="zoom-row"><button class="zoom-btn" id="zoomReset" aria-label="Réinitialiser le zoom (touche 0)" style="flex:1">Reset · 0</button></div><div class="zoom-pan" role="group" aria-label="Déplacer la vue zoomée"><span></span><button class="zoom-btn" id="panUp" aria-label="Déplacer la vue vers le haut">↑</button><span></span><button class="zoom-btn" id="panLeft" aria-label="Déplacer la vue vers la gauche">←</button><span class="zoom-dot" aria-hidden="true"></span><button class="zoom-btn" id="panRight" aria-label="Déplacer la vue vers la droite">→</button><span></span><button class="zoom-btn" id="panDown" aria-label="Déplacer la vue vers le bas">↓</button><span></span></div></div>
 </div>
-<aside class="notes" id="notesPanel" aria-live="polite"><h3>Notes du formateur</h3><p id="notesText"></p><p class="tip">← → naviguer · Espace avancer · N notes · F plein écran · Home / End début et fin · Échap fermer.</p><button class="ctrl" id="closeNotes" style="margin-top:12px">Fermer les notes</button></aside>
+<aside class="notes" id="notesPanel" aria-live="polite"><h3>Notes du formateur</h3><p id="notesText"></p><p class="tip">← → naviguer · Espace avancer · N notes · P projecteur · R révéler la sortie · F plein écran · W immersif · Home / End début et fin · Échap fermer (ou sauter le rituel). Sur les slides à puces denses, Espace ou clic révèle les puces une par une (compteur en bas à gauche) avant de passer à la slide suivante.</p><button class="ctrl" id="closeNotes" style="margin-top:12px">Fermer les notes</button></aside>
 <script>
 (()=>{'use strict';
 const slides=[...document.querySelectorAll('.slide')];let index=0;
 const count=document.getElementById('count'),bar=document.getElementById('bar'),prev=document.getElementById('prev'),next=document.getElementById('next'),notesPanel=document.getElementById('notesPanel'),notesText=document.getElementById('notesText'),sectionChip=document.getElementById('sectionChip');
-function show(i){index=Math.max(0,Math.min(slides.length-1,i));slides.forEach((s,n)=>s.classList.toggle('active',n===index));count.textContent=String(index+1).padStart(2,'0')+' / '+String(slides.length).padStart(2,'0');bar.style.width=((index+1)/slides.length*100)+'%';prev.disabled=index===0;next.textContent=index===slides.length-1?'Recommencer ↺':'Suivant →';sectionChip.textContent=slides[index].dataset.section||'';notesText.textContent=slides[index].dataset.notes||'Aucune note pour cette diapositive.';document.title=(index+1)+'/'+slides.length+' — HashCode Academy | Masterclass JavaScript & TypeScript';}
+function show(i){index=Math.max(0,Math.min(slides.length-1,i));slides.forEach((s,n)=>s.classList.toggle('active',n===index));count.textContent=String(index+1).padStart(2,'0')+' / '+String(slides.length).padStart(2,'0');bar.style.width=((index+1)/slides.length*100)+'%';prev.disabled=index===0;next.textContent=index===slides.length-1?'Recommencer ↺':'Suivant →';sectionChip.textContent=slides[index].dataset.section||'';notesText.textContent=slides[index].dataset.notes||'Aucune note pour cette diapositive.';document.title=(index+1)+'/'+slides.length+' — HashCode Academy | Masterclass JavaScript & TypeScript';try{document.dispatchEvent(new CustomEvent('slidechange',{detail:{index:index,el:slides[index]}}))}catch(err){}}
 function toggleNotes(force){notesPanel.classList.toggle('open',typeof force==='boolean'?force:!notesPanel.classList.contains('open'))}
-prev.addEventListener('click',()=>show(index-1));next.addEventListener('click',()=>show(index===slides.length-1?0:index+1));document.getElementById('notesBtn').addEventListener('click',()=>toggleNotes());document.getElementById('closeNotes').addEventListener('click',()=>toggleNotes(false));
-document.addEventListener('keydown',e=>{if(e.target.matches('input,textarea,button,select')){if(e.key==='Escape')toggleNotes(false);return}if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();show(index===slides.length-1?0:index+1)}else if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();show(index-1)}else if(e.key.toLowerCase()==='n'){toggleNotes()}else if(e.key.toLowerCase()==='f'){if(!document.fullscreenElement)document.documentElement.requestFullscreen?.();else document.exitFullscreen?.()}else if(e.key==='Escape')toggleNotes(false);else if(e.key==='Home')show(0);else if(e.key==='End')show(slides.length-1)});
-document.querySelectorAll('.quiz').forEach(quiz=>{quiz.querySelectorAll('.quiz-option').forEach(btn=>btn.addEventListener('click',()=>{const answer=Number(quiz.dataset.answer);const selected=Number(btn.dataset.choice);quiz.querySelectorAll('.quiz-option').forEach(b=>{b.disabled=true;b.classList.remove('correct','wrong')});quiz.querySelector('[data-choice="'+answer+'"]').classList.add('correct');if(selected!==answer)btn.classList.add('wrong');quiz.querySelector('.quiz-feedback').textContent=(selected===answer?'Bonne réponse. ':'Pas tout à fait. ')+quiz.dataset.explain;}))});
-let touchX=null;document.addEventListener('touchstart',e=>{touchX=e.changedTouches[0].screenX},{passive:true});document.addEventListener('touchend',e=>{if(touchX===null)return;const delta=e.changedTouches[0].screenX-touchX;if(Math.abs(delta)>70)show(index+(delta<0?1:-1));touchX=null},{passive:true});show(0);
+const notesBtn=document.getElementById('notesBtn');notesBtn.addEventListener('click',()=>{toggleNotes();notesBtn.blur()});const closeNotes=document.getElementById('closeNotes');closeNotes.addEventListener('click',()=>{toggleNotes(false);closeNotes.blur()});
+document.addEventListener('keydown',e=>{if(e.target&&e.target.matches&&e.target.matches('input,textarea,button,select')){if(e.key==='Escape')toggleNotes(false);return}const k=(e.key||'').toLowerCase();if(k==='n'){toggleNotes()}else if(k==='f'){if(!document.fullscreenElement)document.documentElement.requestFullscreen?.();else document.exitFullscreen?.()}else if(e.key==='Escape')toggleNotes(false)});
+/* Quiz : un seul handler, géré par initQuiz() (feedback + score + série + rejouer). */
+show(0);
 })();
 
 function escapeHtml(value){return value.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
@@ -410,5 +741,670 @@ document.querySelectorAll("pre.code code").forEach(code=>{
  copy.addEventListener("click",async()=>{try{await navigator.clipboard.writeText(source);copy.textContent="Copié ✓";setTimeout(()=>copy.textContent="Copier le code",1400)}catch{copy.textContent="Copie indisponible"}});
  toolbar.append(label,copy);pre.parentNode.insertBefore(toolbar,pre);
 });
+</script>
+
+<script>
+/* HashCode Masterclass — upgrades immersifs P0 (offline, sans dépendance réseau).
+   P0-1 rituel 3·2·1·CODE + wipe chapitres · P0-2 code vivant (sortie floutée + sandbox)
+   P0-3 mode projecteur · P0-4 score/série/rejouer. Palette : #000 / #C5F441 / #FFF. */
+(()=>{'use strict';
+const REDUCED=!!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+const RITUAL_MS=2150, QUIZ_TOTAL=6;
+/* RUNNABLE : slides dont l'exemple est du JavaScript pur, exécutable dans le bac à sable new Function().
+   L'atelier 67-73/75 est volontairement exclu : ces snippets sont du TypeScript
+   (const tasks: Task[], (title: string): Task, : void…) que new Function() ne sait pas parser.
+   Ils restent donc en lecture guidée + exécution locale par le participant (pas de faux sandbox). */
+const RUNNABLE=new Set(['22','29','30','31','32','33','35','36','37','38','39','40','42']);
+const DENY=['document','window','globalThis','self','top','parent','frames','fetch','XMLHttpRequest','WebSocket','EventSource','localStorage','sessionStorage','indexedDB','Function','setTimeout','setInterval','setImmediate','queueMicrotask','requestAnimationFrame','alert','prompt','confirm','open','location','navigator','history','process','require','module','exports','Worker','importScripts','postMessage'];
+let ritualTimer=null;
+
+/* ---------- P0-1 : rituel d'ouverture + wipe de chapitre ---------- */
+function endRitual(slide){
+  clearTimeout(ritualTimer);
+  slide=slide||document.querySelector('.slide.ritual-on');
+  if(!slide)return;
+  slide.classList.remove('ritual-on');
+  slide.classList.add('intro-go');
+}
+function playRitual(slide){
+  if(!slide||slide.dataset.number!=='01'||!slide.querySelector('.ritual'))return;
+  slide.classList.remove('intro-go','ritual-on');
+  if(REDUCED){slide.classList.add('intro-go');return}
+  void slide.offsetWidth;
+  slide.classList.add('ritual-on');
+  clearTimeout(ritualTimer);
+  ritualTimer=setTimeout(()=>endRitual(slide),RITUAL_MS);
+}
+function skipRitual(){
+  const slide=document.querySelector('.slide.ritual-on');
+  if(!slide)return false;
+  endRitual(slide);
+  return true;
+}
+function playWipe(slide){
+  if(!slide||REDUCED||!slide.querySelector('.section-wipe'))return;
+  slide.classList.remove('wipe-on');
+  void slide.offsetWidth;
+  slide.classList.add('wipe-on');
+  setTimeout(()=>slide.classList.remove('wipe-on'),620);
+}
+function onShow(slide){playRitual(slide);playWipe(slide)}
+
+/* ---------- P0-3 : mode projecteur ---------- */
+function toggleProjector(force){
+  const on=typeof force==='boolean'?force:!document.body.classList.contains('projector');
+  document.body.classList.toggle('projector',on);
+  const btn=document.getElementById('projectorBtn');
+  if(btn){btn.setAttribute('aria-pressed',String(on));btn.classList.toggle('active',on)}
+}
+function toggleImmersive(force){
+  const on=typeof force==='boolean'?force:!document.body.classList.contains('immersive');
+  document.body.classList.toggle('immersive',on);
+  const btn=document.getElementById('immersiveBtn');
+  if(btn){btn.setAttribute('aria-pressed',String(on));btn.classList.toggle('active',on)}
+}
+
+/* ---------- P0-2 : code vivant ---------- */
+function formatValue(v){
+  if(typeof v==='string')return v;
+  if(v===undefined)return 'undefined';
+  if(v===null)return 'null';
+  if(typeof v==='function')return '[Function '+(v.name||'anonyme')+']';
+  if(v instanceof Error)return v.name+': '+v.message;
+  if(typeof v==='object'){try{return JSON.stringify(v)}catch(err){return String(v)}}
+  return String(v);
+}
+function buildConsole(lines){
+  const push=(parts)=>lines.push(parts.map(formatValue).join(' '));
+  return {
+    log:(...a)=>push(a),info:(...a)=>push(a),debug:(...a)=>push(a),
+    warn:(...a)=>push(['⚠',...a]),error:(...a)=>push(['✖',...a]),
+    table:(v)=>push([v]),dir:(v)=>push([v]),trace:()=>push(['(trace)'])
+  };
+}
+function autoDump(source){
+  if(/console\s*\./.test(source))return '';
+  let last=null,m;
+  const re=/\b(?:const|let|var)\s+([A-Za-z_$][\w$]*)\s*=/g;
+  while((m=re.exec(source)))last=m[1];
+  return last?'\n;console.log('+last+');':'';
+}
+function blocked(name){
+  const boom=()=>{throw new Error('« '+name+' » est neutralisé dans le bac à sable');};
+  return new Proxy(function(){},{get:boom,set:boom,apply:boom,construct:boom,has:()=>true});
+}
+function runSnippet(source){
+  const lines=[];
+  const sandboxConsole=buildConsole(lines);
+  const names=['console'].concat(DENY);
+  const values=[sandboxConsole].concat(DENY.map(blocked));
+  let ok=true;
+  try{
+    const fn=new Function(...names,'"use strict";\n'+source+autoDump(source));
+    const result=fn(...values);
+    if(!lines.length)lines.push(result===undefined?'(aucune sortie)':formatValue(result));
+  }catch(err){
+    ok=false;lines.length=0;
+    lines.push('✖ '+(err&&err.message?err.message:String(err)));
+  }
+  return {ok:ok,text:lines.join('\n')};
+}
+function attachReveal(out){
+  if(out.querySelector('.output-reveal'))return;
+  const btn=document.createElement('button');
+  btn.type='button';btn.className='output-reveal';btn.textContent='Révéler [R]';
+  btn.setAttribute('aria-label','Révéler ou masquer la sortie');
+  btn.addEventListener('click',()=>toggleReveal(out));
+  out.append(btn);
+}
+function toggleReveal(out,force){
+  const on=typeof force==='boolean'?force:!out.classList.contains('revealed');
+  out.classList.toggle('revealed',on);
+  const btn=out.querySelector('.output-reveal');
+  if(btn)btn.textContent=on?'Masquer [R]':'Révéler [R]';
+}
+function insertRunOutput(pre){
+  const next=pre.nextElementSibling;
+  const anchor=(next&&next.classList.contains('output'))?next:pre;
+  const out=document.createElement('div');
+  out.className='output output-run';
+  const label=document.createElement('span');label.textContent='SORTIE · SANDBOX';
+  const body=document.createElement('pre');
+  out.append(label,body);
+  anchor.after(out);
+  attachReveal(out);
+  return out;
+}
+function runCode(slide,pre){
+  const code=pre.querySelector('code');
+  const result=runSnippet((code||pre).textContent);
+  const out=slide.querySelector('.output.output-run')||insertRunOutput(pre);
+  out.querySelector('pre').textContent=result.text||'(aucune sortie)';
+  toggleReveal(out,true);
+  try{out.scrollIntoView({block:'nearest'})}catch(err){}
+}
+function revealSlide(){
+  const slide=document.querySelector('.slide.active');
+  if(!slide)return;
+  const outs=[...slide.querySelectorAll('.output')];
+  if(!outs.length)return;
+  const on=outs.some(o=>!o.classList.contains('revealed'));
+  outs.forEach(o=>toggleReveal(o,on));
+}
+function addRunButtons(){
+  document.querySelectorAll('.slide').forEach(slide=>{
+    if(!RUNNABLE.has(slide.dataset.number||''))return;
+    const pre=slide.querySelector('pre.code');
+    if(!pre)return;
+    const btn=document.createElement('button');
+    btn.type='button';btn.className='run-btn';btn.textContent='Exécuter ▶';
+    btn.setAttribute('aria-label','Exécuter cet exemple dans un bac à sable JavaScript');
+    btn.addEventListener('click',()=>runCode(slide,pre));
+    const holder=pre.previousElementSibling;
+    if(!holder||!holder.classList.contains('code-toolbar')){pre.after(btn);return}
+    let actions=holder.querySelector('.code-toolbar-actions');
+    if(!actions){
+      actions=document.createElement('span');actions.className='code-toolbar-actions';
+      const copy=holder.querySelector('button');
+      if(copy)actions.append(copy);
+      holder.append(actions);
+    }
+    actions.append(btn);
+  });
+}
+
+/* ---------- P0-4 : score de session / série / rejouer ---------- */
+const scoreboard=document.getElementById('scoreboard');
+const scoreValue=document.getElementById('scoreValue');
+const streakValue=document.getElementById('streakValue');
+const state={score:0,streak:0,solved:0};
+function updateScore(){
+  if(scoreValue)scoreValue.textContent=String(state.score).padStart(3,'0');
+  if(streakValue)streakValue.textContent=String(state.streak);
+  const total=document.getElementById('sessionTotalValue');
+  if(total)total.textContent=state.solved+' / '+QUIZ_TOTAL+' · '+state.score+' pt';
+}
+function pulse(el,cls,ms){
+  if(!el)return;
+  el.classList.remove(cls);void el.offsetWidth;el.classList.add(cls);
+  setTimeout(()=>el.classList.remove(cls),ms);
+}
+function buildSessionTotal(){
+  if(document.getElementById('sessionTotalValue'))return;
+  const slide=document.querySelector('.slide[data-number="78"]');
+  const quiz=slide&&slide.querySelector('.quiz');
+  if(!quiz)return;
+  const box=document.createElement('div');
+  box.className='session-total';box.setAttribute('aria-live','polite');
+  const label=document.createElement('span');label.textContent='TOTAL SESSION';
+  const value=document.createElement('p');value.id='sessionTotalValue';
+  value.textContent='0 / '+QUIZ_TOTAL+' · 0 pt';
+  box.append(label,value);
+  quiz.after(box);
+}
+function initQuiz(){
+  document.querySelectorAll('.quiz').forEach(quiz=>{
+    if(quiz.dataset.wired==='1')return;
+    quiz.dataset.wired='1';
+    const feedback=quiz.querySelector('.quiz-feedback');
+    const replay=document.createElement('button');
+    replay.type='button';replay.className='ctrl quiz-replay';replay.textContent='Rejouer';replay.hidden=true;
+    if(feedback)feedback.after(replay);else quiz.append(replay);
+    replay.addEventListener('click',()=>{
+      replay.blur();
+      quiz.querySelectorAll('.quiz-option').forEach(b=>{b.disabled=false;b.classList.remove('correct','wrong')});
+      if(feedback)feedback.textContent='Choisissez une réponse pour vérifier votre compréhension.';
+      replay.hidden=true;
+    });
+    quiz.addEventListener('click',e=>{
+      const btn=e.target.closest('.quiz-option');
+      if(!btn)return;
+      const answer=Number(quiz.dataset.answer),choice=Number(btn.dataset.choice);
+      const first=quiz.dataset.answered!=='1';
+      quiz.dataset.answered='1';
+      replay.hidden=false;
+      if(choice===answer){
+        if(quiz.dataset.rewarded!=='1'){quiz.dataset.rewarded='1';state.score+=100;state.solved+=1;pulse(scoreboard,'flash',300)}
+        if(first)state.streak+=1;
+      }else if(first){state.streak=0}
+      if(choice!==answer)pulse(quiz.querySelector('.quiz-options'),'shake',200);
+      updateScore();
+      btn.blur();
+    });
+  });
+}
+
+/* ---------- init ---------- */
+function init(){
+  document.querySelectorAll('.output').forEach(attachReveal);
+  addRunButtons();
+  buildSessionTotal();
+  initQuiz();
+  updateScore();
+  const active=document.querySelector('.slide.active');
+  if(active)onShow(active);
+  const projectorBtn=document.getElementById('projectorBtn');
+  if(projectorBtn)projectorBtn.addEventListener('click',()=>{toggleProjector();projectorBtn.blur()});
+  const immersiveBtn=document.getElementById('immersiveBtn');
+  if(immersiveBtn)immersiveBtn.addEventListener('click',()=>{toggleImmersive();immersiveBtn.blur()});
+}
+document.addEventListener('slidechange',e=>onShow(e.detail&&e.detail.el));
+document.addEventListener('keydown',e=>{
+  if(e.target&&e.target.matches&&e.target.matches('input,textarea,select'))return;
+  if(e.key==='Escape'){try{if(window.__hcZoom&&window.__hcZoom.resetIfZoomed())return}catch(_){}skipRitual();return}
+  if(e.ctrlKey||e.metaKey||e.altKey)return;
+  const key=(e.key||'').toLowerCase();
+  if(key==='p'){e.preventDefault();toggleProjector()}
+  else if(key==='w'){e.preventDefault();toggleImmersive()}
+  else if(key==='r'){e.preventDefault();revealSlide()}
+});
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
+</script>
+
+<script>
+/* P2 — zoom directionnel de la scene (slide active uniquement, offline, sans lib externe).
+   Molette Ctrl/pincement ou boutons + / - / reset, fleches ou drag pour deplacer quand zoome.
+   Touche 0 = reset, Echap = reset zoom avant de sauter le rituel (voir patch Escape P0).
+   Zoom centre puis pan libre clampe (jamais de vide infini), transform scale + translate. */
+(()=>{'use strict';
+const MIN=1,MAX=3,STEP=0.25,PAN=70,SLACK=24;
+let z=1,tx=0,ty=0,suppressClick=false;
+const $=id=>document.getElementById(id);
+const active=()=>document.querySelector('.slide.active');
+const innerOf=s=>s?s.querySelector(':scope > .zoom-inner'):null;
+function clampPan(s){
+  if(z<=MIN){tx=0;ty=0;return}
+  if(!s)return;
+  const W=s.clientWidth||1,H=s.clientHeight||1;
+  const inner=innerOf(s);
+  const extra=inner?Math.max(0,inner.scrollHeight-H):0;
+  const mx=Math.max(0,(z-1)*W/2+SLACK);
+  const my=Math.max(0,(z-1)*H/2+extra/2+SLACK);
+  tx=Math.min(mx,Math.max(-mx,tx));
+  ty=Math.min(my,Math.max(-my,ty));
+}
+function apply(){
+  document.querySelectorAll('.slide:not(.active)').forEach(s=>{
+    const inner=innerOf(s);
+    if(inner)inner.style.transform='';
+    s.classList.remove('zoomed');
+  });
+  const s=active();
+  if(!s)return;
+  clampPan(s);
+  const inner=innerOf(s);
+  if(inner)inner.style.transform=z<=1?'':'translate('+tx+'px,'+ty+'px) scale('+z+')';
+  s.classList.toggle('zoomed',z>1);
+  const lv=$('zoomLevel');
+  if(lv)lv.textContent=Math.round(z*100)+'%';
+  const zoomed=z>1;
+  const out=$('zoomOut'),inp=$('zoomIn'),rst=$('zoomReset');
+  if(out)out.disabled=!zoomed;
+  if(inp)inp.disabled=z>=MAX;
+  if(rst)rst.disabled=!zoomed;
+  ['panUp','panDown','panLeft','panRight'].forEach(id=>{
+    const b=$(id);
+    if(b)b.disabled=!zoomed;
+  });
+}
+function setZoom(nz){
+  z=Math.min(MAX,Math.max(MIN,Math.round(nz*4)/4));
+  if(z<=MIN){z=MIN;tx=0;ty=0}
+  apply();
+}
+function resetZoom(){
+  if(z<=MIN&&tx===0&&ty===0)return false;
+  z=MIN;tx=0;ty=0;apply();
+  return true;
+}
+function pan(dx,dy){
+  if(z<=MIN)return;
+  tx+=dx;ty+=dy;apply();
+}
+window.__hcZoom={resetIfZoomed:resetZoom};
+/* Envelopper le contenu de chaque slide (rituel et wipe restent hors zoom). */
+function wrapSlides(){
+  document.querySelectorAll('.slide').forEach(s=>{
+    if(s.querySelector(':scope > .zoom-inner'))return;
+    const inner=document.createElement('div');
+    inner.className='zoom-inner';
+    [...s.children].forEach(ch=>{
+      if(ch.classList.contains('ritual')||ch.classList.contains('section-wipe'))return;
+      inner.append(ch);
+    });
+    s.prepend(inner);
+  });
+}
+/* Boutons loupe + fleches. */
+function wireButtons(){
+  const at=(id,fn)=>{const b=$(id);if(b)b.addEventListener('click',()=>{fn();b.blur()})};
+  at('zoomIn',()=>setZoom(z+STEP));
+  at('zoomOut',()=>setZoom(z-STEP));
+  at('zoomReset',resetZoom);
+  at('panUp',()=>pan(0,PAN));
+  at('panDown',()=>pan(0,-PAN));
+  at('panLeft',()=>pan(PAN,0));
+  at('panRight',()=>pan(-PAN,0));
+}
+/* Molette Ctrl / pincement : zoom centre. */
+function wireWheel(){
+  const stage=$('stage');
+  if(!stage)return;
+  stage.addEventListener('wheel',e=>{
+    if(!(e.ctrlKey||e.metaKey))return;
+    e.preventDefault();
+    setZoom(z+(e.deltaY<0?STEP:-STEP));
+  },{passive:false});
+}
+/* Drag pour deplacer quand zoome (souris + tactile). */
+function wireDrag(){
+  let drag=null;
+  document.addEventListener('pointerdown',e=>{
+    const s=active();
+    if(!s||z<=MIN)return;
+    const inner=e.target&&e.target.closest?e.target.closest('.zoom-inner'):null;
+    if(!inner||!s.contains(inner))return;
+    if(e.pointerType==='mouse'&&e.button!==0)return;
+    drag={x:e.clientX,y:e.clientY,moved:false};
+    inner.classList.add('dragging');
+  });
+  document.addEventListener('pointermove',e=>{
+    if(!drag)return;
+    const s=active(),inner=s&&innerOf(s);
+    if(!inner)return;
+    const dx=e.clientX-drag.x,dy=e.clientY-drag.y;
+    if(Math.abs(dx)+Math.abs(dy)>2)drag.moved=true;
+    drag.x=e.clientX;drag.y=e.clientY;
+    tx+=dx;ty+=dy;clampPan(s);
+    inner.style.transform='translate('+tx+'px,'+ty+'px) scale('+z+')';
+  });
+  const end=()=>{
+    if(!drag)return;
+    if(drag.moved)suppressClick=true;
+    drag=null;
+    const s=active(),inner=s&&innerOf(s);
+    if(inner)inner.classList.remove('dragging');
+    apply();
+  };
+  document.addEventListener('pointerup',end);
+  document.addEventListener('pointercancel',end);
+  document.addEventListener('click',e=>{
+    if(!suppressClick)return;
+    suppressClick=false;
+    e.stopPropagation();
+    e.preventDefault();
+  },true);
+  /* Quand zoome, le balayage tactile deplace la vue au lieu de changer de slide. */
+  document.addEventListener('touchend',e=>{
+    if(z>MIN)e.stopPropagation();
+  },true);
+}
+/* Clavier : 0 = reset, + / - = zoom (navigation show() inchangee). */
+function wireKeys(){
+  document.addEventListener('keydown',e=>{
+    if(e.target&&e.target.matches&&e.target.matches('input,textarea,select'))return;
+    if(e.ctrlKey||e.metaKey||e.altKey)return;
+    const k=e.key;
+    if(k==='0'){e.preventDefault();resetZoom()}
+    else if(k==='+'||k==='='){e.preventDefault();setZoom(z+STEP)}
+    else if(k==='-'){e.preventDefault();setZoom(z-STEP)}
+  });
+}
+wrapSlides();
+wireButtons();
+wireWheel();
+wireDrag();
+wireKeys();
+document.addEventListener('slidechange',()=>{z=MIN;tx=0;ty=0;apply()});
+apply();
+})();
+</script>
+
+<script>
+/* Motion global sobre P1 — chorégraphie rejouée, reveals progressifs, blocs
+   vivants, transitions directionnelles, progress vivant. Offline, sans lib,
+   palette #000 / #C5F441 / #FFF. Les acquis P0/P2 (rituel, wipe, sandbox,
+   projecteur, score, zoom) sont préservés via le même événement slidechange. */
+(()=>{'use strict';
+const slides=[...document.querySelectorAll('.slide')];
+const count=document.getElementById('count'),bar=document.getElementById('bar'),
+  prev=document.getElementById('prev'),nextBtn=document.getElementById('next'),
+  chip=document.getElementById('sectionChip'),notesText=document.getElementById('notesText'),
+  progress=document.querySelector('.progress');
+const REDUCED=!!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+/* Slides à puces denses : révélation une par une avant de passer à la suivante. */
+const REVEAL=new Set(['04','07','10','14','18','23','43','45','49','59','62','76','79','81','82']);
+let lock=false,queued=null;
+
+function cur(){const i=slides.findIndex(s=>s.classList.contains('active'));return i<0?0:i}
+function totalOf(s){return (s&&s._items?s._items.length:0)}
+function hasPending(s){return !!s&&s.classList.contains('step-reveal')&&!REDUCED&&(s._shown||0)<totalOf(s)}
+
+/* ----- compteur du reveal ----- */
+function counterOf(slide){
+  if(slide._counter&&slide.contains(slide._counter))return slide._counter;
+  const c=document.createElement('div');c.className='reveal-count';c.setAttribute('aria-live','polite');
+  slide.append(c);slide._counter=c;return c;
+}
+function paintCounter(slide){
+  const c=counterOf(slide),shown=slide._shown||0,total=totalOf(slide);
+  if(!total){c.style.display='none';return}
+  c.style.display='';
+  c.innerHTML='<b>'+shown+' / '+total+'</b> '+(shown<total?'ESPACE POUR RÉVÉLER':'✓ COMPLET');
+}
+function applyReveal(slide){
+  const items=slide._items||[];
+  items.forEach((li,i)=>{
+    const on=i<(slide._shown||0);
+    li.classList.toggle('is-on',on);
+    li.classList.toggle('is-dim',!on);
+  });
+  paintCounter(slide);
+}
+function setupReveal(slide,dir){
+  if(!slide.classList.contains('step-reveal'))return;
+  const total=totalOf(slide);
+  if(!total)return;
+  if(REDUCED||dir==='back'){slide._shown=total;}
+  else{slide._shown=1;}
+  slide._items.forEach((li,i)=>{
+    li.style.animationDelay=(slide._shown>=total?Math.min(i*60,360):0)+'ms';
+  });
+  applyReveal(slide);
+}
+function advance(slide){
+  if(!hasPending(slide))return false;
+  slide._shown+=1;
+  const li=(slide._items||[])[slide._shown-1];
+  if(li){li.style.animationDelay='0ms';}
+  applyReveal(slide);
+  return true;
+}
+
+/* ----- jalons chapitres dans la barre de progression ----- */
+const secs=[];
+slides.forEach((s,i)=>{if(i===0||s.dataset.section!==slides[i-1].dataset.section)secs.push({i:i,name:s.dataset.section||('Slide '+(i+1)),el:null})});
+secs.forEach(sec=>{
+  const b=document.createElement('button');
+  b.type='button';b.className='milestone';b.style.left=((sec.i+1)/slides.length*100)+'%';
+  b.title=sec.name;b.setAttribute('aria-label','Aller à la section '+sec.name);
+  b.addEventListener('click',ev=>{ev.stopPropagation();go(sec.i);b.blur()});
+  progress.append(b);sec.el=b;
+});
+function updateMiles(c){
+  let act=secs[0];
+  secs.forEach(s=>{if(s.i<=c)act=s});
+  secs.forEach(s=>{s.el.classList.toggle('is-now',s===act);s.el.classList.toggle('is-done',s.i<act.i)});
+}
+function flipCount(){
+  if(!count||REDUCED)return;
+  count.classList.remove('flip');void count.offsetWidth;count.classList.add('flip');
+}
+
+/* ----- synchro UI (miroir du show d'origine) + post-show motion ----- */
+function syncUI(i){
+  count.textContent=String(i+1).padStart(2,'0')+' / '+String(slides.length).padStart(2,'0');
+  bar.style.width=((i+1)/slides.length*100)+'%';
+  prev.disabled=i===0;
+  nextBtn.textContent=i===slides.length-1?'Recommencer ↺':'Suivant →';
+  chip.textContent=slides[i].dataset.section||'';
+  notesText.textContent=slides[i].dataset.notes||'Aucune note pour cette diapositive.';
+  document.title=(i+1)+'/'+slides.length+' — HashCode Academy | Masterclass JavaScript & TypeScript';
+}
+function postShow(slide,dir){
+  flipCount();
+  updateMiles(slides.indexOf(slide));
+  setupReveal(slide,dir);
+}
+function swap(n,dir){
+  const old=slides[cur()];
+  if(old)old.classList.remove('active','slide-out-fwd','slide-out-back');
+  const neu=slides[n];
+  neu.classList.remove('nav-fwd','nav-back');
+  void neu.offsetWidth;
+  neu.classList.add('active',dir==='back'?'nav-back':'nav-fwd');
+  try{neu.scrollTop=0;const z=neu.querySelector('.zoom-inner');if(z)z.scrollTop=0}catch(_){}
+  syncUI(n);
+  try{document.dispatchEvent(new CustomEvent('slidechange',{detail:{index:n,el:neu}}))}catch(_){}
+  postShow(neu,dir);
+}
+/* Sortie 120ms vers la gauche (suivant) ou la droite (précédent), puis entrée. */
+function go(n,dir){
+  n=Math.max(0,Math.min(slides.length-1,n));
+  const c=cur();
+  if(lock){queued={n:n,dir:dir||(n>=c?'fwd':'back')};return}
+  if(n===c)return;
+  const d=dir||(n>c?'fwd':'back');
+  if(REDUCED){swap(n,d);return}
+  const old=slides[c];
+  lock=true;
+  old.classList.remove('slide-out-fwd','slide-out-back');
+  void old.offsetWidth;
+  old.classList.add(d==='fwd'?'slide-out-fwd':'slide-out-back');
+  setTimeout(()=>{
+    swap(n,d);lock=false;
+    if(queued){const q=queued;queued=null;go(q.n,q.dir)}
+  },120);
+}
+function block(e){e.preventDefault();e.stopPropagation();e.stopImmediatePropagation()}
+
+/* ----- interception clavier (capture) : reveal d'abord, navigation ensuite ----- */
+document.addEventListener('keydown',e=>{
+  if(e.ctrlKey||e.metaKey||e.altKey)return;
+  const t=e.target;
+  if(t&&t.closest&&t.closest('button,input,textarea,select,a,[contenteditable]'))return;
+  const k=e.key,isSpace=(k===' '||k==='Spacebar');
+  let dir=null,dest=null;
+  if(isSpace||k==='ArrowRight'||k==='PageDown')dir='fwd';
+  else if(k==='ArrowLeft'||k==='PageUp')dir='back';
+  else if(k==='Home')dest=0;
+  else if(k==='End')dest=slides.length-1;
+  else return;
+  block(e);
+  if(dest!==null){go(dest);return}
+  const c=cur();
+  if(dir==='fwd'){
+    if(hasPending(slides[c])){advance(slides[c]);return}
+    go(c>=slides.length-1?0:c+1,'fwd');
+  }else{go(c-1,'back')}
+},true);
+
+/* ----- boutons Suivant / Précédent : même porte reveal + même sortie ----- */
+document.addEventListener('click',e=>{
+  const b=e.target&&e.target.closest?e.target.closest('#next,#prev'):null;
+  if(!b)return;
+  block(e);
+  const c=cur(),fwd=b.id==='next';
+  if(fwd&&hasPending(slides[c])){advance(slides[c]);b.blur();return}
+  if(lock){queued={n:fwd?(c>=slides.length-1?0:c+1):c-1,dir:fwd?'fwd':'back'};return}
+  go(fwd?(c>=slides.length-1?0:c+1):c-1,fwd?'fwd':'back');
+  b.blur();
+},true);
+
+/* ----- clic sur la slide : révèle la puce suivante (hors contrôles) ----- */
+document.getElementById('stage').addEventListener('click',e=>{
+  if(REDUCED)return;
+  const s=e.target&&e.target.closest?e.target.closest('.slide.active'):null;
+  if(!s)return;
+  if(e.target.closest('button,a,input,textarea,select,.quiz-option,.code-toolbar,.output-reveal'))return;
+  if(hasPending(s))advance(s);
+});
+
+/* ----- balayage tactile : même porte reveal, sinon navigation ----- */
+let touchX=null;
+document.addEventListener('touchstart',e=>{try{touchX=e.changedTouches[0].screenX}catch(_){touchX=null}},{passive:true});
+document.addEventListener('touchend',e=>{
+  if(touchX===null)return;
+  let dx=0;try{dx=e.changedTouches[0].screenX-touchX}catch(_){}
+  touchX=null;
+  if(Math.abs(dx)<=70)return;
+  const fwd=dx<0,c=cur();
+  e.stopPropagation();e.stopImmediatePropagation();
+  if(fwd&&hasPending(slides[c])){advance(slides[c]);return}
+  go(fwd?(c>=slides.length-1?0:c+1):c-1,fwd?'fwd':'back');
+},true);
+
+/* ----- .code : pastilles + nom de fichier, copie avec repli hors clipboard ----- */
+function codeLines(codeEl){
+  const lines=codeEl.querySelectorAll('.line');
+  if(!lines.length)return codeEl.textContent;
+  return [...lines].map(el=>el.textContent.replace(/[ \t]+$/,'')).join('\n');
+}
+function initCodeHeaders(){
+  document.querySelectorAll('.code-toolbar').forEach(tb=>{
+    if(!tb.querySelector('.code-dots')){
+      const dots=document.createElement('span');dots.className='code-dots';dots.setAttribute('aria-hidden','true');
+      dots.append(document.createElement('i'),document.createElement('i'),document.createElement('i'));
+      tb.prepend(dots);
+    }
+    const slide=tb.closest('.slide');
+    const lbl=tb.querySelector('span:not(.code-dots):not(.code-toolbar-actions)');
+    if(lbl&&!lbl.dataset.hcNamed){
+      lbl.dataset.hcNamed='1';lbl.classList.add('code-name');
+      const isTS=/TYPESCRIPT/.test(lbl.textContent);
+      const num=slide&&slide.dataset?slide.dataset.number:'--';
+      lbl.textContent=(isTS?'slide-'+num+'.ts':'slide-'+num+'.js')+' · '+lbl.textContent;
+    }
+    const btn=[...tb.querySelectorAll('button')].find(b=>/Copier/.test(b.textContent));
+    if(btn&&!btn.dataset.hc){
+      const pre=(tb.nextElementSibling&&tb.nextElementSibling.classList&&tb.nextElementSibling.classList.contains('code'))
+        ?tb.nextElementSibling:tb.parentNode.querySelector('pre.code');
+      const src=pre?codeLines(pre.querySelector('code')||pre):'';
+      const fresh=btn.cloneNode(true);fresh.dataset.hc='1';btn.replaceWith(fresh);
+      fresh.addEventListener('click',()=>{
+        const done=()=>{fresh.textContent='Copié ✓';setTimeout(()=>{fresh.textContent='Copier le code'},1400);fresh.blur()};
+        const fail=()=>{fresh.textContent='Copie indisponible';setTimeout(()=>{fresh.textContent='Copier le code'},1400)};
+        const fallback=()=>{try{
+          const ta=document.createElement('textarea');ta.value=src;
+          ta.style.position='fixed';ta.style.opacity='0';document.body.append(ta);
+          ta.select();const ok=document.execCommand('copy');ta.remove();
+          if(ok)done();else fail();
+        }catch(_){fail()}};
+        if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(src).then(done).catch(fallback);
+        else fallback();
+      });
+    }
+  });
+}
+
+/* ----- init ----- */
+function init(){
+  slides.forEach(s=>{
+    const num=s.dataset?s.dataset.number:'';
+    if(!REVEAL.has(num))return;
+    const items=[...s.querySelectorAll('ul.bullet-list > li')].filter(li=>!li.closest('.compare-card'));
+    if(!items.length)return;
+    s._items=items;s._total=items.length;s._shown=items.length;
+    s.classList.add('step-reveal');
+  });
+  initCodeHeaders();
+  syncUI(cur());
+  updateMiles(cur());
+  const act=slides[cur()];
+  if(act&&act.classList.contains('step-reveal')&&!REDUCED){act._shown=1;applyReveal(act)}
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
 </script>
 </body></html>
