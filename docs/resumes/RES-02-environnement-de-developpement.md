@@ -8,6 +8,17 @@
 ---
 
 
+
+## Repères d'apprentissage
+
+**Prérequis et maîtrise attendue :** Prérequis : naviguer dans les dossiers et utiliser un éditeur. Tu dois pouvoir vérifier Node.js/npm et exécuter un fichier depuis le bon répertoire.
+
+**Mise en pratique :** Crée un dossier propre, lance le programme, provoque une erreur de chemin et diagnostique-la.
+
+**Mémo associé :** [CS-08-npm-git-projet.md](../cheatsheets/CS-08-npm-git-projet.md)
+
+**Méthode conseillée :** lis une section, ferme la fiche, reformule la règle sans la recopier, exécute l'exemple, puis change une valeur et prédis le résultat. Si tu ne peux pas expliquer pourquoi le résultat change, révise la notion avant de poursuivre.
+
 ## Repères d'apprentissage
 
 **Prérequis et maîtrise attendue :** Prérequis : savoir naviguer dans les dossiers et utiliser un éditeur de texte. À la fin, tu dois pouvoir vérifier Node.js/npm et exécuter un fichier JavaScript depuis le bon répertoire.
