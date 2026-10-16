@@ -4,6 +4,17 @@
 > Série de fiches de révision JavaScript / TypeScript  
 > Objectif : relier JavaScript à une page HTML, réagir aux interactions et mettre à jour l'interface de façon sûre.
 
+
+## Repères d'apprentissage
+
+**Prérequis et maîtrise attendue :** HTML élémentaire, fonctions et conditions. Tu dois sélectionner un élément, gérer un événement et afficher du texte de façon sûre.
+
+**Mise en pratique :** Crée un formulaire, vérifie le champ vide, affiche une erreur compréhensible et teste au clavier.
+
+**Mémo associé :** [CS-04-dom-evenements-formulaires.md](../cheatsheets/CS-04-dom-evenements-formulaires.md)
+
+**Méthode conseillée :** lis une section, ferme la fiche, reformule la règle sans la recopier, exécute l'exemple, puis change une valeur et prédis le résultat. Si tu ne peux pas expliquer pourquoi le résultat change, révise la notion avant de poursuivre.
+
 ## 1. Qu'est-ce que le DOM ?
 
 Le **DOM** (*Document Object Model*) est une représentation structurée du document HTML sous forme d'objets. JavaScript peut parcourir cette structure, lire des éléments et modifier leur contenu, leurs attributs ou leurs styles.
