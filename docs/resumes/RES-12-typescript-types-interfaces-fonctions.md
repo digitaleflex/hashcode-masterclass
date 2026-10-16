@@ -411,6 +411,22 @@ Pourquoi cette ligne est-elle refusée si `value` est de type `unknown` ?
 - `unknown` est plus sûr que `any` pour des données non vérifiées.
 - Une assertion de type n'est pas une validation à l'exécution.
 
+## Repères d'apprentissage
+
+**Prérequis :** savoir déclarer des variables, écrire des fonctions et manipuler des objets JavaScript.
+
+**À maîtriser à la fin de cette fiche :**
+- annoter les paramètres et les valeurs de retour d'une fonction ;
+- choisir entre un type, une interface et un alias selon le besoin ;
+- expliquer l'inférence de types et corriger une erreur signalée par TypeScript ;
+- distinguer une vérification statique d'une validation à l'exécution.
+
+**Mise en pratique :** crée un type `Utilisateur` avec un identifiant, un nom et une adresse e-mail, puis écris une fonction qui reçoit un utilisateur et renvoie une chaîne de présentation. Teste un objet valide et repère une propriété manquante.
+
+**Critère de réussite :** tu peux expliquer chaque annotation et tu n'utilises pas `as` pour masquer une erreur que tu ne comprends pas.
+
+**Pour approfondir :** [CS-06 — Types TypeScript et utilitaires](../cheatsheets/CS-06-typescript-types-utilitaires.md) et [RES-14 — Types avancés](./RES-14-types-avances-unions-narrowing-generiques.md).
+
 ## Suite de la série
 
 - Précédent : [RES-11 — DOM, événements et interfaces web](./RES-11-dom-evenements-interfaces-web.md)
