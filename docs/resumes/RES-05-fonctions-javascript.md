@@ -342,7 +342,7 @@ function additionner(a, b) {
 ## Suite de la série
 
 - Précédent : [RES-04 — Conditions et boucles](./RES-04-conditions-et-boucles.md)
-- Suivant : **RES-06 — Tableaux et méthodes fonctionnelles** (à créer)
+- Suivant : **RES-06 — Tableaux et méthodes fonctionnelles**
 
 ---
 
