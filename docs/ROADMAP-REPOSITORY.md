@@ -7,8 +7,8 @@ Cette roadmap distingue les ressources présentes des chantiers à réaliser. Un
 - [x] Documenter la différence entre présentation et cours complet.
 - [x] Définir le catalogue des sept modules avancés.
 - [ ] Intégrer les contrôles à la CI et consulter un run GitHub réel.
-- [ ] Vérifier tous les liens locaux du dépôt, y compris HTML.
-- [ ] Confirmer la compatibilité des scripts avec Node.js 20+ sur installation propre.
+- [x] Vérifier automatiquement les liens locaux Markdown/HTML dans la CI.
+- [x] Vérifier les scripts sur une installation CI propre avec Node.js 22.
 - [ ] Revoir les PR ouvertes et éviter les changements concurrents sur la même base.
 
 ## P1 — Stabiliser les 40 fiches existantes
