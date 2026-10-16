@@ -33,5 +33,8 @@ jobs:
         run: npm run check:exercises
       - name: Check repository links and advanced curriculum
         run: npm run check:repo
+      - name: Check TypeScript examples in strict mode
+        run: npm run check:types
+
       - name: Run tests
         run: npm test
