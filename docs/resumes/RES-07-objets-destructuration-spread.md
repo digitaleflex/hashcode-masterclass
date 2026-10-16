@@ -5,6 +5,17 @@
 > Objectif : représenter des données structurées, accéder à leurs propriétés et créer des copies ou transformations explicites.
 
 
+
+## Repères d'apprentissage
+
+**Prérequis et maîtrise attendue :** Prérequis : objets, tableaux et fonctions. Tu dois mettre à jour des objets et expliquer les limites d'une copie superficielle.
+
+**Mise en pratique :** Copie un objet contenant un objet imbriqué, modifie la copie puis observe les références partagées.
+
+**Mémo associé :** [CS-02-tableaux-objets-methodes.md](../cheatsheets/CS-02-tableaux-objets-methodes.md)
+
+**Méthode conseillée :** lis une section, ferme la fiche, reformule la règle sans la recopier, exécute l'exemple, puis change une valeur et prédis le résultat. Si tu ne peux pas expliquer pourquoi le résultat change, révise la notion avant de poursuivre.
+
 ## Repères d'apprentissage
 
 **Prérequis et maîtrise attendue :** Prérequis : objets, tableaux et fonctions. À la fin, tu dois pouvoir lire et mettre à jour des objets, déstructurer des valeurs et expliquer les limites d'une copie superficielle.
