@@ -2,6 +2,15 @@
 
 > HashCode Academy · Cheat Sheet
 
+
+## Comment utiliser cette fiche
+
+Cette fiche est une référence rapide, pas un remplacement du cours. Commence par la notion qui te bloque, copie un exemple dans un petit fichier de test, puis modifie-le pour vérifier que tu comprends ses effets. Ne mémorise pas uniquement la syntaxe : comprends les conditions dans lesquelles elle est correcte.
+
+**Fiches de cours associées :** [RES 13 classes poo typescript](../resumes/RES-13-classes-poo-typescript.md) · [RES 19 architecture organisation livraison](../resumes/RES-19-architecture-organisation-livraison.md)
+
+**Application pratique :** Avant de créer une classe, compare avec un type, une interface ou un objet littéral. Préfère la composition quand elle réduit le couplage.
+
 ## Classe
 ~~~ts
 class Task {
