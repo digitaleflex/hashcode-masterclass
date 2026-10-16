@@ -7,6 +7,17 @@
 
 ---
 
+
+## Repères d'apprentissage
+
+**Prérequis et maîtrise attendue :** Prérequis : savoir naviguer dans les dossiers et utiliser un éditeur de texte. À la fin, tu dois pouvoir vérifier Node.js/npm et exécuter un fichier JavaScript depuis le bon répertoire.
+
+**Mise en pratique :** Application : crée un dossier propre, lance le programme, provoque volontairement une erreur de chemin et diagnostique-la à partir du message.
+
+**Mémo associé :** [Ouvrir la cheat sheet correspondante](../cheatsheets/CS-08-npm-git-projet.md)
+
+**Méthode conseillée :** lis une section, ferme la fiche, reformule la règle sans la recopier, exécute l'exemple, puis change une valeur pour voir si tu peux prédire le nouveau résultat. Si tu ne peux pas expliquer pourquoi le résultat change, reviens à la notion avant de passer à la suite.
+
 ## 1. Qu’est-ce qu’un environnement de développement ?
 
 Un environnement de développement regroupe les outils nécessaires pour écrire, exécuter et vérifier un programme.
