@@ -5,5 +5,18 @@
   "levels": ["INIT", "CORE", "PRO"],
   "exerciseGuide": "EXERCICES.md",
   "exerciseCount": 12,
-  "categories": ["comprehension", "kata", "debugging", "typescript", "testing", "security", "project"]
+  "exercises": [
+    {"id":"EX-JS-001","title":"Calculer un panier","level":"INIT"},
+    {"id":"EX-JS-002","title":"Transformer et totaliser des prix","level":"INIT"},
+    {"id":"EX-JS-003","title":"Diagnostiquer les conversions","level":"INIT"},
+    {"id":"EX-TS-001","title":"Modéliser une tâche","level":"INIT"},
+    {"id":"EX-TS-002","title":"Écrire une fonction typée","level":"INIT"},
+    {"id":"EX-JS-004","title":"Valider une quantité","level":"CORE"},
+    {"id":"EX-JS-005","title":"Déboguer une fonction de total","level":"CORE"},
+    {"id":"EX-TS-003","title":"Supprimer une tâche par identifiant","level":"CORE"},
+    {"id":"EX-ASYNC-001","title":"Traiter une réponse HTTP","level":"CORE"},
+    {"id":"EX-TEST-001","title":"Tester une fonction de remise","level":"CORE"},
+    {"id":"EX-SEC-001","title":"Afficher une saisie en sécurité","level":"CORE"},
+    {"id":"EX-PROJ-001","title":"Mini-projet : gestionnaire de tâches","level":"PRO"}
+  ]
 }
