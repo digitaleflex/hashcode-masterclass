@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "language": "fr",
+  "projects": [
+    {
+      "id": "capstone-taskflow",
+      "title": "TaskFlow sécurisé",
+      "status": "draft",
+      "level": "intermediate",
+      "domains": [
+        "web-engineering",
+        "testing-quality",
+        "application-security",
+        "devops"
+      ],
+      "durationHours": {
+        "min": 12,
+        "max": 16
+      },
+      "spec": "capstone-taskflow/README.md",
+      "starter": null,
+      "solution": null,
+      "acceptanceCriteriaPresent": true
+    }
+  ]
+}
