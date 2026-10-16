@@ -1,0 +1,54 @@
+{
+  "title": "Sécurité applicative",
+  "passMark": 70,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single",
+      "prompt": "Quelle API convient pour afficher une chaîne comme texte dans le DOM ?",
+      "options": [
+        "innerHTML",
+        "textContent",
+        "eval"
+      ],
+      "answer": 1,
+      "explanation": "textContent n'interprète pas la chaîne comme HTML."
+    },
+    {
+      "id": "q2",
+      "type": "single",
+      "prompt": "Où doit se faire le contrôle d'autorisation ?",
+      "options": [
+        "Uniquement frontend",
+        "Côté serveur pour chaque action et ressource",
+        "Dans le libellé du bouton"
+      ],
+      "answer": 1,
+      "explanation": "L'interface ne constitue pas une frontière de sécurité."
+    },
+    {
+      "id": "q3",
+      "type": "single",
+      "prompt": "Que faire si un secret est committé ?",
+      "options": [
+        "Supprimer seulement le fichier et ne rien faire",
+        "Le considérer exposé, le révoquer/renouveler et traiter l'historique",
+        "Le déplacer dans un commentaire"
+      ],
+      "answer": 1,
+      "explanation": "Supprimer le fichier ne rend pas un secret exposé sûr."
+    },
+    {
+      "id": "q4",
+      "type": "single",
+      "prompt": "Quel est le périmètre du laboratoire ?",
+      "options": [
+        "Toute URL publique",
+        "Environnements locaux autorisés",
+        "Systèmes aléatoires accessibles"
+      ],
+      "answer": 1,
+      "explanation": "Les exercices restent strictement locaux et autorisés."
+    }
+  ]
+}
