@@ -1,0 +1,38 @@
+name: Repository quality
+
+on:
+  push:
+    branches: [main, "feat/**", "fix/**", "docs/**", "chore/**"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: repository-quality-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    name: Structural, catalogue and test checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install dependencies
+        run: npm install
+      - name: Check masterclass slides
+        run: npm run check
+      - name: Validate exercise catalogue
+        run: npm run check:exercises
+      - name: Check repository links and advanced curriculum
+        run: npm run check:repo
+      - name: Run tests
+        run: npm test
