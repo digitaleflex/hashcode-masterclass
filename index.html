@@ -78,6 +78,51 @@ html,body,.app{background:#000000!important;color:#FFFFFF}
 @keyframes contentRise{from{opacity:0;translate:0 8px}to{opacity:1;translate:0 0}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}}
 @media(max-width:760px){.hero-art{max-width:300px}.hero-core{gap:8px}.tech-logo{width:78px;padding:8px}.tech-logo .logo-name{font-size:38px}.orbit-tag{font-size:8px!important;padding:7px!important}.tag-b{right:2%}.hero-coordinate{display:none}}
+
+/* Motion design + JavaScript and TypeScript brand marks */
+.hero-art{isolation:isolate;overflow:hidden;border:1px solid #252525!important;background:#000!important;min-width:280px;max-width:390px;border-radius:2px!important;aspect-ratio:1}
+.hero-grid{position:absolute;inset:0;z-index:0;background-image:linear-gradient(#C5F44112 1px,transparent 1px),linear-gradient(90deg,#C5F44112 1px,transparent 1px);background-size:26px 26px;mask-image:radial-gradient(ellipse at center,#000 12%,transparent 76%);animation:grid-drift 18s linear infinite}
+.hero-scan{position:absolute;z-index:1;left:0;right:0;top:-35%;height:28%;background:linear-gradient(180deg,transparent,#C5F44118,transparent);border-bottom:1px solid #C5F44155;animation:scan-pass 7s ease-in-out infinite;pointer-events:none}
+.hero-art:before,.hero-art:after{content:"";position:absolute;inset:0;border:0;border-radius:0;pointer-events:none}
+.hero-art:before{background:radial-gradient(ellipse at 50% 50%,#C5F44112 0,transparent 58%)}
+.hero-art:after{background:linear-gradient(120deg,transparent 30%,#C5F44109 50%,transparent 70%);animation:glow-sweep 9s ease-in-out infinite}
+.hero-core{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:15px;z-index:2}
+.tech-logo{width:clamp(82px,9vw,116px);aspect-ratio:1;display:flex;flex-direction:column;align-items:flex-end;justify-content:space-between;padding:10px;border:1px solid #ffffff25;box-shadow:0 0 0 5px #ffffff05;position:relative;animation:logo-float 5s ease-in-out infinite;transition:transform .25s ease,box-shadow .25s ease}
+.tech-logo:hover{transform:translateY(-7px) scale(1.04);box-shadow:0 0 28px #C5F44320}
+.js-logo{background:#F7DF1E;color:#000;border-color:#F7DF1E;animation-delay:-1.2s;border-radius:2px}
+.ts-logo{background:#3178C6;color:#fff;border-color:#3178C6;animation-delay:-2.8s;border-radius:2px}
+.logo-name{font-family:Arial,Helvetica,sans-serif;font-size:clamp(35px,4vw,52px);line-height:1;font-weight:900;letter-spacing:-.08em}
+.tech-logo small{font:700 8px var(--mono);letter-spacing:.08em}
+.tech-link{width:35px;display:flex;align-items:center;gap:3px;position:relative}
+.tech-link span{height:5px;width:5px;border:1px solid #C5F441;border-radius:50%;background:#C5F441;box-shadow:0 0 12px #C5F441}
+.tech-link i{height:1px;flex:1;background:#C5F441;position:relative;overflow:hidden}
+.tech-link i:after{content:"";position:absolute;inset:-2px auto -2px -10px;width:10px;background:#fff;box-shadow:0 0 8px #fff;animation:data-pulse 2s linear infinite}
+.hero-orbit{position:absolute;inset:12%;border:1px solid #C5F4413b;border-radius:50%;pointer-events:none;z-index:1}
+.orbit-one{animation:orbit-spin 18s linear infinite}
+.orbit-two{inset:4%;border-style:dashed;border-color:#ffffff24;animation:orbit-spin 32s linear infinite reverse}
+.orbit-tag{z-index:4;background:#000!important;border:1px solid #303030!important;border-radius:2px!important;color:#EDEDED!important;box-shadow:0 8px 28px #000b;font-size:9px!important;letter-spacing:.08em}
+.tag-a{top:8%;left:5%}.tag-b{top:17%;right:4%}.tag-c{bottom:16%;left:4%}.tag-d{bottom:7%;right:5%}
+.status-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:#C5F441;box-shadow:0 0 9px #C5F441;margin-right:5px;animation:status-pulse 2s ease-in-out infinite}
+.hero-coordinate{position:absolute;left:12px;bottom:10px;font:9px var(--mono);letter-spacing:.16em;color:#727272;z-index:3}
+.slide.active{animation:slide-arrive .42s cubic-bezier(.2,.75,.25,1) both}
+.slide.active .eyebrow{animation:fade-up .45s .04s both}
+.slide.active h1,.slide.active h2{animation:fade-up .5s .08s both}
+.slide.active .lead{animation:fade-up .5s .14s both}
+.slide.active .cards,.slide.active .compare-grid,.slide.active .code,.slide.active .quiz{animation:fade-up .5s .18s both}
+.info-card,.compare-card,.quiz-option,.tag,.ctrl{transition:transform .22s ease,border-color .22s ease,background-color .22s ease,box-shadow .22s ease}
+.info-card:hover,.compare-card:hover{transform:translateY(-3px);border-color:#C5F44155;box-shadow:0 10px 35px #C5F44108}
+.tag:hover{border-color:#C5F441;transform:translateY(-2px)}
+@keyframes grid-drift{from{background-position:0 0,0 0}to{background-position:26px 26px,26px 26px}}
+@keyframes scan-pass{0%,8%{top:-35%;opacity:0}18%{opacity:1}70%{opacity:.8}90%,100%{top:115%;opacity:0}}
+@keyframes logo-float{0%,100%{translate:0 0}50%{translate:0 -7px}}
+@keyframes orbit-spin{to{transform:rotate(360deg)}}
+@keyframes data-pulse{to{left:calc(100% + 10px)}}
+@keyframes status-pulse{0%,100%{opacity:1;box-shadow:0 0 8px #C5F441}50%{opacity:.45;box-shadow:0 0 2px #C5F441}}
+@keyframes slide-arrive{from{opacity:0;transform:translateY(9px) scale(.996)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes fade-up{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes glow-sweep{0%,100%{opacity:.15;transform:translateX(-20%)}50%{opacity:1;transform:translateX(20%)}}
+@media(max-width:760px){.hero-layout{grid-template-columns:1fr;gap:14px}.hero-art{width:min(66vw,300px);min-width:0;max-width:300px;aspect-ratio:1}.hero-foot{margin-top:26px}.hero-core{gap:10px}.tech-logo{width:clamp(70px,23vw,100px)}.orbit-tag{font-size:8px!important;padding:6px 7px!important}.tag-b{right:2%}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
 </style>
 </head>
 <body>
