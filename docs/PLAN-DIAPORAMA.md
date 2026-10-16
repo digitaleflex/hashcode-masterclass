@@ -5,6 +5,15 @@
 **Support :** présentation HTML autonome de 83 écrans  
 **Principe :** un écran = une idée, une action ou une vérification clairement identifiable.
 
+## Direction artistique
+
+- Fond principal : noir pur `#000000`.
+- Accent : vert lime `#C5F441`.
+- Texte : blanc `#FFFFFF`, avec gris neutres pour les informations secondaires.
+- Signature de marque : **HashCode Academy — LEARN · BUILD · BELONG**.
+- Signature d'atelier : **HashCode Masterclass — JavaScript & TypeScript**.
+- Mise en page sobre et technique : contrastes forts, aplats, filets fins, code lisible, sans dégradés décoratifs.
+
 ## Architecture pédagogique
 
 | Séquence | Objectif | Méthodes |
