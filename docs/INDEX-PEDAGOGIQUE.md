@@ -76,3 +76,22 @@ Cet index rassemble les 40 fiches de référence du parcours. Il est conçu pour
 Les fiches évoluent avec le parcours. Avant une nouvelle session, vérifier les liens, les exemples exécutables, les versions des outils et l'alignement avec le contenu réellement enseigné. Les fiches avancées ne doivent pas être présentées comme des prérequis pour les premiers exercices.
 
 Voir aussi : [Rapport d'audit pédagogique et technique](AUDIT-PEDAGOGIQUE-TECHNIQUE.md).
+
+
+## Cours avancés — parcours complémentaire
+
+Ces modules viennent après les fondamentaux RES-01 à RES-20. Ils sont des supports de présentation à ce stade ; ne pas les considérer comme des cours complets tant que les laboratoires et évaluations ne sont pas ajoutés.
+
+| Module | Sujet | Présentation |
+|---|---|---|
+| 01 | JavaScript avancé | [Ouvrir](../courses/advanced/01-javascript-avance.html) |
+| 02 | TypeScript avancé | [Ouvrir](../courses/advanced/02-typescript-avance.html) |
+| 03 | Tests avancés et qualité | [Ouvrir](../courses/advanced/03-tests-qualite.html) |
+| 04 | Web APIs et performance | [Ouvrir](../courses/advanced/04-web-apis-performance.html) |
+| 05 | Backend Node.js et API | [Ouvrir](../courses/advanced/05-node-backend-api.html) |
+| 06 | Sécurité applicative | [Ouvrir](../courses/advanced/06-securite-applicative.html) |
+| 07 | Architecture, DevOps et production | [Ouvrir](../courses/advanced/07-architecture-devops.html) |
+
+- [Catalogue avancé et statut des ressources](../courses/advanced/curriculum.json)
+- [Architecture du dépôt](ARCHITECTURE-REPOSITORY.md)
+- [Roadmap du dépôt](ROADMAP-REPOSITORY.md)
