@@ -1,7 +1,6 @@
 name: Proposer une ressource pédagogique
 description: Proposer un cours, un laboratoire, un exercice ou une amélioration de parcours.
 title: "[PEDAGOGIE] "
-labels: ["documentation"]
 body:
   - type: dropdown
     id: resource_type
