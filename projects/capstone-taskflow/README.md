@@ -51,7 +51,11 @@ Construire une application locale de gestion de tâches pour une petite équipe.
 - Livraison : CI, artefact identifié par commit, health check et procédure de retour arrière.
 
 ## Starter et solution
-Le starter doit être ajouté dans un répertoire distinct de la solution de référence. Le projet reste au statut `draft` tant que starter, tests automatisés et solution vérifiée ne sont pas présents.
+- [Starter incomplet](starter/README.md) : points à réaliser, sans solution pré-remplie.
+- [Solution de référence du domaine](solution/README.md) : implémentation des invariants de tâches.
+- [Code du domaine](solution/src/tasks.mjs) et [tests unitaires](solution/test/tasks.test.mjs).
+
+Le projet reste au statut `draft` : le domaine et ses tests existent, mais l'interface, l'API complète, les tests d'intégration, la livraison et leur validation de bout en bout restent à réaliser.
 
 ## Barème
 Utiliser [la grille commune](../templates/RUBRIC.md). Défauts critiques : accès inter-utilisateurs, secrets versionnés ou tests qui n'exécutent pas les assertions annoncées.
