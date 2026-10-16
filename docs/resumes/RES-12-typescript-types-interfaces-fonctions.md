@@ -414,7 +414,7 @@ Pourquoi cette ligne est-elle refusée si `value` est de type `unknown` ?
 ## Suite de la série
 
 - Précédent : [RES-11 — DOM, événements et interfaces web](./RES-11-dom-evenements-interfaces-web.md)
-- Suivant : **RES-13 — Classes, objets et programmation orientée objet en TypeScript** (à créer)
+- Suivant : **RES-13 — Classes, objets et programmation orientée objet en TypeScript**
 
 ---
 
