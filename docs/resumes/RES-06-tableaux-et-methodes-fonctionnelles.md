@@ -4,6 +4,17 @@
 > Série de fiches de révision JavaScript / TypeScript  
 > Objectif : stocker des collections de données, les parcourir et les transformer de façon lisible et prévisible.
 
+
+## Repères d'apprentissage
+
+**Prérequis et maîtrise attendue :** Prérequis : fonctions, conditions, boucles et objets de base. À la fin, tu dois pouvoir choisir correctement entre map, filter, find, some, every et reduce.
+
+**Mise en pratique :** Application : à partir d'une liste de tâches, produis une liste filtrée, un compteur, un total et une recherche sans modifier la liste d'origine inutilement.
+
+**Mémo associé :** [Ouvrir la cheat sheet correspondante](../cheatsheets/CS-02-tableaux-objets-methodes.md)
+
+**Méthode conseillée :** lis une section, ferme la fiche, reformule la règle sans la recopier, exécute l'exemple, puis change une valeur pour voir si tu peux prédire le nouveau résultat. Si tu ne peux pas expliquer pourquoi le résultat change, reviens à la notion avant de passer à la suite.
+
 ## 1. Créer et lire un tableau
 
 Un tableau (*Array*) stocke une collection ordonnée de valeurs. Les index commencent à zéro.
