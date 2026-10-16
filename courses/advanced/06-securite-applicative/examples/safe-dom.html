@@ -1,19 +1,18 @@
 <!doctype html>
 <html lang="fr">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>DOM sûr — laboratoire local</title></head>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>DOM sûr — HashCode Academy</title></head>
 <body>
   <main>
-    <h1>Affichage sûr de texte</h1>
-    <label for="name">Texte à afficher</label>
-    <input id="name" value="Bonjour">
+    <h1>Afficher une valeur comme texte</h1>
+    <label for="value">Texte à afficher</label>
+    <input id="value" value="Bonjour">
     <button id="render" type="button">Afficher</button>
     <p id="output" aria-live="polite"></p>
   </main>
   <script type="module">
-    const input = document.querySelector("#name");
+    const input = document.querySelector("#value");
     const output = document.querySelector("#output");
     document.querySelector("#render").addEventListener("click", () => {
-      // textContent affiche la valeur comme texte ; elle n'est pas interprétée comme HTML.
       output.textContent = input.value;
     });
   </script>
