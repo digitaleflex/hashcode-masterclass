@@ -125,3 +125,30 @@ Les 83 écrans ne doivent pas être traités comme 83 mini-cours indépendants. 
 ## Licence
 
 À définir avant redistribution publique.
+
+## Cours avancés
+
+Le parcours avancé propose sept présentations HTML autonomes : JavaScript avancé, TypeScript avancé, tests et qualité, Web APIs/performance, backend Node.js, sécurité applicative, architecture/DevOps.
+
+- [Catalogue des cours avancés](courses/advanced/README.md)
+- [Catalogue machine-readable](courses/advanced/curriculum.json)
+- [Architecture du dépôt](docs/ARCHITECTURE-REPOSITORY.md)
+- [Roadmap qualité et pédagogie](docs/ROADMAP-REPOSITORY.md)
+- [Guide de contribution](CONTRIBUTING.md)
+- [Politique de sécurité](SECURITY.md)
+
+**Important :** ces sept fichiers sont actuellement des présentations, pas encore des cours complets. Les laboratoires guidés, exemples exécutables, exercices, solutions, quiz et rubriques d'évaluation restent à produire. Le statut détaillé est maintenu dans le catalogue.
+
+## Contrôles qualité
+
+Avec Node.js 20 ou plus récent :
+
+```bash
+npm install
+npm run check
+npm run check:exercises
+npm run check:repo
+npm test
+```
+
+Le contrôle du dépôt vérifie les liens locaux Markdown/HTML et le contrat de base du catalogue avancé. La CI ne remplace pas la revue technique des exemples ni les tests visuels sur navigateur.
