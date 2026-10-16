@@ -2,6 +2,15 @@
 
 > HashCode Academy · Cheat Sheet
 
+
+## Comment utiliser cette fiche
+
+Cette fiche est une référence rapide, pas un remplacement du cours. Commence par la notion qui te bloque, copie un exemple dans un petit fichier de test, puis modifie-le pour vérifier que tu comprends ses effets. Ne mémorise pas uniquement la syntaxe : comprends les conditions dans lesquelles elle est correcte.
+
+**Fiches de cours associées :** [RES 17 tests qualite debugging](../resumes/RES-17-tests-qualite-debugging.md) · [RES 19 architecture organisation livraison](../resumes/RES-19-architecture-organisation-livraison.md)
+
+**Application pratique :** Utilise cette checklist avant chaque pull request et note les vérifications non exécutées au lieu de les supposer réussies.
+
 ## Avant de commencer
 - [ ] Le besoin et les critères d'acceptation sont clairs.
 - [ ] Le changement est découpé en étapes réalisables.
