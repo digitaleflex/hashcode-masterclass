@@ -5,6 +5,17 @@
 > Objectif : comprendre les opérations asynchrones et gérer leurs résultats sans bloquer inutilement le programme.
 
 
+
+## Repères d'apprentissage
+
+**Prérequis et maîtrise attendue :** Prérequis : fonctions, erreurs et valeurs de retour. Tu dois gérer un rejet et décider entre séquentiel et concurrent.
+
+**Mise en pratique :** Compare deux appels indépendants séquentiels et avec Promise.all ; traite échec et annulation.
+
+**Mémo associé :** [CS-05-async-promises-fetch.md](../cheatsheets/CS-05-async-promises-fetch.md)
+
+**Méthode conseillée :** lis une section, ferme la fiche, reformule la règle sans la recopier, exécute l'exemple, puis change une valeur et prédis le résultat. Si tu ne peux pas expliquer pourquoi le résultat change, révise la notion avant de poursuivre.
+
 ## Repères d'apprentissage
 
 **Prérequis et maîtrise attendue :** Prérequis : fonctions, erreurs et notions de base des valeurs de retour. À la fin, tu dois pouvoir expliquer une promesse, gérer un rejet et décider entre séquentiel et concurrent.
