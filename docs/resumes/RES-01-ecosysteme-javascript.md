@@ -8,6 +8,17 @@
 ---
 
 
+
+## Repères d'apprentissage
+
+**Prérequis et maîtrise attendue :** Prérequis : aucun. À la fin, explique le rôle du langage, du runtime, du gestionnaire de paquets et de l'outil de build.
+
+**Mise en pratique :** Classe les outils d'un projet réel par rôle et justifie pourquoi ils ne sont pas interchangeables.
+
+**Mémo associé :** [CS-01-javascript-syntaxe-essentielle.md](../cheatsheets/CS-01-javascript-syntaxe-essentielle.md)
+
+**Méthode conseillée :** lis une section, ferme la fiche, reformule la règle sans la recopier, exécute l'exemple, puis change une valeur et prédis le résultat. Si tu ne peux pas expliquer pourquoi le résultat change, révise la notion avant de poursuivre.
+
 ## Repères d'apprentissage
 
 **Prérequis et maîtrise attendue :** Prérequis : aucun. À la fin, tu dois pouvoir expliquer avec tes propres mots le rôle du langage, du runtime, du gestionnaire de paquets et de l'outil de build.
