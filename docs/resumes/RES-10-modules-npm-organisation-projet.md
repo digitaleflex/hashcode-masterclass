@@ -5,6 +5,17 @@
 > Objectif : découper un programme en modules, gérer ses dépendances et structurer un projet maintenable.
 
 
+
+## Repères d'apprentissage
+
+**Prérequis et maîtrise attendue :** Prérequis : terminal, fichiers JavaScript et fonctions. Tu dois exporter/importer une fonction et expliquer package.json et le lockfile.
+
+**Mise en pratique :** Sépare une fonction utilitaire dans un module, importe-la ailleurs et vérifie la configuration ESM.
+
+**Mémo associé :** [CS-14-modules-esm-import-export.md](../cheatsheets/CS-14-modules-esm-import-export.md)
+
+**Méthode conseillée :** lis une section, ferme la fiche, reformule la règle sans la recopier, exécute l'exemple, puis change une valeur et prédis le résultat. Si tu ne peux pas expliquer pourquoi le résultat change, révise la notion avant de poursuivre.
+
 ## Repères d'apprentissage
 
 **Prérequis et maîtrise attendue :** Prérequis : terminal, fichiers JavaScript et fonctions. À la fin, tu dois pouvoir exporter/importer une fonction, lire package.json et expliquer le rôle du lockfile.
