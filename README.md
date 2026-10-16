@@ -54,8 +54,10 @@ Puis ouvrir `http://localhost:4173`.
 
 Les fiches sont des supports de révision autonomes, enrichis de cas d’usage et de mini-défis. Elles complètent le diaporama ; elles ne remplacent pas la pratique.
 
-- [Index des 12 fiches RES-01 à RES-12](fiches/README.md)
-- [Exercices guidés avec résultats attendus](exercises/EXERCICES.md)
+- [Index pédagogique des 20 fiches RES et 20 fiches CS](docs/INDEX-PEDAGOGIQUE.md)
+- [Exercices guidés — lot pilote de 12 exercices](exercises/EXERCICES.md)
+- [Catalogue des exercices](exercises/curriculum.json)
+- [Guide du parcours pratique](exercises/README.md)
 - [Guide d’export PDF imprimable](fiches/EXPORT-PDF.md)
 - [Plan pédagogique du diaporama](docs/PLAN-DIAPORAMA.md)
 
