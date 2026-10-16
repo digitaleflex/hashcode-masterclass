@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "language": "fr",
+  "brand": "HashCode Academy",
+  "series": "HashCode Masterclass — parcours avancé",
+  "modules": [
+    {"id":"advanced-js","number":1,"title":"JavaScript avancé","presentation":"01-javascript-avance.html","status":"presentation","level":"intermediate","prerequisites":["Fondamentaux JavaScript","Fonctions et closures","Promesses et modules"],"resources":{"course":null,"examples":null,"labs":null,"exercises":null,"solutions":null,"quiz":null,"rubric":null}},
+    {"id":"advanced-typescript","number":2,"title":"TypeScript avancé","presentation":"02-typescript-avance.html","status":"presentation","level":"intermediate","prerequisites":["TypeScript fondamental","Unions et narrowing"],"resources":{"course":null,"examples":null,"labs":null,"exercises":null,"solutions":null,"quiz":null,"rubric":null}},
+    {"id":"testing-quality","number":3,"title":"Tests avancés et qualité logicielle","presentation":"03-tests-qualite.html","status":"presentation","level":"intermediate","prerequisites":["Fonctions","Modules","Tests de base"],"resources":{"course":null,"examples":null,"labs":null,"exercises":null,"solutions":null,"quiz":null,"rubric":null}},
+    {"id":"web-apis-performance","number":4,"title":"Web APIs et performance","presentation":"04-web-apis-performance.html","status":"presentation","level":"intermediate","prerequisites":["DOM","Événements","Promesses","HTTP"],"resources":{"course":null,"examples":null,"labs":null,"exercises":null,"solutions":null,"quiz":null,"rubric":null}},
+    {"id":"node-backend-api","number":5,"title":"Backend Node.js et API","presentation":"05-node-backend-api.html","status":"presentation","level":"intermediate","prerequisites":["Node.js","Modules ESM","HTTP","Validation"],"resources":{"course":null,"examples":null,"labs":null,"exercises":null,"solutions":null,"quiz":null,"rubric":null}},
+    {"id":"application-security","number":6,"title":"Sécurité applicative","presentation":"06-securite-applicative.html","status":"presentation","level":"intermediate","prerequisites":["HTTP","DOM","Validation","Authentification et autorisation"],"resources":{"course":null,"examples":null,"labs":null,"exercises":null,"solutions":null,"quiz":null,"rubric":null}},
+    {"id":"architecture-devops","number":7,"title":"Architecture, DevOps et production","presentation":"07-architecture-devops.html","status":"presentation","level":"intermediate","prerequisites":["Git","Tests","Node.js","HTTP"],"resources":{"course":null,"examples":null,"labs":null,"exercises":null,"solutions":null,"quiz":null,"rubric":null}}
+  ]
+}
