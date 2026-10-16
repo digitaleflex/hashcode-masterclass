@@ -50,6 +50,16 @@ Puis ouvrir `http://localhost:4173`.
 - Diagrammes intégrés pour le cycle de développement, `map`, `filter`, `reduce`, le parcours TypeScript et les responsabilités du Task Manager.
 - Animations CSS respectant la préférence système de réduction des mouvements.
 
+## Fiches de résumé et exercices pratiques
+
+Les fiches sont des supports de révision autonomes, enrichis de cas d’usage et de mini-défis. Elles complètent le diaporama ; elles ne remplacent pas la pratique.
+
+- [Index des 12 fiches RES-01 à RES-12](fiches/README.md)
+- [Exercices guidés avec résultats attendus](exercises/EXERCICES.md)
+- [Plan pédagogique du diaporama](docs/PLAN-DIAPORAMA.md)
+
+**Parcours conseillé :** lire la fiche correspondant à la notion, prédire le résultat d’un exemple, exécuter le code, modifier une donnée, puis expliquer ce qui change. Les fiches sont en Markdown et peuvent être imprimées depuis GitHub ou converties en PDF avec un outil Markdown.
+
 ## Parcours pédagogique
 
 | Séquence | Contenu |
