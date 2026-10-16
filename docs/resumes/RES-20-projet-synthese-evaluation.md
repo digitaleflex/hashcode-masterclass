@@ -22,7 +22,7 @@ Construis une petite application de gestion de tâches. Elle doit permettre d'aj
 - Préserver les données si le choix de stockage retenu le permet.
 
 ### Contraintes techniques
-- TypeScript avec `strict: true).
+- TypeScript avec `strict: true`.
 - Modèle de données explicite.
 - Fonctions métier séparées du DOM.
 - Rendu des textes utilisateur avec `textContent` ou une approche sûre équivalente.
