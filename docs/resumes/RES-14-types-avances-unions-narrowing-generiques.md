@@ -1,116 +1,159 @@
 # RES-14 — Types avancés, unions, narrowing et génériques
 
-> HashCode Academy · HashCode Masterclass · Série RES
+**Collection :** HashCode Academy — Fiches de résumé  
+**Niveau :** Intermédiaire  
+**Durée indicative :** 35 à 50 minutes  
+**Prérequis :** RES-12, fonctions TypeScript et objets  
+**Objectif :** représenter plusieurs formes de données sans perdre la sécurité du typage.
 
-## Objectifs
-Modéliser les données avec précision, réduire les valeurs invalides et créer des fonctions réutilisables sans perdre la sécurité des types.
+## Objectifs d'apprentissage
+
+Tu dois pouvoir choisir entre union et intersection, réduire un type avec le *narrowing*, utiliser une union discriminée, appliquer des types utilitaires et écrire une fonction générique.
 
 ## 1. Union et intersection
-Une union A | B signifie « A ou B ». Une intersection A & B combine les exigences de plusieurs types.
 
-~~~ts
-type Id = string | number;
-type Timestamped = { createdAt: Date };
-type Identified = { id: string };
-type RecordInfo = Timestamped & Identified;
-~~~
+Une union `A | B` signifie qu'une valeur est compatible avec A **ou** B. Une intersection `A & B` combine les contraintes de A et B.
 
-## 2. Narrowing et unions discriminées
-TypeScript affine un type grâce aux conditions et aux vérifications.
+```ts
+type Identifier = string | number;
 
-~~~ts
-function formatId(id: string | number): string {
-  if (typeof id === "number") return id.toFixed(0);
-  return id.trim();
+function formatId(id: Identifier): string {
+  return String(id);
 }
 
-type Success = { status: "success"; data: string[] };
-type Failure = { status: "error"; message: string };
-type Result = Success | Failure;
+type HasId = { id: string };
+type HasTitle = { title: string };
+type TaskSummary = HasId & HasTitle;
 
-function display(result: Result): string {
-  if (result.status === "success") return result.data.join(", ");
-  return result.message;
+const task: TaskSummary = { id: "t-01", title: "Lire" };
+```
+
+Avec une union, tu ne peux utiliser que les opérations valides pour tous les membres possibles, sauf si tu as d'abord réduit le type.
+
+## 2. Narrowing : préciser le type par une vérification
+
+Le *narrowing* est le processus par lequel TypeScript affine le type à partir d'une condition.
+
+```ts
+function display(value: string | number): string {
+  if (typeof value === "string") {
+    return value.toUpperCase();
+  }
+  return value.toFixed(2);
 }
-~~~
+```
 
-Un champ littéral commun comme status forme une union discriminée. Dans un switch, une valeur de type never peut aider à vérifier que tous les cas sont traités.
+Autres outils utiles :
+- `typeof` pour plusieurs types primitifs ;
+- `in` pour vérifier une propriété ;
+- `instanceof` pour certaines instances de classes ;
+- des fonctions de garde de type lorsque la vérification métier est plus complexe.
 
-~~~ts
-function assertNever(value: never): never {
-  throw new Error(`Cas inattendu : ${String(value)}`);
+Ne contourne pas une erreur de typage avec `as` sans preuve : une assertion change ce que le compilateur croit, pas la valeur réelle.
+
+## 3. Unions discriminées
+
+Une propriété littérale commune permet de distinguer plusieurs variantes d'un modèle.
+
+```ts
+type Result<T> =
+  | { status: "success"; data: T }
+  | { status: "error"; message: string };
+
+function renderResult<T>(result: Result<T>): string {
+  if (result.status === "success") {
+    return "Données reçues";
+  }
+  return `Erreur : ${result.message}`;
 }
-~~~
+```
 
-## 3. Types utilitaires
-~~~ts
-type User = {
-  id: string;
-  name: string;
-  email?: string;
-};
+Cette forme est pratique pour représenter les états d'une interface : chargement, succès et erreur. Elle évite les combinaisons incohérentes comme « succès sans données » si le modèle est bien conçu.
 
-type UserPreview = Pick<User, "id" | "name">;
-type UserUpdate = Partial<Pick<User, "name" | "email">>;
-type UserWithoutEmail = Omit<User, "email">;
-type ReadonlyUser = Readonly<User>;
-type Counts = Record<string, number>;
-~~~
+## 4. Génériques : conserver le lien entre entrée et sortie
 
-Utilitaires utiles : Partial, Required, Readonly, Pick, Omit, Record et ReturnType. Des types nommés explicites sont préférables à des combinaisons illisibles.
+Un générique représente un type paramétrable. Il est utile quand la même logique fonctionne avec plusieurs types tout en préservant leur information.
 
-## 4. Génériques
-Les génériques conservent la relation entre le type d'entrée et celui de sortie.
-
-~~~ts
+```ts
 function first<T>(items: readonly T[]): T | undefined {
   return items[0];
 }
 
-type ApiResponse<T> = {
-  data: T;
-  requestId: string;
-};
+const firstName = first(["Awa", "Koffi"]); // string | undefined
+const firstScore = first([12, 18, 20]);    // number | undefined
+```
 
-function getId<T extends { id: string }>(item: T): string {
-  return item.id;
+Le paramètre `T` est déduit depuis l'argument. Le type de retour reste lié au type d'entrée. Évite les génériques qui ajoutent de la complexité sans préserver une relation utile.
+
+## 5. Types utilitaires
+
+| Type | Utilité | Exemple |
+|---|---|---|
+| `Partial<T>` | Rend les propriétés optionnelles | Formulaire de mise à jour |
+| `Required<T>` | Rend les propriétés obligatoires | Contrat normalisé |
+| `Pick<T, K>` | Sélectionne des propriétés | Vue compacte |
+| `Omit<T, K>` | Retire des propriétés | DTO sans champ interne |
+| `Record<K, V>` | Associe des clés à un type de valeur | Table de statuts |
+
+```ts
+type Task = { id: string; title: string; completed: boolean };
+type TaskUpdate = Partial<Pick<Task, "title" | "completed">>;
+
+const update: TaskUpdate = { completed: true };
+```
+
+Les types utilitaires modifient les contrats de types pendant le développement ; ils ne valident pas un JSON reçu d'un réseau.
+
+## 6. unknown, any et données externes
+
+`any` désactive une grande partie des contrôles sur la valeur. `unknown` oblige à vérifier le type avant d'utiliser la valeur.
+
+```ts
+function parsePayload(payload: unknown): string | null {
+  if (
+    typeof payload === "object" &&
+    payload !== null &&
+    "name" in payload &&
+    typeof payload.name === "string"
+  ) {
+    return payload.name;
+  }
+  return null;
 }
-~~~
+```
 
-La contrainte extends exige que T possède au moins une propriété id de type string.
+Cet exemple est une garde simple. Dans une vraie application, une validation complète du schéma peut nécessiter une fonction dédiée ou une bibliothèque de validation.
 
-## 5. unknown et données externes
-unknown impose une vérification avant usage ; any désactive une grande partie des contrôles. Les données d'une API doivent être validées à l'exécution.
+## 7. Erreurs fréquentes
 
-~~~ts
-function isUser(value: unknown): value is { id: string; name: string } {
-  if (typeof value !== "object" || value === null) return false;
-  const candidate = value as Record<string, unknown>;
-  return typeof candidate.id === "string"
-    && typeof candidate.name === "string";
-}
-~~~
+- Lire une propriété spécifique d'une union avant d'avoir réduit le type.
+- Utiliser `any` pour faire disparaître une erreur au lieu de la comprendre.
+- Confondre une assertion de type avec une validation.
+- Rendre toutes les propriétés optionnelles sans réfléchir aux états incohérents.
+- Utiliser un générique là où un type concret serait plus simple.
+- Oublier le cas `undefined` lors de l'accès à un tableau.
 
-Cette garde vérifie uniquement les champs indiqués. Une application réelle doit aussi valider les contraintes métier et les données imbriquées. Une assertion de type ne transforme pas les données.
+## 8. Mini-exercice
 
-## Erreurs fréquentes
-- Utiliser any pour faire disparaître une erreur.
-- Oublier une variante d'une union discriminée.
-- Confondre contrôle statique et validation runtime.
-- Ajouter des génériques inutiles.
+Modélise une réponse d'API contenant soit une liste de tâches, soit un message d'erreur. Utilise une union discriminée avec une propriété `status`. Écris une fonction qui affiche le nombre de tâches en cas de succès et le message en cas d'erreur.
 
-## Mini-exercice
-Écrivez getById<T> qui reçoit une liste d'éléments possédant id: string et renvoie l'élément correspondant ou undefined.
+### Critères de réussite
+- Les deux états sont distingués par une propriété littérale.
+- Chaque branche accède uniquement aux propriétés disponibles.
+- Aucun `any` n'est nécessaire.
+- Le cas vide est défini explicitement.
 
-~~~ts
-function getById<T extends { id: string }>(
-  items: readonly T[],
-  id: string,
-): T | undefined {
-  return items.find(item => item.id === id);
-}
-~~~
+## Auto-évaluation
 
-**À retenir :** utilisez les unions pour exprimer les alternatives, le narrowing pour vérifier les variantes, et les génériques pour préserver les relations entre types.
+1. Que signifie `A | B` ?
+2. Pourquoi le narrowing est-il nécessaire ?
+3. Quelle relation un générique permet-il de préserver ?
+4. Pourquoi `Partial<T>` ne valide-t-il pas une requête entrante ?
 
-**Suite :** RES-15 — TypeScript dans le navigateur : DOM, formulaires et événements.
+## Fiches associées
+- Précédent : [RES-13 — Classes et POO](RES-13-classes-poo-typescript.md)
+- Suite : [RES-15 — TypeScript dans le navigateur](RES-15-typescript-dom-formulaires-evenements.md)
+- Mémo : [CS-06 — Types TypeScript](../cheatsheets/CS-06-typescript-types-utilitaires.md)
+
+---
+**HashCode Academy · LEARN · BUILD · BELONG**
