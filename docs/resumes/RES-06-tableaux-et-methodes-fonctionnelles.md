@@ -388,7 +388,7 @@ Pourquoi ce code ne trie-t-il pas correctement les nombres ?
 ## Suite de la série
 
 - Précédent : [RES-05 — Fonctions JavaScript](./RES-05-fonctions-javascript.md)
-- Suivant : **RES-07 — Objets, déstructuration et opérateur spread** (à créer)
+- Suivant : **RES-07 — Objets, déstructuration et opérateur spread**
 
 ---
 
