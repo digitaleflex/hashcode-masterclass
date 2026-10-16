@@ -51,3 +51,8 @@ Persister les tâches dans le stockage local du navigateur, puis ajouter un filt
 - [ ] Je teste les cas nominaux et les cas limites.
 - [ ] Je sais distinguer une erreur de type d’un bug logique.
 - [ ] Je peux expliquer comment l’interface utilise les fonctions sans contenir toute la logique métier.
+
+## Cas d’usage pratique — un gestionnaire pour une équipe de formation
+Une équipe HashCode peut suivre les tâches d’un atelier : préparer les supports, publier un exercice, relire les réponses. Chaque tâche a un identifiant stable, un titre et un état. La logique métier gère les règles ; l’interface ne fait qu’afficher les tâches et déclencher les actions.
+
+**Mini-défi de synthèse :** implémente d’abord l’ajout et la liste, puis la complétion, la suppression et les filtres. Pour chaque fonction, note une entrée normale, un cas limite et le résultat attendu avant d’écrire le code.
