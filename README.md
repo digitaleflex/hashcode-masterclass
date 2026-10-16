@@ -2,6 +2,18 @@
 
 Support immersif pour une masterclass de 2 heures destinée aux débutants et aux participants ayant quelques notions.
 
+## Identité visuelle
+
+La présentation suit l'identité HashCode Academy :
+- Noir profond : `#000000`
+- Vert lime : `#C5F441`
+- Blanc : `#FFFFFF`
+- Signature : **LEARN · BUILD · BELONG**
+- Marque mère : **HashCode Academy**
+- Série d'ateliers : **HashCode Masterclass**
+
+Les composants de l'interface privilégient les aplats noirs, les bordures discrètes, la typographie contrastée et les accents lime. Aucun dégradé décoratif ni ressource distante n'est requis.
+
 ## Présentation
 
 Le diaporama comprend **83 écrans pédagogiques courts**. Chaque écran porte une intention précise : expliquer un concept, comparer deux notions, faire prédire une sortie, proposer un exercice, révéler une correction ou vérifier la compréhension.
