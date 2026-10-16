@@ -86,8 +86,27 @@ async function checkAdvancedCatalog() {
         errors.push(`Ressource ${key} introuvable pour ${module.id}: ${value}`);
       }
     }
-    if (module.status === "complete" && ["course", "examples", "labs", "exercises", "solutions", "quiz", "rubric"].some(key => !resources[key])) {
-      errors.push(`Le module ${module.id} est marqué complete mais des ressources requises manquent.`);
+    if (["course", "complete"].includes(module.status) && ["course", "examples", "labs", "exercises", "solutions", "quiz", "rubric"].some(key => !resources[key])) {
+      errors.push(`Le module ${module.id} est marqué ${module.status} mais des ressources requises manquent.`);
+    }
+    if (typeof resources.quiz === "string") {
+      try {
+        const quiz = JSON.parse(await readFile(path.join(root, "courses/advanced", resources.quiz), "utf8"));
+        if (!Array.isArray(quiz.questions) || quiz.questions.length < 4) {
+          errors.push(`Quiz invalide ou trop court pour ${module.id}.`);
+        } else {
+          const questionIds = new Set();
+          for (const question of quiz.questions) {
+            if (!question.id || questionIds.has(question.id)) errors.push(`ID de question absent/dupliqué dans le quiz de ${module.id}.`);
+            questionIds.add(question.id);
+            if (!Array.isArray(question.options) || !Number.isInteger(question.answer) || question.answer < 0 || question.answer >= question.options.length || !question.explanation) {
+              errors.push(`Question mal formée dans le quiz de ${module.id}: ${question.id}`);
+            }
+          }
+        }
+      } catch (error) {
+        errors.push(`Quiz JSON invalide pour ${module.id}: ${error.message}`);
+      }
     }
   }
   if (catalog.modules.length !== 7) errors.push(`Le catalogue avancé attend 7 modules, reçu : ${catalog.modules.length}`);
