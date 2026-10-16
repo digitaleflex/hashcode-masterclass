@@ -40,3 +40,16 @@ Utilise une conversion explicite quand elle rend l’intention plus claire.
 3. `const user = { name: "Ada" }` permet-il de modifier `user.name` ? **Oui**, la propriété peut changer, même si `user` ne peut pas être réaffectée.
 
 **Erreur fréquente :** supposer que `+` fait toujours une addition numérique.
+
+## Cas d’usage pratique — calculer le panier d’un client
+Une boutique vend trois articles à 2 500 FCFA chacun. Le prix est fixe pendant le calcul : utilise `const`. La quantité peut changer si le client ajoute un article : utilise `let` si tu réaffectes cette variable.
+
+```js
+const unitPrice = 2500;
+let quantity = 3;
+quantity = 4;
+const total = unitPrice * quantity;
+console.log(total); // 10000
+```
+
+**Mini-défi :** que se passe-t-il si la quantité arrive d’un formulaire sous forme de chaîne `"4"` ? Convertis-la explicitement avec `Number()` et vérifie que la valeur obtenue est bien un nombre.
