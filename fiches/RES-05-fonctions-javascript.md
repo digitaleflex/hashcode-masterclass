@@ -43,3 +43,8 @@ Une fonction fléchée à expression concise renvoie automatiquement cette expre
 Que renvoie `calculateTotal(1000, 4)` ? **4000**.
 
 Que renvoie `const show = () => { console.log("Salut"); }` ? **La fonction affiche “Salut” lorsqu’elle est appelée, mais ne renvoie pas cette chaîne**.
+
+## Cas d’usage pratique — réutiliser un calcul de facture
+Plusieurs écrans d’une boutique doivent calculer le montant d’une ligne de commande. Une fonction `calculateTotal(price, quantity)` centralise la règle, évite de la recopier et permet de la tester indépendamment de l’interface.
+
+**Mini-défi :** définis le comportement attendu pour une quantité égale à zéro, un prix négatif ou une entrée invalide. La fonction doit-elle accepter ces valeurs ou les refuser ? Explique ton choix.
