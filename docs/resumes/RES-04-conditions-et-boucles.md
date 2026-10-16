@@ -5,6 +5,17 @@
 > Objectif : prendre une décision dans un programme et répéter une action de manière contrôlée.
 
 
+
+## Repères d'apprentissage
+
+**Prérequis et maîtrise attendue :** Prérequis : variables, types et comparaisons. Tu dois choisir entre if, switch, for, for...of et while sans créer de boucle infinie.
+
+**Mise en pratique :** Teste les valeurs juste avant, sur et après chaque seuil d'une règle de décision.
+
+**Mémo associé :** [CS-01-javascript-syntaxe-essentielle.md](../cheatsheets/CS-01-javascript-syntaxe-essentielle.md)
+
+**Méthode conseillée :** lis une section, ferme la fiche, reformule la règle sans la recopier, exécute l'exemple, puis change une valeur et prédis le résultat. Si tu ne peux pas expliquer pourquoi le résultat change, révise la notion avant de poursuivre.
+
 ## Repères d'apprentissage
 
 **Prérequis et maîtrise attendue :** Prérequis : déclarations, types et opérateurs de comparaison. À la fin, tu dois pouvoir choisir entre if, switch, for, for...of et while sans créer de boucle infinie.
