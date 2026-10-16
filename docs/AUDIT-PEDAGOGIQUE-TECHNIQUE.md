@@ -147,19 +147,33 @@ Les cheat sheets doivent rester compactes. Elles devraient privilégier les synt
 **HashCode Academy · LEARN · BUILD · BELONG**
 
 
-## 9. Architecture et nouveaux cours avancés
+## 9. Architecture, cours avancés et projets pratiques
 
-L'architecture cible est documentée dans [ARCHITECTURE-REPOSITORY.md](ARCHITECTURE-REPOSITORY.md) et son plan de réalisation dans [ROADMAP-REPOSITORY.md](ROADMAP-REPOSITORY.md). Les sept présentations avancées sont désormais répertoriées dans le catalogue machine-readable `courses/advanced/curriculum.json`. Le statut `presentation` est volontairement conservé pour chacune : les ressources de cours, exemples, labs, exercices, solutions, quiz et grilles d'évaluation ne sont pas encore livrés.
+L'architecture cible est documentée dans [ARCHITECTURE-REPOSITORY.md](ARCHITECTURE-REPOSITORY.md), la roadmap dans [ROADMAP-REPOSITORY.md](ROADMAP-REPOSITORY.md) et les critères de livraison dans [DEFINITION-OF-DONE.md](DEFINITION-OF-DONE.md).
 
-### État réel des vérifications
+### État des cours avancés
+Les sept modules ont désormais :
+- une présentation HTML ;
+- un guide de cours et un laboratoire guidé ;
+- des exercices gradués et des corrigés séparés ;
+- un quiz JSON et une grille d'évaluation ;
+- des exemples ou démonstrations, avec plusieurs fichiers exécutables ;
+- un enregistrement de catalogue avec chemins contrôlables.
 
-- [x] Indexer les sept présentations dans l'index pédagogique.
-- [x] Définir un contrat de catalogue et un gabarit de cours avancé.
-- [x] Ajouter un contrôle automatisé de liens locaux Markdown/HTML et de cohérence du catalogue.
-- [x] Exécuter les contrôles sur une installation CI propre avec Node.js 22.
-- [x] Consulter un run GitHub Actions réel : Repository quality run 47 et Exercises CI run 61, tous deux réussis sur la branche de travail.
-- [ ] Tester les sept présentations en navigateur et au clavier.
-- [ ] Compléter les laboratoires et évaluations des sept modules.
-- [ ] Terminer la vérification des liens et exemples des 40 fiches RES/CS.
+Le statut est `course`, pas `complete`. Les validations manuelles sur navigateur restent ouvertes ; certains exemples méritent une extension des tests et une revue pédagogique approfondie.
 
-Ne pas interpréter l'ajout des scripts ou du workflow comme la preuve que la CI a déjà réussi. Le résultat doit être confirmé dans GitHub Actions.
+### Contrôles CI vérifiés
+- [x] Contrôle des liens locaux Markdown/HTML.
+- [x] Validation des chemins de ressources et de la structure des quiz.
+- [x] Compilation stricte du module TypeScript de référence.
+- [x] Tests Node.js, tests d'exemples, tests HTTP locaux et tests statiques de démonstrations.
+- [x] Repository quality run 209 : succès sur le commit `62cc2e64cb40203e7f40fddbdde7c2c37dcd3ef0`.
+- [x] Exercises CI run 126 : succès sur le même commit.
+- [ ] Revue visuelle desktop/mobile et navigation clavier des sept présentations.
+- [ ] Audit approfondi de l'exactitude et des exemples des 40 fiches RES/CS.
+
+### État des projets
+Le contrat de projet, le gabarit, le barème et le catalogue JSON existent. Le projet TaskFlow dispose d'un énoncé, d'un starter de travail et d'une solution de référence pour le domaine des tâches avec tests unitaires. Le projet reste en statut `draft` : interface complète, API intégrée, persistance, pipeline et validation de bout en bout ne sont pas encore livrées.
+
+### Décisions de gouvernance restantes
+La licence de redistribution et les règles de protection de `main` doivent être confirmées par le mainteneur dans les paramètres GitHub. Elles ne doivent pas être supposées par l'audit.
