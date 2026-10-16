@@ -153,3 +153,13 @@ npm test
 ```
 
 Le contrôle du dépôt vérifie les liens locaux Markdown/HTML et le contrat de base du catalogue avancé. La CI ne remplace pas la revue technique des exemples ni les tests visuels sur navigateur.
+
+
+## Projets pratiques
+
+Les cours avancés sont prolongés par un cadre de projets avec contrat, gabarit, barème et projet de synthèse en préparation.
+
+- [Catalogue des projets](projects/README.md)
+- [Contrat commun](projects/PROJECT-CONTRACT.md)
+- [Projet de synthèse TaskFlow sécurisé](projects/capstone-taskflow/README.md)
+- [Catalogue JSON](projects/curriculum.json)
