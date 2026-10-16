@@ -90,20 +90,20 @@ Les 83 écrans ne doivent pas être traités comme 83 mini-cours indépendants. 
 
 ## Structure
 
-```text
-.
-├── index.html
-├── package.json
-├── README.md
-├── .gitignore
-├── docs/
-│   ├── PLAN-DIAPORAMA.md
-│   └── LOCAL-SETUP.md
-├── exercises/
-│   └── EXERCICES.md
-└── scripts/
-    └── check-slides.mjs
-```
+L'arborescence actuelle comprend le support initial, les 40 fiches de référence, le catalogue d'exercices, les sept présentations avancées, les scripts de contrôle et la documentation de gouvernance.
+
+- `index.html` : masterclass initiale.
+- `docs/resumes/` et `docs/cheatsheets/` : fiches RES et CS.
+- `docs/INDEX-PEDAGOGIQUE.md` : index pédagogique global.
+- `exercises/` : catalogue, exercices guidés et interface de progression.
+- `courses/advanced/` : présentations avancées, catalogue JSON, schéma et gabarit de cours.
+- `scripts/` et `tests/` : contrôles structurels et tests automatisés.
+- `.github/workflows/` : intégration continue.
+- `docs/ARCHITECTURE-REPOSITORY.md` : architecture cible et règles de maintenance.
+- `docs/ROADMAP-REPOSITORY.md` : étapes restantes.
+- `CONTRIBUTING.md` et `SECURITY.md` : contribution et sécurité.
+
+Consulter l'[architecture complète](docs/ARCHITECTURE-REPOSITORY.md) pour la structure cible et les responsabilités détaillées.
 
 ## Avant la séance
 
