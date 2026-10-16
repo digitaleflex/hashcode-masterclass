@@ -38,3 +38,8 @@ Pour chaque fonction, écris : **entrée → résultat attendu → cas limite �
 
 ## Vérification rapide
 Un code sans erreur TypeScript peut-il encore contenir un bug logique ? **Oui**. Un test réussi prouve-t-il l’absence de tous les bugs ? **Non : il couvre seulement les scénarios testés**.
+
+## Cas d’usage pratique — vérifier une fonction avant de la livrer
+Avant de livrer `calculateTotal`, teste un panier normal, une quantité zéro et une entrée invalide. Le vérificateur TypeScript contrôle les types ; la validation runtime examine les données réelles ; les tests vérifient les résultats et règles métier.
+
+**Mini-défi :** écris un test pour un tableau vide et un autre pour une tâche introuvable. Indique le résultat attendu avant d’exécuter le code.
