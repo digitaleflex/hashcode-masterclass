@@ -5,7 +5,9 @@
   "description": "Présentation web autonome de la masterclass HashCode JavaScript et TypeScript.",
   "scripts": {
     "start": "npx http-server . -p 4173 -c-1",
-    "check": "node scripts/check-slides.mjs"
+    "check": "node scripts/check-slides.mjs",
+    "check:exercises": "node scripts/validate-exercises.mjs",
+    "test": "node --test tests/*.test.mjs"
   },
   "devDependencies": {
     "http-server": "^14.1.1"
