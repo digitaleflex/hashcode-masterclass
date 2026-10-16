@@ -4,6 +4,17 @@
 > Série de fiches de révision JavaScript / TypeScript  
 > Objectif : organiser le code en blocs réutilisables, transmettre des données à une fonction et récupérer un résultat.
 
+
+## Repères d'apprentissage
+
+**Prérequis et maîtrise attendue :** Prérequis : variables, expressions et conditions. À la fin, tu dois pouvoir concevoir une fonction avec une responsabilité claire, des paramètres et un résultat exploitable.
+
+**Mise en pratique :** Application : transforme un bloc de code répété en fonction pure lorsque c'est possible, puis vérifie son comportement avec trois entrées différentes.
+
+**Mémo associé :** [Ouvrir la cheat sheet correspondante](../cheatsheets/CS-03-fonctions-portee-this.md)
+
+**Méthode conseillée :** lis une section, ferme la fiche, reformule la règle sans la recopier, exécute l'exemple, puis change une valeur pour voir si tu peux prédire le nouveau résultat. Si tu ne peux pas expliquer pourquoi le résultat change, reviens à la notion avant de passer à la suite.
+
 ## 1. Qu'est-ce qu'une fonction ?
 
 Une fonction est un bloc de code conçu pour accomplir une tâche. Elle peut recevoir des **paramètres**, exécuter des instructions et éventuellement renvoyer une valeur avec `return`.
