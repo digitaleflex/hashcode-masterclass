@@ -1,36 +1,32 @@
-# Exercices — HashCode Masterclass
+# Exercices pratiques — HashCode Masterclass
 
-Ce dossier accueillera les exercices et leurs corrigés.
+Ce répertoire complète les fiches RES et CS. Le lot pilote est décrit dans [EXERCICES.md](EXERCICES.md), avec les consignes, résultats attendus, indices et corrigés.
 
-## Exercice 1 — JavaScript : calculer un total
+## Méthode de travail
 
-```js
-const prices = [1000, 2500, 1500];
+1. Lire l'objectif et les critères de réussite.
+2. Prédire le résultat lorsque l'exercice s'y prête.
+3. Résoudre sans regarder la correction.
+4. Exécuter les tests et traiter au moins un cas limite.
+5. Expliquer les choix et noter les difficultés.
 
-// TODO: calculer la somme et l'afficher.
+## Niveaux
+
+- **INIT** : comprendre et appliquer une notion avec peu de contraintes.
+- **CORE** : résoudre un problème autonome, traiter les cas limites et tester.
+- **PRO** : combiner plusieurs notions et justifier une solution robuste.
+
+## Validation locale
+
+Node.js 20 ou plus récent est requis.
+
+```bash
+npm install
+npm run check
+npm run check:exercises
+npm test
 ```
 
-Résultat attendu : `5000`.
+Le dépôt est conçu pour une utilisation locale. Les tests vérifient les fonctions de référence du lot pilote ; ils ne signifient pas que tous les extraits de tous les documents sont exécutés automatiquement.
 
-## Exercice 2 — TypeScript : modéliser une tâche
-
-Définir une interface `Task` contenant :
-- `id` : nombre ;
-- `title` : chaîne de caractères ;
-- `completed` : booléen.
-
-Créer ensuite un objet conforme à cette interface.
-
-## Exercice 3 — Défi : supprimer une tâche
-
-Compléter une fonction `removeTask(id: number): void` qui :
-1. recherche l'index de la tâche ;
-2. affiche un message si elle n'existe pas ;
-3. supprime la tâche quand elle existe.
-
-## Critères d'évaluation
-
-- Le programme fonctionne.
-- Les données respectent les types annoncés.
-- Les cas limites simples sont traités.
-- Le participant peut expliquer sa solution.
+Ne jamais exécuter du code utilisateur arbitraire dans le processus principal d'un serveur de production.
