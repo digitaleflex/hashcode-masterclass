@@ -9,7 +9,7 @@ Un tableau ordonne plusieurs valeurs. Les indices commencent à zéro. Les méth
 ```js
 const prices = [1000, 2500, 1500, 500];
 
-const withTax = prices.map((price) => price * 1.1);
+const withTax = prices.map((price) => Math.round(price * 1.1));
 // [1100, 2750, 1650, 550]
 
 const expensive = prices.filter((price) => price >= 1500);
@@ -43,6 +43,6 @@ Le dernier indice valide est `length - 1`. Un indice hors limites donne généra
 Quelle méthode choisir pour garder uniquement les prix supérieurs ou égaux à 1 500 ? **filter**. Pour obtenir leur somme ? **reduce**, après filtrage si c’est la règle voulue.
 
 ## Cas d’usage pratique — analyser les commandes d’une boutique
-À partir des prix `[1000, 2500, 1500, 500]`, `map` calcule les prix avec une taxe, `filter` garde les prix à partir de 1 500 et `reduce` calcule un total. Chaque méthode répond à une question différente.
+À partir des prix `[1000, 2500, 1500, 500]`, `map` calcule les prix avec une taxe (arrondis ici à l’unité avec `Math.round`), `filter` garde les prix à partir de 1 500 et `reduce` calcule un total. Chaque méthode répond à une question différente.
 
 **Mini-défi :** calcule le total des prix supérieurs ou égaux à 1 500. Écris d’abord la sélection avec `filter`, puis la somme avec `reduce`. Vérifie le résultat attendu : `4000`.
