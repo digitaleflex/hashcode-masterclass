@@ -3,7 +3,7 @@
 **Parcours :** HashCode Masterclass · **Domaine :** JavaScript · **Niveau :** Débutant
 
 ## L’idée essentielle
-Une variable est un nom associé à une valeur. En JavaScript, privilégie `const` par défaut et utilise `let` lorsqu’une réaffectation est nécessaire. Évite `var) dans le code moderne d’apprentissage.
+Une variable est un nom associé à une valeur. En JavaScript, privilégie `const` par défaut et utilise `let` lorsqu’une réaffectation est nécessaire. Évite `var` dans le code moderne d’apprentissage.
 
 ## const et let
 ```js
@@ -21,7 +21,7 @@ console.log(price * quantity); // 10000
 - `string` : texte, par exemple `"Bonjour"`
 - `number` : nombres, par exemple `42` ou `3.14`
 - `boolean` : `true` ou `false`
-- `undefined) : valeur par défaut d’une variable déclarée sans valeur
+- `undefined` : valeur par défaut d’une variable déclarée sans valeur
 - `null` : absence de valeur représentée explicitement
 - `bigint` et `symbol` : types primitifs plus spécialisés
 
