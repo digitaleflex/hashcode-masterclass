@@ -45,7 +45,7 @@ console.log(unitPrice * quantity); // 10000
 ```js
 const prices = [1000, 2500, 1500, 500];
 
-// TODO 1 : crée un tableau avec chaque prix augmenté de 10 %.
+// TODO 1 : crée un tableau avec chaque prix augmenté de 10 %, arrondi à l’unité.
 // TODO 2 : garde les prix supérieurs ou égaux à 1500.
 // TODO 3 : calcule la somme de ces prix filtrés.
 ```
@@ -56,7 +56,7 @@ const prices = [1000, 2500, 1500, 500];
 <summary>Correction possible</summary>
 
 ```js
-const withTax = prices.map((price) => price * 1.1);
+const withTax = prices.map((price) => Math.round(price * 1.1));
 const expensive = prices.filter((price) => price >= 1500);
 const total = expensive.reduce((sum, price) => sum + price, 0);
 console.log(withTax, expensive, total);
