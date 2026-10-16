@@ -2,6 +2,15 @@
 
 > HashCode Academy · Cheat Sheet
 
+
+## Comment utiliser cette fiche
+
+Cette fiche est une référence rapide, pas un remplacement du cours. Commence par la notion qui te bloque, copie un exemple dans un petit fichier de test, puis modifie-le pour vérifier que tu comprends ses effets. Ne mémorise pas uniquement la syntaxe : comprends les conditions dans lesquelles elle est correcte.
+
+**Fiches de cours associées :** [RES 18 securite validation entrees](../resumes/RES-18-securite-validation-entrees.md) · [RES 11 dom evenements interfaces web](../resumes/RES-11-dom-evenements-interfaces-web.md)
+
+**Application pratique :** Pour chaque entrée, identifie sa source, la validation requise, le contexte de rendu et le contrôle côté serveur.
+
 ## Règles de base
 - Toute entrée externe est non fiable.
 - Valider les données côté serveur, même si le navigateur les valide aussi.
