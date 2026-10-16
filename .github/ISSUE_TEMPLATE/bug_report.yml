@@ -1,7 +1,6 @@
 name: Signaler un problème
 description: Signaler une erreur pédagogique, technique ou de navigation.
 title: "[BUG] "
-labels: ["bug"]
 body:
   - type: dropdown
     id: category
