@@ -2,6 +2,15 @@
 
 > HashCode Academy · Cheat Sheet
 
+
+## Comment utiliser cette fiche
+
+Cette fiche est une référence rapide, pas un remplacement du cours. Commence par la notion qui te bloque, copie un exemple dans un petit fichier de test, puis modifie-le pour vérifier que tu comprends ses effets. Ne mémorise pas uniquement la syntaxe : comprends les conditions dans lesquelles elle est correcte.
+
+**Fiches de cours associées :** [RES 05 fonctions javascript](../resumes/RES-05-fonctions-javascript.md) · [RES 07 objets destructuration spread](../resumes/RES-07-objets-destructuration-spread.md)
+
+**Application pratique :** Pour chaque fonction, identifie ses entrées, sa sortie, ses effets de bord et sa portée.
+
 ## Déclaration de fonctions
 ~~~js
 function add(a, b) {
