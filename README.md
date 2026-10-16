@@ -1,18 +1,20 @@
 # HashCode Masterclass — JavaScript & TypeScript
 
-Support interactif pour une masterclass de 2 heures destinée aux débutants et aux personnes ayant quelques notions.
+Support immersif pour une masterclass de 2 heures destinée aux débutants et aux participants ayant quelques notions.
 
 ## Présentation
 
-La présentation est écrite en HTML, CSS et JavaScript et ne charge aucune dépendance distante pour afficher les diapositives. Ouvre `index.html` dans un navigateur moderne ; une connexion Internet n'est pas nécessaire.
+Le diaporama comprend **83 écrans pédagogiques courts**. Chaque écran porte une intention précise : expliquer un concept, comparer deux notions, faire prédire une sortie, proposer un exercice, révéler une correction ou vérifier la compréhension.
+
+Le support est écrit en HTML, CSS et JavaScript sans bibliothèque distante indispensable. Ouvre `index.html` dans un navigateur moderne ; la présentation fonctionne hors ligne.
 
 ## Démarrage
 
 1. Cloner ou télécharger le dépôt.
 2. Ouvrir `index.html` dans Chrome, Firefox ou Edge.
-3. Passer en plein écran depuis le bouton ou avec la touche `F`.
+3. Passer en plein écran avec la touche `F`.
 
-Une prévisualisation locale via npm est également disponible :
+Pour lancer une prévisualisation locale :
 
 ```bash
 npm install
@@ -29,42 +31,30 @@ Puis ouvrir `http://localhost:4173`.
 - `N` : afficher / masquer les notes du formateur
 - `Échap` : fermer les notes
 
-## Contenu pédagogique
+## Parcours pédagogique
 
-Le diaporama comprend 18 diapositives :
-
-1. Couverture HashCode
-2. Méthode : comprendre, expérimenter, construire
-3. Objectifs pédagogiques
-4. Diagnostic du groupe
-5. Cartographie de l'écosystème
-6. Navigateur et Node.js
-7. Node.js, npm et package.json
-8. Premier programme
-9. Variables, conditions et fonctions
-10. Tableaux et objets
-11. Mini-défi JavaScript
-12. Pourquoi TypeScript
-13. Fonctions typées
-14. Interfaces et données
-15. Atelier HashCode Task Manager
-16. Exécution et résultat attendu
-17. Quiz de sortie
-18. Challenge et suite du parcours
+| Séquence | Contenu |
+|---|---|
+| 1. Ouverture | Contrat pédagogique, diagnostic et itinéraire |
+| 2. Carte de l'écosystème | JavaScript, TypeScript, navigateur, Node.js, npm, Vite, React et Next.js |
+| 3. Installation et outils | Terminal, projet, package.json et diagnostic d'erreurs |
+| 4. Fondamentaux JavaScript | Variables, types, conditions, boucles, fonctions, tableaux, objets et méthodes de tableau |
+| 5. Fondamentaux TypeScript | Annotations, inférence, fonctions, unions, interfaces, propriétés optionnelles et limites du typage |
+| 6. Atelier Task Manager | Modèle, ajout, liste, complétion, suppression et scénarios de test |
+| 7. Ancrage | Quiz, synthèse et plan de pratique sur 7 jours |
 
 ## Déroulé de 120 minutes
 
 | Temps | Séquence |
 |---|---|
-| 00–10 min | Accueil et diagnostic |
-| 10–25 min | Cartographie de l'écosystème |
-| 25–40 min | Environnement et premier programme |
-| 40–58 min | Fondamentaux JavaScript |
-| 58–63 min | Mini-défi JavaScript |
-| 63–80 min | Introduction à TypeScript |
-| 80–105 min | Atelier guidé |
-| 105–115 min | Challenge et quiz |
-| 115–120 min | Bilan et prochaines étapes |
+| 00–15 min | Accueil, objectifs, diagnostic et carte mentale |
+| 15–40 min | Environnements, outils et exécution |
+| 40–65 min | Fondamentaux JavaScript + mini-exercice |
+| 65–82 min | Fondamentaux TypeScript et exercices de typage |
+| 82–108 min | Atelier guidé Task Manager |
+| 108–120 min | Quiz, synthèse et suite du parcours |
+
+Les 83 écrans ne doivent pas être traités comme 83 mini-cours indépendants. Certains sont des transitions visuelles de quelques secondes ; les exercices et démonstrations prennent davantage de temps. Le formateur peut sauter une diapositive de rappel si le groupe maîtrise déjà la notion.
 
 ## Structure
 
@@ -83,20 +73,21 @@ Le diaporama comprend 18 diapositives :
     └── check-slides.mjs
 ```
 
-## Qualité avant l'événement
+## Avant la séance
 
-- [ ] Tester la présentation sur la machine et l'écran utilisés pendant l'événement.
-- [ ] Tester flèches, espace, plein écran et notes du formateur.
-- [ ] Tester les choix du quiz.
-- [ ] Préparer le projet TypeScript de l'atelier à l'avance.
-- [ ] Garder une copie locale de tous les supports.
-- [ ] Exporter une version PDF de secours.
+- [ ] Tester le diaporama sur la machine et l'écran de projection.
+- [ ] Vérifier navigation, plein écran, notes et quiz.
+- [ ] Exécuter et vérifier les exemples de code.
+- [ ] Préparer le projet TypeScript avant l'atelier.
+- [ ] Garder une copie locale et produire un PDF de secours.
+- [ ] Adapter la densité des diapositives à la taille de la salle.
 
 ## Choix techniques
 
 - Palette : graphite et vert lime HashCode `#C5F441`.
 - Format de conception : 16:9.
-- Présentation autonome pour privilégier la fiabilité et le fonctionnement hors ligne.
+- Notes du formateur intégrées à chaque écran.
+- Navigation au clavier, progression, quiz interactifs et styles d'impression.
 - Les types TypeScript aident à détecter certaines incohérences statiques, mais ne valident pas automatiquement les données à l'exécution.
 
 ## Licence
