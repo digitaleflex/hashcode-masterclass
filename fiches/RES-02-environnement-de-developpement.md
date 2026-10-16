@@ -36,3 +36,8 @@ Lis le **premier message pertinent**, repère le fichier et la ligne, reproduis 
 - Quel fichier déclare les scripts npm ? **package.json**.
 - Que fait `node app.js` ? **Il demande à Node.js d’exécuter le fichier**.
 - Une erreur est-elle toujours un échec inutile ? **Non : c’est une information pour diagnostiquer le programme**.
+
+## Cas d’usage pratique — diagnostiquer un script qui ne démarre pas
+Tu reçois un fichier `app.js` qui doit calculer le nombre de tâches terminées. Depuis le dossier du projet, vérifie le répertoire (`pwd`), la présence du fichier (`ls` ou `dir)), puis lance `node app.js`. Si une erreur apparaît, relève le message, le fichier et la ligne avant de modifier le code.
+
+**Mini-défi :** introduis volontairement une faute de syntaxe, exécute le script et décris ce que le message d’erreur t’apprend.
