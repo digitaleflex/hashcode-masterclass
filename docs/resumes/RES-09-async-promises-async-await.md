@@ -413,7 +413,7 @@ Pourquoi vérifier `response.ok` après `fetch` ?
 ## Suite de la série
 
 - Précédent : [RES-08 — Gestion des erreurs et débogage](./RES-08-gestion-erreurs-debogage.md)
-- Suivant : **RES-10 — Modules JavaScript, npm et organisation du projet** (à créer)
+- Suivant : **RES-10 — Modules JavaScript, npm et organisation du projet**
 
 ---
 
