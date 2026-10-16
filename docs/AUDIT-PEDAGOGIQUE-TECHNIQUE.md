@@ -145,3 +145,21 @@ Les cheat sheets doivent rester compactes. Elles devraient privilégier les synt
 
 **Index du parcours :** [INDEX-PEDAGOGIQUE.md](INDEX-PEDAGOGIQUE.md)  
 **HashCode Academy · LEARN · BUILD · BELONG**
+
+
+## 9. Architecture et nouveaux cours avancés
+
+L'architecture cible est documentée dans [ARCHITECTURE-REPOSITORY.md](ARCHITECTURE-REPOSITORY.md) et son plan de réalisation dans [ROADMAP-REPOSITORY.md](ROADMAP-REPOSITORY.md). Les sept présentations avancées sont désormais répertoriées dans le catalogue machine-readable `courses/advanced/curriculum.json`. Le statut `presentation` est volontairement conservé pour chacune : les ressources de cours, exemples, labs, exercices, solutions, quiz et grilles d'évaluation ne sont pas encore livrés.
+
+### État réel des vérifications
+
+- [x] Indexer les sept présentations dans l'index pédagogique.
+- [x] Définir un contrat de catalogue et un gabarit de cours avancé.
+- [x] Ajouter un contrôle automatisé de liens locaux Markdown/HTML et de cohérence du catalogue.
+- [ ] Exécuter le contrôle localement sur une installation propre.
+- [ ] Consulter un run GitHub Actions réel sur la branche de travail.
+- [ ] Tester les sept présentations en navigateur et au clavier.
+- [ ] Compléter les laboratoires et évaluations des sept modules.
+- [ ] Terminer la vérification des liens et exemples des 40 fiches RES/CS.
+
+Ne pas interpréter l'ajout des scripts ou du workflow comme la preuve que la CI a déjà réussi. Le résultat doit être confirmé dans GitHub Actions.
