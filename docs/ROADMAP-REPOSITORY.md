@@ -23,14 +23,14 @@ Cette roadmap distingue les ressources présentes des chantiers à réaliser. Un
 ## P1 — Compléter les cours avancés
 Ordre recommandé : JavaScript avancé comme module pilote, puis réutilisation du gabarit.
 
-- [ ] Module 01 — exemples exécutables : closures, event loop, itérateurs, async.
-- [ ] Module 02 — projet TypeScript strict, types avancés et validation runtime.
-- [ ] Module 03 — tests unitaires/intégration, cas limites et débogage.
+- [x] Module 01 — cours, exemple exécutable closures/générateur, laboratoire, exercices, corrigé, quiz et grille livrés ; validation CI en cours.
+- [x] Module 02 — cours, exemple TypeScript, laboratoire, exercices, corrigé, quiz et grille livrés. [ ] Compilation stricte à exécuter.
+- [x] Module 03 — cours, exemple sum avec tests Node.js, laboratoire, exercices, corrigé, quiz et grille livrés.
 - [ ] Module 04 — mini-application fetch/AbortController, accessibilité et performance.
-- [ ] Module 05 — API Node.js locale avec validation et tests HTTP.
-- [ ] Module 06 — laboratoire sécurité local, correction et non-régression.
-- [ ] Module 07 — CI, conteneurisation, observabilité et rollback.
-- [ ] Ajouter quiz, corrigés séparés, rubriques et références à chaque module.
+- [x] Module 05 — cours, serveur HTTP de laboratoire sur localhost, laboratoire, exercices, corrigé, quiz et grille livrés. [ ] Tests HTTP d'intégration à compléter.
+- [x] Module 06 — cours, démo DOM sûre locale, laboratoire, exercices, corrigé, quiz et grille livrés. [ ] Test navigateur de non-régression à compléter.
+- [x] Module 07 — cours, health check exécutable avec tests, laboratoire, exercices, corrigé, quiz et grille livrés. [ ] Pipeline/conteneur de démonstration à compléter.
+- [x] Ajouter quiz, corrigés séparés, rubriques et références à chaque module.
 - [ ] Tester les pages HTML desktop/mobile, au clavier et avec réduction des animations.
 
 ## P2 — Projets pratiques
