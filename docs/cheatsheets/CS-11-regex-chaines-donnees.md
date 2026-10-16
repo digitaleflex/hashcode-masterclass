@@ -2,6 +2,15 @@
 
 > HashCode Academy · Cheat Sheet
 
+
+## Comment utiliser cette fiche
+
+Cette fiche est une référence rapide, pas un remplacement du cours. Commence par la notion qui te bloque, copie un exemple dans un petit fichier de test, puis modifie-le pour vérifier que tu comprends ses effets. Ne mémorise pas uniquement la syntaxe : comprends les conditions dans lesquelles elle est correcte.
+
+**Fiches de cours associées :** [RES 03 variables et types javascript](../resumes/RES-03-variables-et-types-javascript.md) · [RES 08 gestion erreurs debogage](../resumes/RES-08-gestion-erreurs-debogage.md)
+
+**Application pratique :** Teste les expressions régulières sur une valeur valide, une valeur invalide et une chaîne vide. N'utilise pas une regex pour remplacer une vraie analyse de structure.
+
 ## Méthodes utiles
 ~~~js
 const value = "  HashCode Academy  ";
