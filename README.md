@@ -56,8 +56,13 @@ Les fiches sont des supports de révision autonomes, enrichis de cas d’usage e
 
 - [Index pédagogique des 20 fiches RES et 20 fiches CS](docs/INDEX-PEDAGOGIQUE.md)
 - [Exercices guidés — lot pilote de 12 exercices](exercises/EXERCICES.md)
-- [Catalogue des exercices](exercises/curriculum.json)
+- [Catalogue des exercices](exercises/curriculum.json) et [schéma contractuel](exercises/schema.json)
 - [Guide du parcours pratique](exercises/README.md)
+- [Navigateur interactif des exercices](exercises/index.html) — recherche, filtres, indices et progression locale
+- [Modèle de contribution](exercises/templates/README.md)
+- [Premier exercice autonome](exercises/EX-JS-001-panier/README.md) — consigne, starter, corrigé et tests séparés
+- [Exercices TypeScript stricts](exercises/typescript/README.md)
+- [Spécification du navigateur d’exercices](exercises/navigation/README.md)
 - [Guide d’export PDF imprimable](fiches/EXPORT-PDF.md)
 - [Plan pédagogique du diaporama](docs/PLAN-DIAPORAMA.md)
 
@@ -101,8 +106,20 @@ Les 83 écrans ne doivent pas être traités comme 83 mini-cours indépendants. 
 │   └── LOCAL-SETUP.md
 ├── exercises/
 │   └── EXERCICES.md
-└── scripts/
-    └── check-slides.mjs
+├── scripts/
+│   ├── check-slides.mjs
+│   ├── check-markdown-links.mjs
+│   └── validate-exercises.mjs
+└── exercises/
+    ├── EXERCICES.md
+    ├── curriculum.json
+    ├── schema.json
+    ├── templates/
+    ├── EX-JS-001-panier/
+    ├── typescript/
+    ├── async/
+    ├── web/
+    └── navigation/
 ```
 
 ## Avant la séance
