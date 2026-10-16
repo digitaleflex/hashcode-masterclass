@@ -8,7 +8,7 @@
 
 Le corpus a une base solide : objectifs identifiables, exemples concrets, exercices avec corrigés sur plusieurs fiches, rappels de sécurité, et un projet de synthèse. La progression RES-01 à RES-20 couvre le chemin allant de l'environnement de développement jusqu'à un projet typé, testé et livré.
 
-Les améliorations prioritaires concernent surtout la cohérence de navigation et la normalisation du format. Les RES-01 à RES-12 sont plus développées et comportent davantage d'exercices que les RES-13 à RES-20, qui sont sensiblement plus courtes. Cette différence peut être intentionnelle, mais elle doit être assumée : les fiches avancées devraient soit devenir de vrais supports de cours, soit être explicitement présentées comme des résumés compacts.
+Les améliorations prioritaires concernent surtout la cohérence de navigation et la normalisation du format. Les RES-13 à RES-20 ont été enrichies avec objectifs, explications, pièges, exercices et critères de réussite. Les RES-01 à RES-12 disposent de repères d’apprentissage complémentaires ; les RES-07 à RES-11 ont été vérifiées comme déjà munies de cette section, et RES-12 vient d’être complétée.
 
 ## 2. Points positifs à préserver
 
@@ -24,7 +24,7 @@ Les améliorations prioritaires concernent surtout la cohérence de navigation e
 
 ### P0 — À corriger avant de diffuser le support
 
-1. **Navigation de fin de fiche incohérente.** Plusieurs fiches historiques contenaient des mentions indiquant que la fiche suivante était « à créer », alors que la série est désormais complète. Les mentions ont été nettoyées sur RES-04 à RES-12 ; il reste à vérifier et harmoniser les renvois exacts entre toutes les fiches.
+1. **Navigation de fin de fiche incohérente.** Plusieurs fiches historiques contenaient des mentions indiquant que la fiche suivante était « à créer », alors que la série est désormais complète. Les mentions ont été nettoyées sur RES-04 à RES-12 ; les renvois restent à vérifier systématiquement.
 2. **Index central manquant.** Un index pédagogique a été ajouté dans `docs/INDEX-PEDAGOGIQUE.md`, avec les 40 liens, les usages des deux collections et des jalons d'apprentissage.
 3. **Vérification des liens automatisée absente.** Avant publication finale, contrôler que chaque lien local existe et que chaque référence RES/CS pointe vers le bon sujet.
 4. **Revue d'exécution absente.** La présence d'exemples dans un fichier Markdown ne garantit pas qu'ils s'exécutent tels quels. Les blocs JavaScript/TypeScript doivent être séparés des fragments illustratifs, puis exécutés ou vérifiés par un outil approprié.
@@ -64,7 +64,7 @@ Pour une collection appelée « fiches de résumé », l'option A est la plus co
 - Vérifier les exemples avec une configuration stricte, idéalement `strict: true`.
 - Ne pas présenter une assertion `as SomeType` comme une validation.
 - Illustrer la différence entre `any`, `unknown`, les unions et le narrowing.
-- Vérifier les types DOM et les possibilités de valeur `null) après les sélections.
+- Vérifier les types DOM et les possibilités d’obtenir `null` après les sélections.
 - Expliquer que les types sont effacés à l'exécution et ne protègent pas à eux seuls une API ou une base de données.
 - Veiller à ne pas mélanger les fonctionnalités du compilateur TypeScript et celles d'un outil de bundling.
 
@@ -85,8 +85,8 @@ Pour une collection appelée « fiches de résumé », l'option A est la plus co
 - [x] Nettoyer les mentions « à créer » dans les fins de RES-04 à RES-12.
 - [ ] Vérifier tous les liens relatifs des 40 fichiers.
 - [ ] Harmoniser les renvois RES et CS sur chaque fiche.
-- [ ] Appliquer le même gabarit minimal aux RES-13 à RES-20.
-- [ ] Ajouter un en-tête standard aux CS : usage, fiche RES associée et rappel des limites.
+- [x] Enrichir les RES-13 à RES-20 avec objectifs, exemples, pièges, exercices et critères de réussite.
+- [x] Ajouter aux CS une section d’utilisation, des liens vers les RES associées et une pratique conseillée.
 
 ### Phase 2 — Contrôle technique
 
