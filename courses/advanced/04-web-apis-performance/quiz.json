@@ -1,0 +1,54 @@
+{
+  "title": "Web APIs et performance",
+  "passMark": 70,
+  "questions": [
+    {
+      "id": "q1",
+      "type": "single",
+      "prompt": "Une réponse HTTP 404 fait-elle automatiquement rejeter fetch ?",
+      "options": [
+        "Oui",
+        "Non, il faut vérifier response.ok",
+        "Seulement en HTTPS"
+      ],
+      "answer": 1,
+      "explanation": "fetch rejette sur certaines erreurs réseau ; les statuts HTTP doivent être vérifiés."
+    },
+    {
+      "id": "q2",
+      "type": "single",
+      "prompt": "À quoi sert AbortController ?",
+      "options": [
+        "Signaler une annulation aux API compatibles",
+        "Garantir l'arrêt du serveur",
+        "Compresser le JSON"
+      ],
+      "answer": 0,
+      "explanation": "L'annulation dépend de la prise en charge de l'API."
+    },
+    {
+      "id": "q3",
+      "type": "single",
+      "prompt": "Quelle approche d'optimisation est la plus fiable ?",
+      "options": [
+        "Réécrire tout le code avant mesure",
+        "Mesurer, identifier le goulot, optimiser et mesurer à nouveau",
+        "Toujours ajouter un Worker"
+      ],
+      "answer": 1,
+      "explanation": "Les mesures guident les optimisations utiles."
+    },
+    {
+      "id": "q4",
+      "type": "single",
+      "prompt": "Pourquoi ne pas stocker de secrets dans localStorage ?",
+      "options": [
+        "Il est toujours chiffré",
+        "Un script exécuté dans l'origine peut potentiellement le lire",
+        "Il disparaît à chaque rechargement"
+      ],
+      "answer": 1,
+      "explanation": "Une faille XSS peut exposer le stockage local."
+    }
+  ]
+}
