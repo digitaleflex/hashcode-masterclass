@@ -1,60 +1,58 @@
 # HashCode Masterclass — JavaScript & TypeScript
 
-Support de présentation interactif pour une masterclass de 2 heures destinée aux débutants et aux participants ayant quelques notions.
+Support interactif pour une masterclass de 2 heures destinée aux débutants et aux personnes ayant quelques notions.
 
 ## Présentation
 
-Le support est une présentation web HTML/CSS/JavaScript conçue pour être lisible en projection et utilisable hors ligne. Elle utilise un système de diapositives léger, sans dépendance externe chargée depuis Internet au démarrage.
+La présentation est écrite en HTML, CSS et JavaScript et ne charge aucune dépendance distante pour afficher les diapositives. Ouvre `index.html` dans un navigateur moderne ; une connexion Internet n'est pas nécessaire.
 
-### Ouvrir le diaporama
+## Démarrage
 
-Ouvre simplement [`index.html`](./index.html) dans un navigateur moderne. Aucun serveur ni installation n'est requis pour la présentation.
+1. Cloner ou télécharger le dépôt.
+2. Ouvrir `index.html` dans Chrome, Firefox ou Edge.
+3. Passer en plein écran depuis le bouton ou avec la touche `F`.
 
-### Navigation
+Une prévisualisation locale via npm est également disponible :
 
-- **← / →** : diapositive précédente / suivante
-- **Espace** : avancer
-- **F** : plein écran
-- **N** : afficher/masquer les notes du formateur
-- **Home / End** : première / dernière diapositive
-- **?** : afficher les raccourcis
-
-Les raccourcis sont documentés dans la présentation. Pour le plein écran, le navigateur peut demander une interaction utilisateur.
-
-## Contenu
-
-Le diaporama couvre :
-1. Accueil et diagnostic
-2. Cartographie de l'écosystème JavaScript/TypeScript
-3. Navigateur, Node.js, npm et outils de développement
-4. Fondamentaux JavaScript
-5. Mini-défi JavaScript
-6. Types, fonctions et interfaces TypeScript
-7. Atelier HashCode Task Manager
-8. Challenge, quiz et prochaines étapes
-
-## Structure du dépôt
-
-```text
-.
-├── index.html              # Présentation autonome
-├── README.md               # Présentation du dépôt et mode d'emploi
-├── docs/
-│   └── PLAN-DIAPORAMA.md   # Plan pédagogique des 18 diapositives
-└── exercises/
-    └── README.md           # À venir : exercices et corrigés
+```bash
+npm install
+npm run start
 ```
 
-## Ligne éditoriale et design
+Puis ouvrir `http://localhost:4173`.
 
-- Langue : français
-- Format cible : 16:9
-- Identité visuelle : graphite, vert lime `#C5F441`, typographie moderne
-- Style : visuel, démonstratif, peu de texte par diapositive
-- Durée : 120 minutes
-- Public : débutants et participants ayant quelques notions
+## Navigation
 
-## Déroulé en 120 minutes
+- `←` / `→` ou `Espace` : précédente / suivante
+- `Home` / `End` : première / dernière
+- `F` : plein écran
+- `N` : afficher / masquer les notes du formateur
+- `Échap` : fermer les notes
+
+## Contenu pédagogique
+
+Le diaporama comprend 18 diapositives :
+
+1. Couverture HashCode
+2. Méthode : comprendre, expérimenter, construire
+3. Objectifs pédagogiques
+4. Diagnostic du groupe
+5. Cartographie de l'écosystème
+6. Navigateur et Node.js
+7. Node.js, npm et package.json
+8. Premier programme
+9. Variables, conditions et fonctions
+10. Tableaux et objets
+11. Mini-défi JavaScript
+12. Pourquoi TypeScript
+13. Fonctions typées
+14. Interfaces et données
+15. Atelier HashCode Task Manager
+16. Exécution et résultat attendu
+17. Quiz de sortie
+18. Challenge et suite du parcours
+
+## Déroulé de 120 minutes
 
 | Temps | Séquence |
 |---|---|
@@ -66,17 +64,41 @@ Le diaporama couvre :
 | 63–80 min | Introduction à TypeScript |
 | 80–105 min | Atelier guidé |
 | 105–115 min | Challenge et quiz |
-| 115–120 min | Bilan et suite du parcours |
+| 115–120 min | Bilan et prochaines étapes |
 
-## Prochaines étapes
+## Structure
 
-- [ ] Réviser et valider le rendu du diaporama sur un vidéoprojecteur.
-- [ ] Compléter les notes du formateur et les consignes orales.
-- [ ] Ajouter le mini-projet TypeScript avec corrigé.
-- [ ] Ajouter une fiche mémo JavaScript/TypeScript.
-- [ ] Générer une version PDF de secours.
-- [ ] Ajouter des tests manuels pour vérifier navigation et quiz.
+```text
+.
+├── index.html
+├── package.json
+├── README.md
+├── .gitignore
+├── docs/
+│   ├── PLAN-DIAPORAMA.md
+│   └── LOCAL-SETUP.md
+├── exercises/
+│   └── EXERCICES.md
+└── scripts/
+    └── check-slides.mjs
+```
+
+## Qualité avant l'événement
+
+- [ ] Tester la présentation sur la machine et l'écran utilisés pendant l'événement.
+- [ ] Tester flèches, espace, plein écran et notes du formateur.
+- [ ] Tester les choix du quiz.
+- [ ] Préparer le projet TypeScript de l'atelier à l'avance.
+- [ ] Garder une copie locale de tous les supports.
+- [ ] Exporter une version PDF de secours.
+
+## Choix techniques
+
+- Palette : graphite et vert lime HashCode `#C5F441`.
+- Format de conception : 16:9.
+- Présentation autonome pour privilégier la fiabilité et le fonctionnement hors ligne.
+- Les types TypeScript aident à détecter certaines incohérences statiques, mais ne valident pas automatiquement les données à l'exécution.
 
 ## Licence
 
-À définir par les mainteneurs du dépôt avant redistribution publique du contenu.
+À définir avant redistribution publique.
