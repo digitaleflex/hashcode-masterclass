@@ -2,6 +2,15 @@
 
 > HashCode Academy · HashCode Masterclass · Cheat Sheet
 
+
+## Comment utiliser cette fiche
+
+Cette fiche est une référence rapide, pas un remplacement du cours. Commence par la notion qui te bloque, copie un exemple dans un petit fichier de test, puis modifie-le pour vérifier que tu comprends ses effets. Ne mémorise pas uniquement la syntaxe : comprends les conditions dans lesquelles elle est correcte.
+
+**Fiches de cours associées :** [RES 03 variables et types javascript](../resumes/RES-03-variables-et-types-javascript.md) · [RES 04 conditions et boucles](../resumes/RES-04-conditions-et-boucles.md)
+
+**Application pratique :** RES-05-fonctions-javascript.md
+
 ## Déclarations
 ~~~js
 const name = "Amina"; // réaffectation interdite
