@@ -8,6 +8,17 @@
 ---
 
 
+
+## Repères d'apprentissage
+
+**Prérequis et maîtrise attendue :** Prérequis : RES-01 et RES-02. Tu dois choisir entre const et let, reconnaître les types courants et expliquer les conversions implicites.
+
+**Mise en pratique :** Prédit le résultat d'expressions utilisant nombres, chaînes, booléens, null et undefined avant de les exécuter.
+
+**Mémo associé :** [CS-01-javascript-syntaxe-essentielle.md](../cheatsheets/CS-01-javascript-syntaxe-essentielle.md)
+
+**Méthode conseillée :** lis une section, ferme la fiche, reformule la règle sans la recopier, exécute l'exemple, puis change une valeur et prédis le résultat. Si tu ne peux pas expliquer pourquoi le résultat change, révise la notion avant de poursuivre.
+
 ## Repères d'apprentissage
 
 **Prérequis et maîtrise attendue :** Prérequis : RES-01 et RES-02. À la fin, tu dois pouvoir choisir entre const et let, identifier les types courants et expliquer les conversions implicites les plus importantes.
