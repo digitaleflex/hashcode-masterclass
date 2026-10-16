@@ -1,59 +1,59 @@
-# Plan du diaporama — HashCode Masterclass
+# Plan pédagogique — HashCode Masterclass JavaScript & TypeScript
 
-**Titre :** Les fondamentaux de l'écosystème JavaScript & TypeScript
-**Durée :** 120 minutes
-**Public :** débutants et participants ayant quelques notions
-**Format :** masterclass interactive, code en direct et exercices
+**Format :** masterclass immersive, 120 minutes  
+**Public :** débutants et participants ayant quelques notions  
+**Support :** présentation HTML autonome de 83 écrans  
+**Principe :** un écran = une idée, une action ou une vérification clairement identifiable.
 
-## Les 18 diapositives
+## Architecture pédagogique
 
-| # | Titre | Intention pédagogique | Forme visuelle |
-|---:|---|---|---|
-| 01 | JavaScript & TypeScript | Installer la direction visuelle et annoncer la promesse | Couverture éditoriale |
-| 02 | Comprendre. Expérimenter. Construire. | Présenter la méthode de la séance | Trois piliers |
-| 03 | À la fin, vous saurez… | Définir des résultats réalistes | Liste hiérarchisée |
-| 04 | D'où partons-nous ? | Diagnostiquer le niveau du groupe | Trois niveaux de départ |
-| 05 | L'écosystème, en couches | Distinguer langages, runtimes, outils et applications | Schéma en flux |
-| 06 | Un langage, plusieurs environnements | Comparer navigateur et Node.js | Deux colonnes de code |
-| 07 | Node.js n'est pas npm | Expliquer runtime, paquets et package.json | Cartes et terminal |
-| 08 | Écrire. Exécuter. Observer. | Lire un premier programme | Code et sortie |
-| 09 | Les briques du langage | Présenter variables, conditions et fonctions | Trois cartes de code |
-| 10 | Tableaux + objets | Comprendre les structures de données | Collection de tâches |
-| 11 | Calculez le total | Faire pratiquer une méthode sur les tableaux | Défi et correction |
-| 12 | Rendre les attentes explicites | Comprendre l'intérêt de TypeScript | Comparaison JavaScript / TypeScript |
-| 13 | Définir un contrat de fonction | Lire les paramètres et valeurs de retour typés | Extrait de code |
-| 14 | Une tâche, un contrat | Modéliser une donnée avec une interface | Interface et objet |
-| 15 | Mission : HashCode Task Manager | Présenter les exigences de l'atelier | Fonctionnalités et outils |
-| 16 | Du code à un résultat visible | Relier commandes, exécution et résultat | Terminal et sortie attendue |
-| 17 | Quiz de sortie | Vérifier les concepts essentiels | Quiz interactif |
-| 18 | Le prochain pas est un projet | Ancrer l'apprentissage dans un défi communautaire | Parcours de progression |
+| Séquence | Objectif | Méthodes |
+|---|---|---|
+| Ouverture | Aligner les attentes et situer le niveau du groupe | Diagnostic, objectifs, contrat pédagogique |
+| Carte de l'écosystème | Distinguer langage, runtime, gestionnaire de paquets, bibliothèque et framework | Schémas, comparaisons, quiz |
+| Installation et outils | Comprendre l'exécution et lire les messages du terminal | Démonstration guidée, prédiction de sortie |
+| JavaScript | Manipuler les primitives, décisions, fonctions et collections | Code en direct, exercices, corrections |
+| TypeScript | Décrire les contrats, typer les fonctions et modéliser les données | Comparaison JS/TS, erreurs à diagnostiquer, exercices |
+| Atelier Task Manager | Assembler les notions dans un programme cohérent | Construction incrémentale, cas limites, tests manuels |
+| Ancrage | Vérifier les acquis et organiser la pratique suivante | Quiz, synthèse, challenge de communauté |
 
-## Chronologie sur 120 minutes
+## Chronologie de 120 minutes
 
 | Temps | Séquence | Durée |
 |---|---|---:|
-| 00–10 min | Accueil et diagnostic | 10 min |
-| 10–25 min | Cartographie de l'écosystème | 15 min |
-| 25–40 min | Environnement et premier programme | 15 min |
-| 40–58 min | Fondamentaux JavaScript | 18 min |
-| 58–63 min | Mini-défi JavaScript | 5 min |
-| 63–80 min | Introduction à TypeScript | 17 min |
-| 80–105 min | Atelier guidé | 25 min |
-| 105–115 min | Challenge et quiz | 10 min |
-| 115–120 min | Bilan et prochaines étapes | 5 min |
+| 00–15 min | Ouverture, diagnostic et carte mentale | 15 min |
+| 15–40 min | Environnements, outils et exécution | 25 min |
+| 40–65 min | JavaScript et mini-exercice | 25 min |
+| 65–82 min | TypeScript et exercices de typage | 17 min |
+| 82–108 min | Atelier Task Manager | 26 min |
+| 108–120 min | Quiz, synthèse et suite | 12 min |
 
-## Exactitude technique et qualité
+## Règles de conception des diapositives
 
-- TypeScript ajoute un système de types statiques à JavaScript ; il ne remplace pas le runtime JavaScript.
-- Les types sont vérifiés statiquement et ne constituent pas une validation automatique des données à l'exécution.
-- Node.js est un environnement d'exécution. npm gère les paquets et peut lancer les scripts déclarés dans package.json.
-- Vite est un outil de développement et de build ; React est une bibliothèque d'interface utilisateur ; Next.js est un framework fondé sur React.
-- Distinguer visuellement le code source d'une sortie attendue. Exécuter et vérifier les exemples avant la séance.
-- Conserver une idée principale par diapositive, un contraste suffisant et un corps de texte lisible depuis le fond de la salle.
+1. Chaque écran répond à une question pédagogique précise.
+2. Les notions abstraites sont reliées à un exemple concret.
+3. Le code source est distinct du résultat attendu.
+4. Les écrans de prédiction précèdent la correction.
+5. Les exercices précisent l'action attendue et les critères de réussite.
+6. Les notes du formateur contiennent la question à poser, le piège à éviter ou l'explication à approfondir.
+7. Les écrans sont courts, mais le formateur doit laisser du temps aux participants pour raisonner et coder.
+8. Les 83 écrans ne sont pas 83 exposés indépendants : certains sont des transitions ou des checkpoints de 20 à 60 secondes.
 
-## Préparation requise
+## Exactitude technique
 
-- Tester la présentation dans le navigateur et en plein écran.
-- Tester les flèches, l'espace, les notes, l'affichage du quiz et le responsive.
-- Préparer le projet Task Manager avant l'atelier pour éviter que l'installation ne consomme le temps de pratique.
-- Prévoir une copie locale et un PDF de secours.
+- JavaScript est le langage exécuté par le moteur du navigateur ou par un runtime comme Node.js.
+- TypeScript ajoute un système de types statiques ; il ne remplace pas le runtime JavaScript.
+- Le typage statique ne remplace pas la validation des données à l'exécution ni les tests comportementaux.
+- npm installe des paquets et exécute les scripts déclarés dans package.json.
+- Vite est un outil de développement/build ; React est une bibliothèque UI ; Next.js est un framework basé sur React.
+- map transforme une collection, filter sélectionne des éléments et reduce accumule une valeur.
+
+## Critères d'acceptation avant la masterclass
+
+- [ ] Le navigateur affiche les 83 écrans dans le bon ordre.
+- [ ] La navigation au clavier et les boutons fonctionnent.
+- [ ] Les notes sont propres à chaque diapositive.
+- [ ] Les quiz affichent la réponse et une explication.
+- [ ] Les exemples de code ont été vérifiés sur l'environnement de démonstration.
+- [ ] Le rendu est lisible au vidéoprojecteur.
+- [ ] Une copie locale et un PDF de secours sont disponibles.
