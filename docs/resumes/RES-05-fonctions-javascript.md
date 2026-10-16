@@ -5,6 +5,17 @@
 > Objectif : organiser le code en blocs réutilisables, transmettre des données à une fonction et récupérer un résultat.
 
 
+
+## Repères d'apprentissage
+
+**Prérequis et maîtrise attendue :** Prérequis : variables, expressions et conditions. Tu dois concevoir une fonction à responsabilité claire, avec paramètres et résultat exploitable.
+
+**Mise en pratique :** Transforme du code répété en fonction, puis vérifie son comportement avec trois entrées différentes.
+
+**Mémo associé :** [CS-03-fonctions-portee-this.md](../cheatsheets/CS-03-fonctions-portee-this.md)
+
+**Méthode conseillée :** lis une section, ferme la fiche, reformule la règle sans la recopier, exécute l'exemple, puis change une valeur et prédis le résultat. Si tu ne peux pas expliquer pourquoi le résultat change, révise la notion avant de poursuivre.
+
 ## Repères d'apprentissage
 
 **Prérequis et maîtrise attendue :** Prérequis : variables, expressions et conditions. À la fin, tu dois pouvoir concevoir une fonction avec une responsabilité claire, des paramètres et un résultat exploitable.
