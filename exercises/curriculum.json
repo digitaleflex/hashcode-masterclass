@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "title": "HashCode Masterclass — parcours pratique",
+  "language": "fr",
+  "levels": ["INIT", "CORE", "PRO"],
+  "exerciseGuide": "EXERCICES.md",
+  "exerciseCount": 12
+}
