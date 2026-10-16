@@ -18,8 +18,8 @@
         "max": 16
       },
       "spec": "capstone-taskflow/README.md",
-      "starter": null,
-      "solution": null,
+      "starter": "capstone-taskflow/starter/README.md",
+      "solution": "capstone-taskflow/solution/README.md",
       "acceptanceCriteriaPresent": true
     }
   ]
