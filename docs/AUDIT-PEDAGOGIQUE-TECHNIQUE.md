@@ -104,6 +104,22 @@ Pour une collection appelée « fiches de résumé », l'option A est la plus co
 - [ ] Créer une grille de correction commune : exactitude, lisibilité, robustesse, tests et sécurité.
 - [ ] Suivre les notions que les apprenants échouent à expliquer ou à appliquer, puis réviser les fiches concernées.
 
+## 5 bis. Intégration du parcours d'exercices pratiques
+
+Le dépôt possède désormais un lot pilote de 12 exercices, un manifeste de catalogue, des tests automatisés Node.js et un workflow GitHub Actions dédié. Les exercices sont reliés aux fiches RES/CS pertinentes.
+
+- [x] Documenter les niveaux INIT, CORE et PRO.
+- [x] Structurer 12 exercices pilotes : compréhension, katas, débogage, TypeScript, tests, sécurité et mini-projet.
+- [x] Ajouter des tests de référence pour les fonctions métier du pilote.
+- [x] Ajouter un validateur du nombre, de l’unicité et de la correspondance des identifiants du catalogue, ainsi que des liens de cours détectés dans le cahier.
+- [x] Ajouter les commandes `npm run check:exercises` et `npm test`.
+- [x] Ajouter une CI ciblée sur les changements d’exercices.
+- [ ] Exécuter la CI sur GitHub et vérifier le résultat réel.
+- [ ] Étendre les tests aux exemples TypeScript et aux scénarios DOM/API.
+- [ ] Séparer à terme les corrigés du contenu distribué aux apprenants si une plateforme publique de défis est créée.
+
+Le lot pilote constitue une première tranche d’intégration, pas encore une banque exhaustive d’exercices pour les 20 fiches. Les tests automatiques couvrent les fonctions de référence ajoutées au dossier `tests/` ; ils ne valident pas automatiquement chaque bloc de code présent dans les documents Markdown.
+
 ## 6. Gabarit minimal recommandé pour chaque RES
 
 1. Titre, niveau, durée indicative et prérequis.
