@@ -382,7 +382,7 @@ Quand un programme échoue, pose-toi ces questions :
 ## Suite de la série
 
 - Précédent : [RES-07 — Objets, déstructuration et spread](./RES-07-objets-destructuration-spread.md)
-- Suivant : **RES-09 — Asynchronisme, promesses et async/await** (à créer)
+- Suivant : **RES-09 — Asynchronisme, promesses et async/await**
 
 ---
 
