@@ -403,7 +403,7 @@ Que renvoient `0 || 5` et `0 ?? 5` ?
 ## Suite de la série
 
 - Précédent : [RES-06 — Tableaux et méthodes fonctionnelles](./RES-06-tableaux-et-methodes-fonctionnelles.md)
-- Suivant : **RES-08 — Gestion des erreurs et débogage** (à créer)
+- Suivant : **RES-08 — Gestion des erreurs et débogage**
 
 ---
 
