@@ -37,3 +37,10 @@ Le code est écrit en JavaScript. Le navigateur ou Node.js peut l’exécuter. `
 3. React est-il un langage ? **Non, c’est une bibliothèque JavaScript**.
 
 **Erreur fréquente :** apprendre les noms des outils sans comprendre leurs responsabilités.
+
+## Cas d’usage pratique — lancer une petite application
+Tu construis un catalogue de formations pour HashCode Academy. JavaScript contient les règles d’affichage ; Node.js peut exécuter un script de préparation ; npm installe les dépendances ; Vite peut servir l’application en développement ; React construit l’interface ; Next.js peut fournir une architecture web plus complète.
+
+**Choix à expliquer :** pour un simple script qui calcule des statistiques, commence avec JavaScript et Node.js. N’ajoute pas React ou Next.js si aucune interface web n’est nécessaire.
+
+**Mini-défi :** associe chaque outil à une responsabilité dans un projet que tu connais.
