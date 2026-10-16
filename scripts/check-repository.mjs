@@ -23,7 +23,7 @@ function existsFile(file) {
 }
 
 function stripCodeFences(markdown) {
-  return markdown.replace(/^\s*```[\s\S]*?^\s*```\s*$/gm, "");
+  return markdown.replace(/^\s*(?:\x60{3,}|~{3,})[^\n]*\n[\s\S]*?^\s*(?:\x60{3,}|~{3,})\s*$/gm, "");
 }
 
 function localTarget(fromFile, rawTarget) {
